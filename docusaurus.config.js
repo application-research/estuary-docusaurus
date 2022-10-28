@@ -1,40 +1,40 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/estuary-documentation/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "snissn", // Usually your GitHub org/user name.
-  projectName: "estuary-documentation", // Usually your repo name.
+  title: 'Estuary',
+  tagline:
+    'A reliable way to upload public data onto Filecoin and pin it to IPFS.',
+  url: 'https://your-docusaurus-test-site.com',
+  baseUrl: '/estuary-documentation/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
+  organizationName: 'snissn', // Usually your GitHub org/user name.
+  projectName: 'estuary-documentation', // Usually your repo name.
 
   presets: [
     [
-      "docusaurus-preset-openapi",
+      'docusaurus-preset-openapi',
       /** @type {import('docusaurus-preset-openapi').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -43,67 +43,129 @@ const config = {
   themeConfig:
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
+      languageTabs: [
+        {
+          tabName: "cURL",
+          highlight: "bash",
+          language: "curl",
+          variant: "curl",
+          options: {
+            longFormat: false,
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: "JS",
+          highlight: "javascript",
+          language: "javascript",
+          variant: "fetch",
+          options: {
+            longFormat: false,
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: "Node",
+          highlight: "javascript",
+          language: "javascript",
+          variant: "fetch",
+          options: {
+            ES6_enabled: true,
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: "Go",
+          highlight: "go",
+          language: "go",
+          variant: "native",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: 'Python',
+          highlight: 'python',
+          language: 'python',
+          variant: 'requests',
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+      ],
+
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: false,
+        },
+      },
       navbar: {
-        title: "My Site",
+        title: 'Estuary Documentation',
         logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
+          alt: 'My Site Logo',
+          src: 'img/logo.svg',
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Tutorial",
+            type: 'doc',
+            docId: 'Learn/intro',
+            position: 'left',
+            label: 'Docs',
           },
-          { to: "/api", label: "API", position: "left" },
-          { to: "/blog", label: "Blog", position: "left" },
+          { to: '/api', label: 'API', position: 'left' },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
-            position: "right",
+            href: 'https://github.com/facebook/docusaurus',
+            label: 'GitHub',
+            position: 'right',
           },
         ],
       },
       footer: {
-        style: "dark",
+        style: 'dark',
         links: [
           {
-            title: "Docs",
+            title: 'Docs',
             items: [
               {
-                label: "Tutorial",
-                to: "/docs/intro",
+                label: 'Tutorial',
+                to: '/docs/learn/intro',
               },
             ],
           },
           {
-            title: "Community",
+            title: 'Community',
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                label: 'Stack Overflow',
+                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
               },
               {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                label: 'Discord',
+                href: 'https://discordapp.com/invite/docusaurus',
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/docusaurus",
+                label: 'Twitter',
+                href: 'https://twitter.com/docusaurus',
               },
             ],
           },
           {
-            title: "More",
+            title: 'More',
             items: [
               {
-                label: "Blog",
-                to: "/blog",
+                label: 'Blog',
+                to: '/blog',
               },
               {
-                label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                label: 'GitHub',
+                href: 'https://github.com/facebook/docusaurus',
               },
             ],
           },
@@ -115,6 +177,6 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-};
+}
 
-module.exports = config;
+module.exports = config

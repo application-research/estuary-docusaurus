@@ -4,32 +4,32 @@ import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: "Easy to Use",
-    Svg: require("../../static/img/undraw_docusaurus_mountain.svg").default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
-  },
-  {
-    title: "Focus on What Matters",
+    title: "Store and retrieve content",
     Svg: require("../../static/img/undraw_docusaurus_tree.svg").default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+      Estuary will store and retrieve your content quickly using the IPFS spec .
+Store content on Filecoin with proposition receipts and successful deal receipts.
+
+
       </>
     ),
   },
   {
-    title: "Powered by React",
+    title: "Decentralized Web",
+    Svg: require("../../static/img/undraw_docusaurus_mountain.svg").default,
+    description: (
+      <>
+      Estuary is a decentralized data storage service built on the key decentralized web protocols IPFS and Filecoin.
+      </>
+    ),
+  },
+  {
+    title: "Client APIs",
     Svg: require("../../static/img/undraw_docusaurus_react.svg").default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Build in unlimited decentralized data storage into your application with our developer friendly client APIs
       </>
     ),
   },
