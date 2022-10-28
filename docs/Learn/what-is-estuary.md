@@ -10,7 +10,7 @@ Estuary is an open source software that allows easy sending of public data to th
 
 The [Application Research Group (ARG)](https://arg.protocol.ai) helped make [Filecoin](https://filecoin.io) and the [ARG](https://arg.protocol.ai) wanted to provide an end-to-end example of how to use IPFS, Filecoin, and other technologies together.
 
-Read our [FAQ](/faq) for more frequently asked questions and criticism.
+Read our [FAQ](../Learn/faq) for more frequently asked questions and criticism.
 
 ### How do you make Filecoin storage deals?
 
