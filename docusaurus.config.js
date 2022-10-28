@@ -45,10 +45,10 @@ const config = {
     ({
       languageTabs: [
         {
-          tabName: "cURL",
-          highlight: "bash",
-          language: "curl",
-          variant: "curl",
+          tabName: 'cURL',
+          highlight: 'bash',
+          language: 'curl',
+          variant: 'curl',
           options: {
             longFormat: false,
             followRedirect: true,
@@ -56,10 +56,10 @@ const config = {
           },
         },
         {
-          tabName: "JS",
-          highlight: "javascript",
-          language: "javascript",
-          variant: "fetch",
+          tabName: 'JS',
+          highlight: 'javascript',
+          language: 'javascript',
+          variant: 'fetch',
           options: {
             longFormat: false,
             followRedirect: true,
@@ -67,10 +67,10 @@ const config = {
           },
         },
         {
-          tabName: "Node",
-          highlight: "javascript",
-          language: "javascript",
-          variant: "fetch",
+          tabName: 'Node',
+          highlight: 'javascript',
+          language: 'javascript',
+          variant: 'fetch',
           options: {
             ES6_enabled: true,
             followRedirect: true,
@@ -78,10 +78,10 @@ const config = {
           },
         },
         {
-          tabName: "Go",
-          highlight: "go",
-          language: "go",
-          variant: "native",
+          tabName: 'Go',
+          highlight: 'go',
+          language: 'go',
+          variant: 'native',
           options: {
             followRedirect: true,
             trimRequestBody: true,
@@ -118,7 +118,9 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          { to: '/api', label: 'API', position: 'left' },
+          { to: '/clients',           docsPluginId: 'clients',
+          label: 'Supported API Clients', position: 'left' },
+          { to: '/api', label: 'API Documentation', position: 'left' },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/facebook/docusaurus',
@@ -144,11 +146,12 @@ const config = {
             items: [
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/aresearchgroup'
+                href: 'https://twitter.com/aresearchgroup',
               },
               {
                 label: 'Join Slack',
-                href: 'https://docs.estuary.tech/#:~:text=Join%20Slack%20(%23ecosystem%2Ddev)',
+                href:
+                  'https://docs.estuary.tech/#:~:text=Join%20Slack%20(%23ecosystem%2Ddev)',
               },
               {
                 label: 'Stack Overflow',
@@ -177,6 +180,19 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+    plugins: [
+      [
+        '@docusaurus/plugin-content-docs',
+        {
+          id: 'clients',
+          path: 'clients',
+          routeBasePath: 'clients',
+          sidebarPath: require.resolve('./sidebars.js'),
+          // ... other options
+        },
+      ],
+    ],
+  
 }
 
 module.exports = config
