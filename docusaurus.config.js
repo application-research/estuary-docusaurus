@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Estuary',
+  title: 'Estuary Documentation',
   tagline:
     'A reliable way to upload public data onto Filecoin and pin it to IPFS.',
   url: 'https://your-docusaurus-test-site.com',
@@ -143,16 +143,16 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/aresearchgroup'
+              },
+              {
+                label: 'Join Slack',
+                href: 'https://docs.estuary.tech/#:~:text=Join%20Slack%20(%23ecosystem%2Ddev)',
+              },
+              {
+                label: 'Stack Overflow',
+                href: 'https://stackoverflow.com/questions/tagged/ipfs',
               },
             ],
           },
@@ -165,7 +165,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/application-research/estuary',
               },
             ],
           },
