@@ -1,165 +1,3891 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "Swagger Petstore",
-    "license": {
-      "name": "MIT"
-    }
-  },
-  "servers": [
-    {
-      "url": "http://petstore.swagger.io/v1"
-    }
-  ],
-  "paths": {
-    "/pets": {
-      "get": {
-        "summary": "List all pets",
-        "operationId": "listPets",
-        "tags": ["pets"],
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "How many items to return at one time (max 100)",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A paged array of pets",
-            "headers": {
-              "x-next": {
-                "description": "A link to the next page of responses",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Pets"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Create a pet",
-        "operationId": "createPets",
-        "tags": ["pets"],
-        "responses": {
-          "201": {
-            "description": "Null response"
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
+    "openapi": "3.0.0",
+    "info": {
+        "description": "This is the API for the Estuary application.",
+        "title": "Estuary API",
+        "termsOfService": "http://estuary.tech",
+        "contact": {
+            "name": "API Support",
+            "url": "https://docs.estuary.tech/feedback"
+        },
+        "license": {
+            "name": "Apache 2.0 Apache-2.0 OR MIT",
+            "url": "https://github.com/application-research/estuary/blob/master/LICENSE.md"
+        },
+        "version": "0.0.0"
     },
-    "/pets/{petId}": {
-      "get": {
-        "summary": "Info for a specific pet",
-        "operationId": "showPetById",
-        "tags": ["pets"],
-        "parameters": [
-          {
-            "name": "petId",
-            "in": "path",
-            "required": true,
-            "description": "The id of the pet to retrieve",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Expected response to a valid request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Pet"
+    "paths": {
+        "/admin/autoretrieve/init": {
+            "post": {
+                "description": "This endpoint registers a new autoretrieve server",
+                "tags": [
+                    "autoretrieve"
+                ],
+                "summary": "Register autoretrieve server",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "addresses": {
+                                        "description": "Autoretrieve's comma-separated list of addresses",
+                                        "type": "string"
+                                    },
+                                    "pubKey": {
+                                        "description": "Autoretrieve's public key",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "addresses",
+                                    "pubKey"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+        },
+        "/admin/autoretrieve/list": {
+            "get": {
+                "description": "This endpoint lists all registered autoretrieve servers",
+                "tags": [
+                    "autoretrieve"
+                ],
+                "summary": "List autoretrieve servers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
+        },
+        "/admin/peering/peers": {
+            "get": {
+                "description": "This endpoint can be used to list all peers on Peering Service",
+                "tags": [
+                    "admin",
+                    "peering",
+                    "peers"
+                ],
+                "summary": "List all Peering peers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint can be used to add a Peer from the Peering Service",
+                "tags": [
+                    "admin",
+                    "peering",
+                    "peers"
+                ],
+                "summary": "Add peers on Peering Service",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "This endpoint can be used to remove a Peer from the Peering Service",
+                "tags": [
+                    "admin",
+                    "peering",
+                    "peers"
+                ],
+                "summary": "Remove peers on Peering Service",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Peer ids",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/peering/start": {
+            "post": {
+                "description": "This endpoint can be used to start the Peering Service",
+                "tags": [
+                    "admin",
+                    "peering",
+                    "peers"
+                ],
+                "summary": "Start Peering",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/peering/status": {
+            "get": {
+                "description": "This endpoint can be used to check the Peering status",
+                "tags": [
+                    "admin",
+                    "peering",
+                    "peers"
+                ],
+                "summary": "Check Peering Status",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/peering/stop": {
+            "post": {
+                "description": "This endpoint can be used to stop the Peering Service",
+                "tags": [
+                    "admin",
+                    "peering",
+                    "peers"
+                ],
+                "summary": "Stop Peering",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/system/config": {
+            "get": {
+                "description": "This endpoint is used to get system configs.",
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Get systems(estuary/shuttle) config",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/users": {
+            "get": {
+                "description": "This endpoint is used to get all users.",
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Get all users",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/autoretrieve/heartbeat": {
+            "post": {
+                "description": "This endpoint updates the lastConnection field for autoretrieve",
+                "tags": [
+                    "autoretrieve"
+                ],
+                "summary": "Marks autoretrieve server as up",
+                "parameters": [
+                    {
+                        "description": "Autoretrieve's auth token",
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/collections/": {
+            "get": {
+                "description": "This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.",
+                "tags": [
+                    "collections"
+                ],
+                "summary": "List all collections",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/collections.Collection"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.",
+                "tags": [
+                    "collections"
+                ],
+                "summary": "Create a new collection",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/main.createCollectionBody"
+                            }
+                        }
+                    },
+                    "description": "Collection name and description",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/collections.Collection"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/collections/fs/add": {
+            "post": {
+                "description": "This endpoint adds a file to a collection",
+                "tags": [
+                    "collections"
+                ],
+                "summary": "Add a file to a collection",
+                "parameters": [
+                    {
+                        "description": "Collection ID",
+                        "name": "coluuid",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Content",
+                        "name": "content",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Path to file",
+                        "name": "path",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/collections/{coluuid}": {
+            "get": {
+                "description": "This endpoint is used to get contents in a collection. If no colpath query param is passed",
+                "tags": [
+                    "collections"
+                ],
+                "summary": "Get contents in a collection",
+                "parameters": [
+                    {
+                        "description": "coluuid",
+                        "name": "coluuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Directory",
+                        "name": "dir",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint adds already-pinned contents (that have ContentIDs) to a collection.",
+                "tags": [
+                    "collections"
+                ],
+                "summary": "Add contents to a collection",
+                "parameters": [
+                    {
+                        "description": "coluuid",
+                        "name": "coluuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Content IDs to add to collection",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "This endpoint is used to delete an existing collection.",
+                "tags": [
+                    "collections"
+                ],
+                "summary": "Deletes a collection",
+                "parameters": [
+                    {
+                        "description": "Collection ID",
+                        "name": "coluuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/collections/{coluuid}/commit": {
+            "post": {
+                "description": "This endpoint is used to save the contents in a collection, producing a top-level CID that references all the current CIDs in the collection.",
+                "tags": [
+                    "collections"
+                ],
+                "summary": "Produce a CID of the collection contents",
+                "parameters": [
+                    {
+                        "description": "coluuid",
+                        "name": "coluuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/collections/{coluuid}/contents": {
+            "delete": {
+                "description": "This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path",
+                "tags": [
+                    "collections"
+                ],
+                "summary": "Deletes a content from a collection",
+                "parameters": [
+                    {
+                        "description": "Collection ID",
+                        "name": "coluuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Content ID",
+                        "name": "contentid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/main.deleteContentFromCollectionBody"
+                            }
+                        }
+                    },
+                    "description": "Variable to use when filtering for files (must be either 'path' or 'content_id')",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/add": {
+            "post": {
+                "description": "This endpoint is used to upload new content.",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Add new content",
+                "parameters": [
+                    {
+                        "description": "Collection UUID",
+                        "name": "coluuid",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Replication value",
+                        "name": "replication",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Ignore Dupes true/false",
+                        "name": "ignore-dupes",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Lazy Provide true/false",
+                        "name": "lazy-provide",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Directory",
+                        "name": "dir",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "data": {
+                                        "description": "File to upload",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "filename": {
+                                        "description": "Filenam to use for upload",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "data"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.ContentAddResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/add-car": {
+            "post": {
+                "description": "This endpoint is used to add a car object to the network. The object can be a file or a directory.",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Add Car object",
+                "parameters": [
+                    {
+                        "description": "Ignore Dupes",
+                        "name": "ignore-dupes",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Filename",
+                        "name": "filename",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "description": "Car",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/add-ipfs": {
+            "post": {
+                "description": "This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Add IPFS object",
+                "parameters": [
+                    {
+                        "description": "Ignore Dupes",
+                        "name": "ignore-dupes",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/util.ContentAddIpfsBody"
+                            }
+                        }
+                    },
+                    "description": "IPFS Body",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/aggregated/{content}": {
+            "get": {
+                "description": "This endpoint returns aggregated content stats",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get aggregated content stats",
+                "parameters": [
+                    {
+                        "description": "Content ID",
+                        "name": "content",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/all-deals": {
+            "get": {
+                "description": "This endpoint is used to get all deals for a user",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get all deals for a user",
+                "parameters": [
+                    {
+                        "description": "Begin",
+                        "name": "begin",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Duration",
+                        "name": "duration",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "All",
+                        "name": "all",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/bw-usage/{content}": {
+            "get": {
+                "description": "This endpoint returns content bandwidth",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get content bandwidth",
+                "parameters": [
+                    {
+                        "description": "Content ID",
+                        "name": "content",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/create": {
+            "post": {
+                "description": "This endpoint adds a new content",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Add a new content",
+                "parameters": [
+                    {
+                        "description": "Ignore Dupes",
+                        "name": "ignore-dupes",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/util.ContentCreateBody"
+                            }
+                        }
+                    },
+                    "description": "Content",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/deals": {
+            "get": {
+                "description": "This endpoint lists all content with deals",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Content with deals",
+                "parameters": [
+                    {
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/ensure-replication/{datacid}": {
+            "get": {
+                "description": "This endpoint ensures that the content is replicated to the specified number of providers",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Ensure Replication",
+                "parameters": [
+                    {
+                        "description": "Data CID",
+                        "name": "datacid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/failures/{content}": {
+            "get": {
+                "description": "This endpoint returns all failures for a content",
+                "tags": [
+                    "content"
+                ],
+                "summary": "List all failures for a content",
+                "parameters": [
+                    {
+                        "description": "Content ID",
+                        "name": "content",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/importdeal": {
+            "post": {
+                "description": "This endpoint imports a deal into the shuttle.",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Import a deal",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/main.importDealBody"
+                            }
+                        }
+                    },
+                    "description": "Import a deal",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/list": {
+            "get": {
+                "description": "This endpoint lists all content",
+                "tags": [
+                    "content"
+                ],
+                "summary": "List all pinned content",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/read/{cont}": {
+            "get": {
+                "description": "This endpoint reads content from the blockstore",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Read content",
+                "parameters": [
+                    {
+                        "description": "CID",
+                        "name": "cont",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/staging-zones": {
+            "get": {
+                "description": "This endpoint is used to get staging zone for user.",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get staging zone for user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/stats": {
+            "get": {
+                "description": "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get content statistics",
+                "parameters": [
+                    {
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/status/{id}": {
+            "get": {
+                "description": "This endpoint returns the status of a content",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Content Status",
+                "parameters": [
+                    {
+                        "description": "Content ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/{id}": {
+            "get": {
+                "description": "This endpoint returns a content by its ID",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Content",
+                "parameters": [
+                    {
+                        "description": "Content ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deal/estimate": {
+            "post": {
+                "description": "This endpoint estimates the cost of a deal",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Estimate the cost of a deal",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/main.estimateDealBody"
+                            }
+                        }
+                    },
+                    "description": "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deal/info/{dealid}": {
+            "get": {
+                "description": "This endpoint returns the deal info for a deal",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Get Deal Info",
+                "parameters": [
+                    {
+                        "description": "Deal ID",
+                        "name": "dealid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deal/proposal/{propcid}": {
+            "get": {
+                "description": "This endpoint returns the proposal for a deal",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Get Proposal",
+                "parameters": [
+                    {
+                        "description": "Proposal CID",
+                        "name": "propcid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deal/query/{miner}": {
+            "get": {
+                "description": "This endpoint returns the ask for a given CID",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Query Ask",
+                "parameters": [
+                    {
+                        "description": "CID",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deal/status-by-proposal/{propcid}": {
+            "get": {
+                "description": "Get Deal Status by PropCid",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Get Deal Status by PropCid",
+                "parameters": [
+                    {
+                        "description": "PropCid",
+                        "name": "propcid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deal/status/{miner}/{propcid}": {
+            "get": {
+                "description": "This endpoint returns the status of a deal",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Deal Status",
+                "parameters": [
+                    {
+                        "description": "Miner",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Proposal CID",
+                        "name": "propcid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deal/transfer/in-progress": {
+            "get": {
+                "description": "This endpoint returns the in-progress transfers",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Transfer In Progress",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deal/transfer/status": {
+            "post": {
+                "description": "This endpoint returns the status of a transfer",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Transfer Status",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/main.ChannelIDParam"
+                            }
+                        }
+                    },
+                    "description": "Channel ID",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deals/failures": {
+            "get": {
+                "description": "This endpoint returns a list of storage failures for user",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Get storage failures for user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deals/make/{miner}": {
+            "post": {
+                "description": "This endpoint makes a deal for a given content and miner",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Make Deal",
+                "parameters": [
+                    {
+                        "description": "Miner",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "description": "Deal Request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deals/status/{deal}": {
+            "get": {
+                "description": "This endpoint returns the status of a deal",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Get Deal Status",
+                "parameters": [
+                    {
+                        "description": "Deal ID",
+                        "name": "deal",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/net/addrs": {
+            "get": {
+                "description": "This endpoint is used to get net addrs",
+                "tags": [
+                    "net"
+                ],
+                "summary": "Net Addrs",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pinning/pins": {
+            "get": {
+                "description": "This endpoint lists all pin status objects",
+                "tags": [
+                    "pinning"
+                ],
+                "summary": "List all pin status objects",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint adds a pin to the IPFS daemon.",
+                "tags": [
+                    "pinning"
+                ],
+                "summary": "Add and pin object",
+                "parameters": [
+                    {
+                        "description": "cid",
+                        "name": "cid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pinning/pins/{pinid}": {
+            "get": {
+                "description": "This endpoint returns a pin status object.",
+                "tags": [
+                    "pinning"
+                ],
+                "summary": "Get a pin status object",
+                "parameters": [
+                    {
+                        "description": "cid",
+                        "name": "pinid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint replaces a pinned object.",
+                "tags": [
+                    "pinning"
+                ],
+                "summary": "Replace a pinned object",
+                "parameters": [
+                    {
+                        "description": "Pin ID",
+                        "name": "pinid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "This endpoint deletes a pinned object.",
+                "tags": [
+                    "pinning"
+                ],
+                "summary": "Delete a pinned object",
+                "parameters": [
+                    {
+                        "description": "Pin ID",
+                        "name": "pinid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/by-cid/{cid}": {
+            "get": {
+                "description": "This endpoint returns the content associated with a CID",
+                "tags": [
+                    "public"
+                ],
+                "summary": "Get Content by Cid",
+                "parameters": [
+                    {
+                        "description": "Cid",
+                        "name": "cid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/deals/failures": {
+            "get": {
+                "description": "This endpoint returns a list of storage failures",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Get storage failures",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/info": {
+            "get": {
+                "description": "This endpoint returns information about the node",
+                "tags": [
+                    "public"
+                ],
+                "summary": "Get public node info",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/metrics/deals-on-chain": {
+            "get": {
+                "description": "This endpoint is used to get deal metrics",
+                "tags": [
+                    "public",
+                    "metrics"
+                ],
+                "summary": "Get deal metrics",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/miners": {
+            "get": {
+                "description": "This endpoint returns all miners",
+                "tags": [
+                    "public",
+                    "net"
+                ],
+                "summary": "Get all miners",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/miners/deals/{miner}": {
+            "get": {
+                "description": "This endpoint returns all miners deals",
+                "tags": [
+                    "public",
+                    "miner"
+                ],
+                "summary": "Get all miners deals",
+                "parameters": [
+                    {
+                        "description": "Filter by miner",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Ignore Failed",
+                        "name": "ignore-failed",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/miners/failures/{miner}": {
+            "get": {
+                "description": "This endpoint returns all miners",
+                "tags": [
+                    "public",
+                    "net"
+                ],
+                "summary": "Get all miners",
+                "parameters": [
+                    {
+                        "description": "Filter by miner",
+                        "name": "miner",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/miners/stats/{miner}": {
+            "get": {
+                "description": "This endpoint returns miner stats",
+                "tags": [
+                    "public",
+                    "miner"
+                ],
+                "summary": "Get miner stats",
+                "parameters": [
+                    {
+                        "description": "Filter by miner",
+                        "name": "miner",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/miners/storage/query/{miner}": {
+            "get": {
+                "description": "This endpoint returns the ask for a given CID",
+                "tags": [
+                    "deals"
+                ],
+                "summary": "Query Ask",
+                "parameters": [
+                    {
+                        "description": "CID",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/net/addrs": {
+            "get": {
+                "description": "This endpoint is used to get net addrs",
+                "tags": [
+                    "public",
+                    "net"
+                ],
+                "summary": "Net Addrs",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/net/peers": {
+            "get": {
+                "description": "This endpoint is used to get net peers",
+                "tags": [
+                    "public",
+                    "net"
+                ],
+                "summary": "Net Peers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/stats": {
+            "get": {
+                "description": "This endpoint is used to get public stats.",
+                "tags": [
+                    "public"
+                ],
+                "summary": "Public stats",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/api-keys": {
+            "get": {
+                "description": "This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.",
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get API keys for a user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/main.getApiKeysResp"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.",
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create API keys for a user",
+                "parameters": [
+                    {
+                        "description": "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h",
+                        "name": "expiry",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Permissions -- currently unused",
+                        "name": "perms",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/main.getApiKeysResp"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/api-keys/{key}": {
+            "delete": {
+                "description": "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.",
+                "tags": [
+                    "User"
+                ],
+                "summary": "Revoke a User API Key.",
+                "parameters": [
+                    {
+                        "description": "Key",
+                        "name": "key",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/export": {
+            "get": {
+                "description": "This endpoint is used to get API keys for a user.",
+                "tags": [
+                    "User"
+                ],
+                "summary": "Export user data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/stats": {
+            "get": {
+                "description": "This endpoint is used to create API keys for a user.",
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create API keys for a user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
+    },
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "servers": [
+        {
+            "url": "//api.estuary.tech"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "collections.Collection": {
+                "type": "object",
+                "properties": {
+                    "cid": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "integer"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    }
+                }
+            },
+            "main.ChannelIDParam": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "initiator": {
+                        "type": "string"
+                    },
+                    "responder": {
+                        "type": "string"
+                    }
+                }
+            },
+            "main.createCollectionBody": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "main.deleteContentFromCollectionBody": {
+                "type": "object",
+                "properties": {
+                    "by": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "main.estimateDealBody": {
+                "type": "object",
+                "properties": {
+                    "durationBlks": {
+                        "type": "integer"
+                    },
+                    "replication": {
+                        "type": "integer"
+                    },
+                    "size": {
+                        "type": "integer"
+                    },
+                    "verified": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "main.getApiKeysResp": {
+                "type": "object",
+                "properties": {
+                    "expiry": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "main.importDealBody": {
+                "type": "object",
+                "properties": {
+                    "coluuid": {
+                        "type": "string"
+                    },
+                    "dealIDs": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "dir": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "util.ContentAddIpfsBody": {
+                "type": "object",
+                "properties": {
+                    "coluuid": {
+                        "type": "string"
+                    },
+                    "dir": {
+                        "type": "string"
+                    },
+                    "filename": {
+                        "type": "string"
+                    },
+                    "peers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "root": {
+                        "type": "string"
+                    }
+                }
+            },
+            "util.ContentAddResponse": {
+                "type": "object",
+                "properties": {
+                    "cid": {
+                        "type": "string"
+                    },
+                    "estuaryId": {
+                        "type": "integer"
+                    },
+                    "providers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "retrieval_url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "util.ContentCreateBody": {
+                "type": "object",
+                "properties": {
+                    "coluuid": {
+                        "type": "string"
+                    },
+                    "dir": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "root": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "util.HttpError": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer"
+                    },
+                    "details": {
+                        "type": "string"
+                    },
+                    "reason": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
     }
-  },
-  "components": {
-    "schemas": {
-      "Pet": {
-        "type": "object",
-        "required": ["id", "name"],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "tag": {
-            "type": "string"
-          }
-        }
-      },
-      "Pets": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Pet"
-        }
-      },
-      "Error": {
-        "type": "object",
-        "required": ["code", "message"],
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
 }
