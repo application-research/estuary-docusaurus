@@ -1,11 +1,14 @@
 import React from "react";
 import clsx from "clsx";
 import styles from "./HomepageFeatures.module.css";
+import ipfslogo from "./../../static/img/home/Ipfs-logo-1024-ice-text.png"
+import filecorgi from "./../../static/img/home/Filecorgi.png"
+import Swagger_logo from "./../../static/img/home/swagger_logo.svg"
 
 const FeatureList = [
   {
     title: "Store and retrieve content",
-    Svg: require("../../static/img/undraw_docusaurus_tree.svg").default,
+    Img: ipfslogo,
     description: (
       <>
       Estuary will store and retrieve your content quickly using the IPFS spec .
@@ -17,7 +20,7 @@ Store content on Filecoin with proposition receipts and successful deal receipts
   },
   {
     title: "Decentralized Web",
-    Svg: require("../../static/img/undraw_docusaurus_mountain.svg").default,
+    Img: filecorgi,
     description: (
       <>
       Estuary is a decentralized data storage service built on the key decentralized web protocols IPFS and Filecoin.
@@ -26,7 +29,7 @@ Store content on Filecoin with proposition receipts and successful deal receipts
   },
   {
     title: "Client APIs",
-    Svg: require("../../static/img/undraw_docusaurus_react.svg").default,
+    Svg: Swagger_logo,
     description: (
       <>
         Build in unlimited decentralized data storage into your application with our developer friendly client APIs
@@ -35,11 +38,20 @@ Store content on Filecoin with proposition receipts and successful deal receipts
   },
 ];
 
-function Feature({ Svg, title, description }) {
+
+function ImgOrSVG({Svg, Img, title}){
+  if(Svg){
+    return <Svg className={styles.featureSvg} alt={title}  style={{padding:"20px"}}/>
+  }else{
+    return <img src={Img} className={styles.featureSvg} alt={title}  style={{padding:"20px"}}/>
+  }
+}
+
+function Feature({ Svg, title, description, Img }) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+    <ImgOrSVG Svg={Svg} Img={Img} title={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
