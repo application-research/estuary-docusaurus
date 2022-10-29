@@ -4,8 +4,9 @@ sidebar_position: 4
 # Get an invite
 
 ### Request invite
-Would you like to use https://estuary.tech to make Filecoin storage deals? Please fill out this form! We'll get back to you either over Twitter or e-mail if we think you have a meaningful public data set.
+Would you like to use https://estuary.tech to make Filecoin storage deals?
 
-### TODO 
-bring over code from old repo
+[Please fill out the form here](/get-invite-key)! 
+
+We'll get back to you either over Twitter or e-mail if we think you have a meaningful public data set.
 

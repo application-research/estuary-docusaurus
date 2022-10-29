@@ -11,7 +11,7 @@ const config = {
     'A reliable way to upload public data onto Filecoin and pin it to IPFS.',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/estuary-documentation/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'snissn', // Usually your GitHub org/user name.
@@ -181,6 +181,7 @@ const config = {
       },
     }),
     plugins: [
+      "docusaurus-plugin-sass",
       [
         '@docusaurus/plugin-content-docs',
         {

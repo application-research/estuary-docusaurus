@@ -1,0 +1,155 @@
+.container {
+  padding: 48px 48px 88px 24px;
+  width: 100%;
+  max-width: 832px;
+}
+
+.block {
+  img {
+    width: 100%;
+    max-width: 768px;
+  }
+
+  h1 {
+    display: block;
+    font-weight: 400;
+    font-size: 2.35rem;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  h2 {
+    display: block;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-top: 48px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  h3 {
+    display: block;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: 32px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  h4 {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 24px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  blockquote {
+    padding-left: 24px;
+    border-left: 2px var(--color-border) solid;
+    font-style: italic;
+    overflow-wrap: break-word;
+    margin-top: 16px;
+    white-space: pre-wrap;
+
+    p {
+      margin-top: 0;
+      line-height: 1.55;
+      font-size: 1.25rem;
+    }
+  }
+
+  p {
+    display: block;
+    margin-top: 16px;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: rgba(0, 0, 0, 0.8);
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+
+    a {
+      color: var(--color-primary);
+      font-weight: 600;
+      transition: 200ms ease all;
+      text-decoration: none;
+
+      &:visited {
+        color: var(--color-primary);
+      }
+
+      &:hover {
+        color: rgba(0, 22, 255, 1);
+      }
+    }
+  }
+
+  li {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+
+    a {
+      color: rgba(0, 2, 255, 1);
+      font-weight: 600;
+      transition: 200ms ease all;
+      text-decoration: none;
+
+      &:visited {
+        color: rgba(0, 2, 255, 1);
+      }
+
+      &:hover {
+        color: rgba(0, 22, 255, 1);
+      }
+    }
+  }
+
+  ul,
+  ol {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    padding-left: 24px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  a {
+    color: rgba(0, 2, 255, 1);
+    font-weight: 600;
+    transition: 200ms ease all;
+    text-decoration: none;
+
+    &:visited {
+      color: rgba(0, 2, 255, 1);
+    }
+
+    &:hover {
+      color: rgba(0, 22, 255, 1);
+    }
+  }
+
+  pre {
+    padding: 16px;
+    overflow-wrap: break-word;
+    font-size: 0.875rem;
+    margin-top: 16px;
+    display: block;
+    white-space: pre-wrap;
+    width: 100%;
+    max-width: 568px;
+    background: #f4f4f4;
+  }
+
+  code {
+    display: block;
+    white-space: pre-wrap;
+    font-family: 'Mono';
+    width: 100%;
+  }
+}
