@@ -109,6 +109,7 @@ const config = {
         logo: {
           alt: 'Estuary Logo',
           src: 'img/Estuary.svg',
+           srcDark: 'img/Estuary_dark.svg',
         },
         items: [
           {
