@@ -236,9 +236,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+```
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
 > {'String': 'String'} collectionsColuuidPost(coluuid, contentIDs)
+```
 
 Add contents to a collection
 
