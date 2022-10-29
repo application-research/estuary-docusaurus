@@ -106,10 +106,9 @@ const config = {
         },
       },
       navbar: {
-        title: 'Estuary Documentation',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Estuary Logo',
+          src: 'img/Estuary.svg',
         },
         items: [
           {
