@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://your-docusaurus-test-site.com/estuary-documentation/blog</id>
+    <title>Estuary Documentation Blog</title>
+    <updated>2022-10-27T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://your-docusaurus-test-site.com/estuary-documentation/blog"/>
+    <subtitle>Estuary Documentation Blog</subtitle>
+    <icon>https://your-docusaurus-test-site.com/estuary-documentation/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Welcome]]></title>
+        <id>welcome</id>
+        <link href="https://your-docusaurus-test-site.com/estuary-documentation/blog/welcome"/>
+        <updated>2022-10-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></summary>
+        <content type="html"><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p><p>This blog is made using the cool framework <a href="https://github.com/cloud-annotations/docusaurus-openapi" target="_blank" rel="noopener noreferrer">Docusaurus Openapi</a></p>]]></content>
+        <author>
+            <name>Mike Seiler</name>
+            <uri>https://github.com/snissn</uri>
+        </author>
+        <author>
+            <name>Ayush Kumar</name>
+            <uri>https://github.com/kelindi</uri>
+        </author>
+        <category label="hello" term="hello"/>
+        <category label="docusaurus" term="docusaurus"/>
+        <category label="openapi" term="openapi"/>
+        <category label="estuary" term="estuary"/>
+    </entry>
+</feed>

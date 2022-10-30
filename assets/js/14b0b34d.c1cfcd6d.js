@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkestuary_documentation=self.webpackChunkestuary_documentation||[]).push([[2394],{70498:a=>{a.exports=JSON.parse('{"label":"openapi","permalink":"/estuary-documentation/blog/tags/openapi","allTagsPath":"/estuary-documentation/blog/tags","count":1}')}}]);
