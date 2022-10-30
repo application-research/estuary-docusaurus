@@ -16,7 +16,9 @@
   --ifm-code-font-size: 95%;
 }
 [data-theme='dark'] {
-  --ifm-color-primary: #0cff00;
+  --ifm-color-primary: hsl(240, 100%, 69%)
+
+
 }
 
 
