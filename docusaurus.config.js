@@ -9,7 +9,7 @@ const config = {
   title: 'Estuary Documentation',
   tagline:
     'A reliable way to upload public data onto Filecoin and pin it to IPFS.',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.estuary.tech',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
