@@ -171,6 +171,10 @@ const config = {
                 label: 'GitHub',
                 href: 'https://github.com/application-research/estuary',
               },
+              {
+                label: 'Documentation Source Code',
+                href: 'https://github.com/application-research/estuary-documentation',
+              },
             ],
           },
         ],
