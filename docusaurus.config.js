@@ -28,12 +28,6 @@ const config = {
           editUrl:
             'https://github.com/application-research/estuary-documentation/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/application-research/estuary-documentation/tree/main/packages/create-docusaurus/templates/shared/',
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -122,7 +116,6 @@ const config = {
           { to: '/clients',           docsPluginId: 'clients',
           label: 'Supported API Clients', position: 'left' },
           { to: '/api', label: 'API Documentation', position: 'left' },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/application-research/estuary',
             label: 'GitHub',
@@ -167,10 +160,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/application-research/estuary',
