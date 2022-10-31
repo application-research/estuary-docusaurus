@@ -26,7 +26,7 @@ const config = {
           // Please change this to your repo.
           routeBasePath: '/',
           editUrl:
-            'https://github.com/application-research/estuary-documentation/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/application-research/estuary-documentation/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
