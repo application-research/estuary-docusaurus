@@ -158,6 +158,10 @@ const config = {
                 label: 'Stack Overflow',
                 href: 'https://stackoverflow.com/questions/tagged/ipfs',
               },
+              {
+                label: 'Feedback',
+                href: '/feedback',
+              },
             ],
           },
           {
