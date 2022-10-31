@@ -116,7 +116,7 @@ function GetProviderAdded(props) {
 
                 setState({ ...state, loading: true });
                 try {
-                  fetch('https://docs.estuary.tech/api/request-add-provider', {
+                  fetch('https://estuary-docs.onrender.com/api/request-add-provider', {
                     method: 'POST',
                     headers: {
                       Accept: 'application/json',

@@ -125,7 +125,7 @@ function GetInviteKey(props) {
 
                 setState({ ...state, loading: true });
                 try {
-                  fetch('https://docs.estuary.tech/api/request-invite', {
+                  fetch('https://estuary-docs.onrender.com/api/request-invite', {
                     method: 'POST',
                     headers: {
                       Accept: 'application/json',

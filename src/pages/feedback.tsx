@@ -102,7 +102,7 @@ function Feedback(props) {
 
                 setState({ ...state, loading: true });
                 try {
-                  fetch('https://docs.estuary.tech/api/send-feedback', {
+                  fetch('https://estuary-docs.onrender.com/api/send-feedback', {
                     method: 'POST',
                     headers: {
                       Accept: 'application/json',
