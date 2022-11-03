@@ -3687,7 +3687,7 @@
     ],
     "servers": [
         {
-            "url": "//api.estuary.tech"
+            "url": "https://api.estuary.tech"
         }
     ],
     "components": {
