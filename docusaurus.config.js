@@ -102,6 +102,7 @@ const config = {
       },
       navbar: {
         logo: {
+          target: '_self',
           href: 'https://estuary.tech',
           alt: 'Estuary Logo',
           src: 'img/Estuary.svg',
