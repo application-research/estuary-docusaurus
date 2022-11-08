@@ -23,16 +23,14 @@ const config = {
       /** @type {import('docusaurus-preset-openapi').Options} */
       ({
         docs: {
-          // Please change this to your repo.
           routeBasePath: '/',
           editUrl:
             'https://github.com/application-research/estuary-documentation/tree/main/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl:
-            'https://github.com/application-research/estuary-documentation/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/application-research/estuary-documentation/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
