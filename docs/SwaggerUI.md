@@ -1,4 +1,4 @@
-import PageSwaggerTest from '@site/src/pages/swagger-ui';
+import PageSwaggerTest from '@site/src/pages/swagger-ui-page';
 
 # SwaggerUI
 
