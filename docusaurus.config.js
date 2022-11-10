@@ -189,6 +189,7 @@ const config = {
       },
     }),
     plugins: [
+      require.resolve('docusaurus-lunr-search'),
       "docusaurus-plugin-sass",
       [
         '@docusaurus/plugin-content-docs',
