@@ -1,17 +1,14 @@
-import styles from '../../legacy/pages/Page.module.scss';
-import rstyles from '../../legacy/components/RichText.module.scss';
+import styles from '@site/legacy/pages/Page.module.scss';
+import rstyles from '@site/legacy/components/RichText.module.scss';
 
 import * as React from 'react';
-import * as U from '../../legacy/common/utilities';
+import * as U from '@site/legacy/common/utilities';
 
 import Layout from "@theme/Layout";
-import Input from '../../legacy/components/Input';
-import Textarea from '../../legacy/components/Textarea';
-import Button from '../../legacy/components/Button';
+import Input from '@site/legacy/components/Input';
+import Textarea from '@site/legacy/components/Textarea';
+import Button from '@site/legacy/components/Button';
 
-const markdown = null;
-const code = null;
-const curl = null;
 
 function GetProviderAdded(props) {
   const [state, setState] = React.useState({
@@ -24,36 +21,44 @@ function GetProviderAdded(props) {
   });
 
   return (
-    <Layout
-      title="Estuary Documentation: 申请成为存储供应商"
-      description="填写注册表申请成为Estuary存储供应商并获取存储订单."
-      url="https://docs.estuary.tech/get-provider-added"
-      curl={curl}
-      markdown={markdown}
-      code={code}
-      active="get-provider-added-cn"
-    >
+    < >
       {state.success ? (
         <div className={U.classNames(styles.group, rstyles.block)}>
-          <h1 style={{ marginTop: 22 }}>谢谢!</h1>
+          <h1 style={{ marginTop: 22 }}>Thank you!</h1>
           <p>
-            感谢申请，我们所有团队成员都会有机会看到它！
+            Everyone on our team will get a chance to read this request. Thank you for submitting
+            it!
           </p>
         </div>
       ) : (
-        <div className={U.classNames(styles.group, rstyles.block)}>
-          <h1 style={{ marginTop: 22 }}>Storage provider application</h1>
+        <div>
           <p>
-            想要将你的存储供应商ID加入到{' '}
+            Would you like to get your provider added to{' '}
             <a href="https://estuary.tech" target="_blank">
               https://estuary.tech
             </a>{' '}
-            并且收到已验证存储订单? 请填写申请表，如果我们相信你的存储系统是有资格的我们会把它加入Estuary的存储服务商列表中，
-            加入之后你应该就会开始收到存储订单。
+            and receive verified Filecoin storage deals? Please fill out this form! If we believe
+            your provider is qualified we will add it to our provider index and you will receive
+            storage deals.
+          </p>
+          
+          <p>
+            The expectations below are intended to give you an idea of the deals you will be receiving,
+            they are <b>not</b> hard requirements and will not prevent you from being added to the
+            provider index. 
           </p>
 
+          <ul className={styles.ul}>
+            <li className={styles.li}>SPs are expected to have an unsealed copy and a sealed copy of the data</li>
+            <li className={styles.li}>SPs are expected to enable and provide Fast Retrievals (unsealed sectors)</li>
+            <li className={styles.li}>SPs are expected to offer free retrieval</li>    
+            <li className={styles.li}>SPs are expected to set all deals for the longest available duration</li>
+            <li className={styles.li}>SPs have the freedom to accept as many deals as they can handle and reject deals as needed.</li>
+            <li className={styles.li}>The standard start epoch for deals is 72 hours</li>
+          </ul>
+
           <div className={styles.title} style={{ marginTop: 48 }}>
-            姓名
+            Name
           </div>
           <Input
             style={{ marginTop: 8 }}
@@ -62,7 +67,7 @@ function GetProviderAdded(props) {
             onChange={(e) => setState({ ...state, [e.target.name]: e.target.value })}
             name="name"
           />
-          <div className={styles.title}>存储供应商ID</div>
+          <div className={styles.title}>Provider ID</div>
           <Input
             style={{ marginTop: 8 }}
             value={state.provider}
@@ -70,17 +75,17 @@ function GetProviderAdded(props) {
             onChange={(e) => setState({ ...state, [e.target.name]: e.target.value })}
             name="provider"
           />
-          <div className={styles.title}>存储系统配置</div>
+          <div className={styles.title}>Your provider configuration</div>
           <Textarea
             style={{ marginTop: 8 }}
             value={state.configuration}
-            placeholder="设备规格，存储服务价格，封装订单速度等..."
+            placeholder="hardware spec, ask price, sealing capacity, dealing rate and so on..."
             onChange={(e) => setState({ ...state, [e.target.name]: e.target.value })}
             name="configuration"
             maxLength={5000}
           />
 
-          <div className={styles.title}>备注</div>
+          <div className={styles.title}>Notes</div>
           <Textarea
             style={{ marginTop: 8 }}
             value={state.message}
@@ -91,7 +96,8 @@ function GetProviderAdded(props) {
 
           <ul className={styles.ul}>
             <li className={styles.li}>
-              我们还在Estuary初期开发阶段并且我们更倾向于愿意存储能被任何人获取的公有数据的存储供应商。
+              We are in the early stages of Estuary development and we have a preference for storage
+              providers who want to store public data that is meant to be accessed by anyone.
             </li>
           </ul>
 
@@ -100,17 +106,17 @@ function GetProviderAdded(props) {
               loading={state.loading}
               onClick={async () => {
                 if (U.isEmpty(state.name)) {
-                  alert('你必须提供你的姓名。');
+                  alert('You must provide your name.');
                   return;
                 }
 
                 if (U.isEmpty(state.provider)) {
-                  alert('你必须提供你的存储供应商ID。');
+                  alert('You must provide a provider ID.');
                   return;
                 }
 
                 if (U.isEmpty(state.configuration)) {
-                  alert('你需要提供反馈。');
+                  alert('You must provide feedback');
                   return;
                 }
 
@@ -142,12 +148,12 @@ function GetProviderAdded(props) {
                 });
               }}
             >
-              提交
+              Submit
             </Button>
           </div>
         </div>
       )}
-    </Layout>
+    </>
   );
 }
 

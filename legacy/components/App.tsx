@@ -1,14 +1,11 @@
-import styles from '@components/App.module.scss';
-import pkg from '@root/package.json';
+import styles from '@site/legacy/components/App.module.scss';
 
 import * as React from 'react';
-import * as SVG from '@components/SVG';
 
-import Head from 'next/head';
-import SearchInput from '@components/SearchInput';
-import RichText from '@components/RichText';
-import CodeBlock from '@components/CodeBlock';
-import Navigation from '@components/Navigation';
+import SearchInput from '@site/legacy/components/SearchInput';
+import RichText from '@site/legacy/components/RichText';
+import CodeBlock from '@site/legacy/components/CodeBlock';
+import Navigation from '@site/legacy/components/Navigation';
 
 export default function App(props) {
   return (

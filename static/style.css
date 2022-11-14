@@ -1,0 +1,11 @@
+@media (min-width: 997px) {
+  div.docItemCol_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module.col {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 997px) {
+  div.docItemCol.col {
+    max-width: 100% !important;
+  }
+}

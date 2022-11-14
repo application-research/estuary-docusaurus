@@ -1,19 +1,16 @@
-import styles from '../../legacy/pages/Page.module.scss';
-import rstyles from '../../legacy/components/RichText.module.scss';
+import styles from '@site/legacy/pages/Page.module.scss';
+import rstyles from '@site/legacy/components/RichText.module.scss';
 
 import * as React from 'react';
-import * as U from '../../legacy/common/utilities';
+import * as U from '@site/legacy/common/utilities';
 
 import Layout from "@theme/Layout";
-import Input from '../../legacy/components/Input';
-import Textarea from '../../legacy/components/Textarea';
-import Button from '../../legacy/components/Button';
+import Input from '@site/legacy/components/Input';
+import Textarea from '@site/legacy/components/Textarea';
+import Button from '@site/legacy/components/Button';
 
-const markdown = null;
-const code = null;
-const curl = null;
 
-function Feedback(props) {
+function GetInviteKey(props) {
   const [state, setState] = React.useState({
     name: '',
     twitter: '',
@@ -24,29 +21,24 @@ function Feedback(props) {
   });
 
   return (
-    <Layout
-      title="Estuary Documentation: Feedback"
-      description="Fill out this form to give Feedback about https://estuary.tech."
-      url="https://docs.estuary.tech/feedback"
-      curl={curl}
-      markdown={markdown}
-      code={code}
-      active="feedback"
-    >
+    <>
       {state.success ? (
         <div className={U.classNames(styles.group, rstyles.block)}>
           <h1 style={{ marginTop: 22 }}>Thank you!</h1>
           <p>
-            Everyone on our team will get a chance to read this feedback. Thank you for submitting
-            it!
+            Everyone on our team will get a chance to read this request for an invite. Thank you for
+            submitting it!
           </p>
         </div>
       ) : (
-        <div className={U.classNames(styles.group, rstyles.block)}>
-          <h1 style={{ marginTop: 22 }}>Feedback</h1>
+        <div>
           <p>
-            Would you like to provide feedback for Estuary? Please submit it below. We may follow up
-            with you for further questions!
+            Would you like to use{' '}
+            <a href="https://estuary.tech" target="_blank">
+              https://estuary.tech
+            </a>{' '}
+            to make Filecoin storage deals? Please fill out this form! We'll get back to you either
+            over Twitter or e-mail if we think you have a meaningful public data set.
           </p>
 
           <div className={styles.title} style={{ marginTop: 48 }}>
@@ -55,15 +47,15 @@ function Feedback(props) {
           <Input
             style={{ marginTop: 8 }}
             value={state.name}
-            placeholder="ex: Jessica Smith"
+            placeholder="ex: Mark Walters"
             onChange={(e) => setState({ ...state, [e.target.name]: e.target.value })}
             name="name"
           />
-          <div className={styles.title}>E-mail (optional)</div>
+          <div className={styles.title}>E-mail</div>
           <Input
             style={{ marginTop: 8 }}
             value={state.email}
-            placeholder="ex: jessica.smith@protocol.ai"
+            placeholder="ex: mark.walters@protocol.ai"
             onChange={(e) => setState({ ...state, [e.target.name]: e.target.value })}
             name="email"
           />
@@ -76,7 +68,7 @@ function Feedback(props) {
             name="twitter"
           />
           <div className={styles.title}>
-            What would improve your experience with Estuary? (Max: 5000 characters)
+            Tell us about the data you want to store, go in detail! (Max: 5000 characters)
           </div>
           <Textarea
             style={{ marginTop: 8 }}
@@ -85,6 +77,20 @@ function Feedback(props) {
             name="message"
             maxLength={5000}
           />
+
+          <ul className={styles.ul}>
+            <li className={styles.li}>The estuary node is for public data.</li>
+            <li className={styles.li}>
+              You should upload public data that is licensed for public usage.
+            </li>
+            <li className={styles.li}>
+              If you wish to use Estuary for private data, make sure you encrypt it first.
+            </li>
+            <li className={styles.li}>
+              We are in the early stages of Estuary development and we have a preference for clients
+              who want to store public data that is meant to be accessed by anyone.
+            </li>
+          </ul>
 
           <div className={styles.action}>
             <Button
@@ -95,6 +101,11 @@ function Feedback(props) {
                   return;
                 }
 
+                if (U.isEmpty(state.email)) {
+                  alert('You must provide an e-mail, or we will not be able to reach you');
+                  return;
+                }
+
                 if (U.isEmpty(state.message)) {
                   alert('You must provide feedback');
                   return;
@@ -102,7 +113,7 @@ function Feedback(props) {
 
                 setState({ ...state, loading: true });
                 try {
-                  fetch('https://estuary-docs.onrender.com/api/send-feedback', {
+                  fetch('https://estuary-docs.onrender.com/api/request-invite', {
                     method: 'POST',
                     headers: {
                       Accept: 'application/json',
@@ -132,7 +143,7 @@ function Feedback(props) {
           </div>
         </div>
       )}
-    </Layout>
+    </>
   );
 }
 
@@ -142,4 +153,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default Feedback;
+export default GetInviteKey;

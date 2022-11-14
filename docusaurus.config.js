@@ -23,8 +23,12 @@ const config = {
       /** @type {import('docusaurus-preset-openapi').Options} */
       ({
         docs: {
-          // Please change this to your repo.
           routeBasePath: '/',
+          editUrl:
+            'https://github.com/application-research/estuary-documentation/tree/main/',
+        },
+        blog: {
+          showReadingTime: true,
           editUrl:
             'https://github.com/application-research/estuary-documentation/tree/main/',
         },
@@ -102,6 +106,8 @@ const config = {
       },
       navbar: {
         logo: {
+          target: '_self',
+          href: 'https://estuary.tech',
           alt: 'Estuary Logo',
           src: 'img/Estuary.svg',
            srcDark: 'img/Estuary_dark.svg',
@@ -116,6 +122,7 @@ const config = {
           { to: '/clients',           docsPluginId: 'clients',
           label: 'Supported API Clients', position: 'left' },
           { to: '/api', label: 'API Documentation', position: 'left' },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/application-research/estuary',
             label: 'GitHub',
@@ -161,6 +168,10 @@ const config = {
             title: 'More',
             items: [
               {
+                label: 'Blog',
+                to: '/blog',
+              },
+              {
                 label: 'GitHub',
                 href: 'https://github.com/application-research/estuary',
               },
@@ -178,6 +189,7 @@ const config = {
       },
     }),
     plugins: [
+      require.resolve('docusaurus-lunr-search'),
       "docusaurus-plugin-sass",
       [
         '@docusaurus/plugin-content-docs',
