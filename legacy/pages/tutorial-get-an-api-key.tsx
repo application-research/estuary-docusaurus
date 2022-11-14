@@ -1,9 +1,10 @@
-import styles from '@pages/Page.module.scss';
+import styles from '@site/legacy/components/App.module.scss';
 
 import * as React from 'react';
 
-import App from '@components/App';
-import markdown from '@documentation/tutorial-get-an-api-key.md';
+import CodeBlock from '@site/legacy/components/CodeBlock';
+import App from '@site/legacy/components/App';
+import Markdown from '@site/legacy/tutorial-get-an-api-key.md';
 
 const code = `class Example extends React.Component {
   componentDidMount() {
@@ -35,15 +36,19 @@ const curl =
 
 function TutorialGetAnAPIKey(props) {
   return (
-    <App
-      title="Estuary Documentation: Tutorial: Get an API Key"
-      description="Tutorial Part 1: Getting your API Key to use https://estuary.tech"
-      url="https://docs.estuary.tech/tutorial-get-an-api-key"
-      curl={curl}
-      markdown={markdown}
-      code={code}
-      active="tutorial-get-an-api-key"
-    ></App>
+    <React.Fragment>
+      <div className={styles.sections}>
+        <div className={styles.sections__body}>
+          <Markdown />
+        </div>
+
+        {curl || code ? (
+          <div className={styles.sections__code}>
+            <CodeBlock curl={curl} code={code} />
+          </div>
+        ) : null}
+      </div>
+    </React.Fragment>
   );
 }
 

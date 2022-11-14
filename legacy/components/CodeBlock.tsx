@@ -1,4 +1,4 @@
-import styles from '@components/CodeBlock.module.scss';
+import styles from '@site/legacy/components/CodeBlock.module.scss';
 
 import * as React from 'react';
 
