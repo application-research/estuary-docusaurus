@@ -68,8 +68,8 @@ const config = {
         {
           tabName: 'Node',
           highlight: 'javascript',
-          language: 'javascript',
-          variant: 'fetch',
+          language: 'NodeJs',
+          variant: 'Native',
           options: {
             ES6_enabled: true,
             followRedirect: true,
