@@ -1,9 +1,19 @@
 import clsx from "clsx";
 import * as React from 'react';
-import ApiDemoPanel from '@site/node_modules/docusaurus-theme-openapi/lib-next/theme/ApiDemoPanel';
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import styles from '@site/node_modules/docusaurus-theme-openapi/lib-next/theme/ApiItem/styles.module.css';
 
+let ApiDemoPanel = (_) => (
+  <div
+    style={{
+      marginTop: "3.5em",
+    }}
+  />
+);
 
+if (ExecutionEnvironment.canUseDOM) {
+  ApiDemoPanel = require('@site/node_modules/docusaurus-theme-openapi/lib-next/theme/ApiDemoPanel').default
+}
 
 import Markdown from '@site/legacy/tutorial-listing-your-files.md'
 
