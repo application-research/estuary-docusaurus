@@ -1,56 +1,42 @@
-import styles from '@pages/Page.module.scss';
-
+import clsx from "clsx";
 import * as React from 'react';
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import styles from '@site/node_modules/docusaurus-theme-openapi/lib-next/theme/ApiItem/styles.module.css';
 
-import App from '@components/App';
-import markdown from '@documentation/tutorial-get-an-api-key.md';
+let ApiDemoPanel = (_) => (
+  <div
+    style={{
+      marginTop: "3.5em",
+    }}
+  />
+);
 
-const code = `class Example extends React.Component {
-  componentDidMount() {
-    // NOTE
-    // The viewer is a useful endpoint to introduce you
-    // to our API. Once you can access Estuary through our API
-    // you do not even need to visit https://estuary.tech
-    fetch('https://api.estuary.tech/viewer', {
-      method: "GET",
-      headers: {
-        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-      },
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+if (ExecutionEnvironment.canUseDOM) {
+  ApiDemoPanel = require('@site/node_modules/docusaurus-theme-openapi/lib-next/theme/ApiDemoPanel').default
+}
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+import Markdown from '@site/legacy/tutorial-get-an-api-key.md';
+// found by going into estuary-documentation/node_modules/docusaurus-theme-openapi/lib-next/theme/ApiDemoPanel/index.js and console.log-ing the item variable
+const apiDemoData = JSON.parse('{"description":"This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.","tags":["User"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"array","items":{"type":"array","items":{"type":"object","properties":{"expiry":{"type":"string"},"token":{"type":"string"}}}}}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"code":{"type":"integer"},"details":{"type":"string"},"reason":{"type":"string"}}}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"code":{"type":"integer"},"details":{"type":"string"},"reason":{"type":"string"}}}}}},"500":{"description":"Internal Server Error","content":{"application/json":{"schema":{"type":"object","properties":{"code":{"type":"integer"},"details":{"type":"string"},"reason":{"type":"string"}}}}}}},"method":"get","path":"/user/api-keys","servers":[{"url":"https://api.estuary.tech"}],"security":[{"bearerAuth":[]}],"securitySchemes":{"bearerAuth":{"type":"apiKey","name":"Authorization","in":"header"}},"info":{"description":"This is the API for the Estuary application.","title":"Estuary API","termsOfService":"http://estuary.tech","contact":{"name":"API Support","url":"https://docs.estuary.tech/feedback"},"license":{"name":"Apache 2.0 Apache-2.0 OR MIT","url":"https://github.com/application-research/estuary/blob/master/LICENSE.md"},"version":"0.0.0"},"postman":{"name":"Get API keys for a user","description":{"content":"This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.","type":"text/plain"},"url":{"path":["user","api-keys"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"method":"GET"}}')
 
-const curl =
-  'curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/viewer';
 
 function TutorialGetAnAPIKey(props) {
   return (
-    <App
-      title="Estuary Documentation: Tutorial: Get an API Key"
-      description="Tutorial Part 1: Getting your API Key to use https://estuary.tech"
-      url="https://docs.estuary.tech/tutorial-get-an-api-key"
-      curl={curl}
-      markdown={markdown}
-      code={code}
-      active="tutorial-get-an-api-key"
-    ></App>
+    <div className="row">
+      <div className="col">
+        <div className={styles.apiItemContainer}>
+          <article>
+            <div className={clsx("theme-api-markdown", "markdown")}>
+              <Markdown />
+            </div>
+          </article>
+        </div>
+      </div>
+      <div className={clsx("col",  "col--5" )}>
+        <ApiDemoPanel item={apiDemoData} />
+      </div>
+    </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {},
-  };
 }
 
 export default TutorialGetAnAPIKey;

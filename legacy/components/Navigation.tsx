@@ -1,7 +1,7 @@
-import styles from '@components/Navigation.module.scss';
+import styles from '@site/legacy/components/Navigation.module.scss';
 
 import * as React from 'react';
-import * as SVG from '@components/SVG';
+import * as SVG from '@site/legacy/components/SVG';
 
 const IntroductionSet = [
   { key: 'introduction', title: 'Introduction', href: '/' },

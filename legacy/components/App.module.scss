@@ -42,7 +42,6 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  height: calc(100vh - 48px);
 
   @media (max-width: 840px) {
     height: auto;
@@ -86,6 +85,7 @@
   border-right: 1px solid var(--color-border);
   scrollbar-width: none;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  padding-right:16px;
 
   @media (max-width: 840px) {
     height: auto;
@@ -173,4 +173,15 @@
   &:hover {
     color: var(--color-primary);
   }
+}
+@font-face {
+  font-family: 'Mono';
+  src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/JetBrainsMono-Regular.woff2')
+    format('woff');
+}
+
+@font-face {
+  font-family: 'MonoMedium';
+  src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/JetBrainsMono-Medium.woff2')
+    format('woff');
 }

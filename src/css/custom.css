@@ -32,3 +32,21 @@
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+html,
+body {
+  --color-background: #000000;
+  --color-background-body: #ffffff;
+  --color-background-code: #282828;
+  --color-foreground: #ffffff;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-text: #000000;
+  --color-text-code: #ffffff;
+  --color-primary: rgba(0, 2, 255, 1);
+
+  --main-text-details: #8d8d8d;
+}
+
+pre {
+  background-color:transparent;
+}
