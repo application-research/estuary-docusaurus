@@ -1,6 +1,6 @@
 # SwaggerClient::PublicApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,9 +15,8 @@ Method | HTTP request | Description
 [**public_net_peers_get**](PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 [**public_stats_get**](PublicApi.md#public_stats_get) | **GET** /public/stats | Public stats
 
-
-# **public_by_cid_cid_get**
-> public_by_cid_cid_get(cid)
+## **public_by_cid_cid_get** {#public_by_cid_cid_get}
+> String public_by_cid_cid_get(cid)
 
 Get Content by Cid
 
@@ -36,13 +35,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PublicApi.new
-
 cid = 'cid_example' # String | Cid
 
 
 begin
   #Get Content by Cid
-  api_instance.public_by_cid_cid_get(cid)
+  result = api_instance.public_by_cid_cid_get(cid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_by_cid_cid_get: #{e}"
 end
@@ -56,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -69,8 +68,8 @@ nil (empty response body)
 
 
 
-# **public_info_get**
-> public_info_get
+## **public_info_get** {#public_info_get}
+> String public_info_get
 
 Get public node info
 
@@ -92,7 +91,8 @@ api_instance = SwaggerClient::PublicApi.new
 
 begin
   #Get public node info
-  api_instance.public_info_get
+  result = api_instance.public_info_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_info_get: #{e}"
 end
@@ -103,7 +103,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -116,8 +116,8 @@ nil (empty response body)
 
 
 
-# **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get
+## **public_metrics_deals_on_chain_get** {#public_metrics_deals_on_chain_get}
+> String public_metrics_deals_on_chain_get
 
 Get deal metrics
 
@@ -139,7 +139,8 @@ api_instance = SwaggerClient::PublicApi.new
 
 begin
   #Get deal metrics
-  api_instance.public_metrics_deals_on_chain_get
+  result = api_instance.public_metrics_deals_on_chain_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_metrics_deals_on_chain_get: #{e}"
 end
@@ -150,7 +151,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -163,8 +164,8 @@ nil (empty response body)
 
 
 
-# **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner, opts)
+## **public_miners_deals_miner_get** {#public_miners_deals_miner_get}
+> String public_miners_deals_miner_get(miner, opts)
 
 Get all miners deals
 
@@ -183,16 +184,15 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PublicApi.new
-
 miner = 'miner_example' # String | Filter by miner
-
 opts = { 
   ignore_failed: 'ignore_failed_example' # String | Ignore Failed
 }
 
 begin
   #Get all miners deals
-  api_instance.public_miners_deals_miner_get(miner, opts)
+  result = api_instance.public_miners_deals_miner_get(miner, opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_miners_deals_miner_get: #{e}"
 end
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -220,8 +220,8 @@ nil (empty response body)
 
 
 
-# **public_miners_failures_miner_get**
-> public_miners_failures_miner_get(miner)
+## **public_miners_failures_miner_get** {#public_miners_failures_miner_get}
+> String public_miners_failures_miner_get(miner)
 
 Get all miners
 
@@ -240,13 +240,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PublicApi.new
-
 miner = 'miner_example' # String | Filter by miner
 
 
 begin
   #Get all miners
-  api_instance.public_miners_failures_miner_get(miner)
+  result = api_instance.public_miners_failures_miner_get(miner)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_miners_failures_miner_get: #{e}"
 end
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -273,8 +273,8 @@ nil (empty response body)
 
 
 
-# **public_miners_get**
-> public_miners_get
+## **public_miners_get** {#public_miners_get}
+> String public_miners_get
 
 Get all miners
 
@@ -296,7 +296,8 @@ api_instance = SwaggerClient::PublicApi.new
 
 begin
   #Get all miners
-  api_instance.public_miners_get
+  result = api_instance.public_miners_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_miners_get: #{e}"
 end
@@ -307,7 +308,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -320,8 +321,8 @@ nil (empty response body)
 
 
 
-# **public_miners_stats_miner_get**
-> public_miners_stats_miner_get(miner)
+## **public_miners_stats_miner_get** {#public_miners_stats_miner_get}
+> String public_miners_stats_miner_get(miner)
 
 Get miner stats
 
@@ -340,13 +341,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PublicApi.new
-
 miner = 'miner_example' # String | Filter by miner
 
 
 begin
   #Get miner stats
-  api_instance.public_miners_stats_miner_get(miner)
+  result = api_instance.public_miners_stats_miner_get(miner)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_miners_stats_miner_get: #{e}"
 end
@@ -360,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -373,7 +374,7 @@ nil (empty response body)
 
 
 
-# **public_net_addrs_get**
+## **public_net_addrs_get** {#public_net_addrs_get}
 > Array&lt;String&gt; public_net_addrs_get
 
 Net Addrs
@@ -421,7 +422,7 @@ This endpoint does not need any parameter.
 
 
 
-# **public_net_peers_get**
+## **public_net_peers_get** {#public_net_peers_get}
 > Array&lt;String&gt; public_net_peers_get
 
 Net Peers
@@ -469,8 +470,8 @@ This endpoint does not need any parameter.
 
 
 
-# **public_stats_get**
-> public_stats_get
+## **public_stats_get** {#public_stats_get}
+> String public_stats_get
 
 Public stats
 
@@ -492,7 +493,8 @@ api_instance = SwaggerClient::PublicApi.new
 
 begin
   #Public stats
-  api_instance.public_stats_get
+  result = api_instance.public_stats_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_stats_get: #{e}"
 end
@@ -503,7 +505,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

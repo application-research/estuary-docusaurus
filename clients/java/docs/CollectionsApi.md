@@ -1,6 +1,6 @@
 # CollectionsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,9 +13,8 @@ Method | HTTP request | Description
 [**collectionsGet**](CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 [**collectionsPost**](CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
 
-
 <a name="collectionsColuuidCommitPost"></a>
-# **collectionsColuuidCommitPost**
+## **collectionsColuuidCommitPost** {#collectionsColuuidCommitPost}
 > String collectionsColuuidCommitPost(coluuid)
 
 Produce a CID of the collection contents
@@ -70,8 +69,8 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 <a name="collectionsColuuidContentsDelete"></a>
-# **collectionsColuuidContentsDelete**
-> String collectionsColuuidContentsDelete(coluuid, contentid, body)
+## **collectionsColuuidContentsDelete** {#collectionsColuuidContentsDelete}
+> String collectionsColuuidContentsDelete(body, coluuid, contentid)
 
 Deletes a content from a collection
 
@@ -95,11 +94,11 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 CollectionsApi apiInstance = new CollectionsApi();
+MainDeleteContentFromCollectionBody body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 String coluuid = "coluuid_example"; // String | Collection ID
 String contentid = "contentid_example"; // String | Content ID
-MainDeleteContentFromCollectionBody body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 try {
-    String result = apiInstance.collectionsColuuidContentsDelete(coluuid, contentid, body);
+    String result = apiInstance.collectionsColuuidContentsDelete(body, coluuid, contentid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidContentsDelete");
@@ -111,9 +110,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **String**| Collection ID |
  **contentid** | **String**| Content ID |
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) |
 
 ### Return type
 
@@ -125,12 +124,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="collectionsColuuidDelete"></a>
-# **collectionsColuuidDelete**
-> collectionsColuuidDelete(coluuid)
+## **collectionsColuuidDelete** {#collectionsColuuidDelete}
+> String collectionsColuuidDelete(coluuid)
 
 Deletes a collection
 
@@ -156,7 +155,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 CollectionsApi apiInstance = new CollectionsApi();
 String coluuid = "coluuid_example"; // String | Collection ID
 try {
-    apiInstance.collectionsColuuidDelete(coluuid);
+    String result = apiInstance.collectionsColuuidDelete(coluuid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidDelete");
     e.printStackTrace();
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -180,10 +180,10 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 <a name="collectionsColuuidGet"></a>
-# **collectionsColuuidGet**
+## **collectionsColuuidGet** {#collectionsColuuidGet}
 > String collectionsColuuidGet(coluuid, dir)
 
 Get contents in a collection
@@ -240,8 +240,8 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 <a name="collectionsColuuidPost"></a>
-# **collectionsColuuidPost**
-> Map&lt;String, String&gt; collectionsColuuidPost(coluuid, contentIDs)
+## **collectionsColuuidPost** {#collectionsColuuidPost}
+> String collectionsColuuidPost(body, coluuid)
 
 Add contents to a collection
 
@@ -265,10 +265,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 CollectionsApi apiInstance = new CollectionsApi();
-String coluuid = "coluuid_example"; // String | coluuid
-List<Integer> contentIDs = Arrays.asList(new List<Integer>()); // List<Integer> | Content IDs to add to collection
+List<Integer> body = Arrays.asList(56); // List<Integer> | Content IDs to add to collection
+String coluuid = "coluuid_example"; // String | Collection UUID
 try {
-    Map<String, String> result = apiInstance.collectionsColuuidPost(coluuid, contentIDs);
+    String result = apiInstance.collectionsColuuidPost(body, coluuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -280,12 +280,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **String**| coluuid |
- **contentIDs** | **List&lt;Integer&gt;**| Content IDs to add to collection |
+ **body** | [**List&lt;Integer&gt;**](Integer.md)| Content IDs to add to collection |
+ **coluuid** | **String**| Collection UUID |
 
 ### Return type
 
-**Map&lt;String, String&gt;**
+**String**
 
 ### Authorization
 
@@ -297,8 +297,8 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 <a name="collectionsFsAddPost"></a>
-# **collectionsFsAddPost**
-> collectionsFsAddPost(coluuid, content, path)
+## **collectionsFsAddPost** {#collectionsFsAddPost}
+> String collectionsFsAddPost(coluuid, content, path)
 
 Add a file to a collection
 
@@ -326,7 +326,8 @@ String coluuid = "coluuid_example"; // String | Collection ID
 String content = "content_example"; // String | Content
 String path = "path_example"; // String | Path to file
 try {
-    apiInstance.collectionsFsAddPost(coluuid, content, path);
+    String result = apiInstance.collectionsFsAddPost(coluuid, content, path);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsFsAddPost");
     e.printStackTrace();
@@ -343,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -355,8 +356,8 @@ null (empty response body)
  - **Accept**: application/json
 
 <a name="collectionsGet"></a>
-# **collectionsGet**
-> List&lt;CollectionsCollection&gt; collectionsGet()
+## **collectionsGet** {#collectionsGet}
+> List&lt;List&lt;CollectionsCollection&gt;&gt; collectionsGet()
 
 List all collections
 
@@ -381,7 +382,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 CollectionsApi apiInstance = new CollectionsApi();
 try {
-    List<CollectionsCollection> result = apiInstance.collectionsGet();
+    List<List<CollectionsCollection>> result = apiInstance.collectionsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsGet");
@@ -394,7 +395,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
+[**List&lt;List&lt;CollectionsCollection&gt;&gt;**](List.md)
 
 ### Authorization
 
@@ -406,7 +407,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 <a name="collectionsPost"></a>
-# **collectionsPost**
+## **collectionsPost** {#collectionsPost}
 > CollectionsCollection collectionsPost(body)
 
 Create a new collection
@@ -457,6 +458,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 

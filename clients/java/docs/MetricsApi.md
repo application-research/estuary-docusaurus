@@ -1,15 +1,14 @@
 # MetricsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**publicMetricsDealsOnChainGet**](MetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 
-
 <a name="publicMetricsDealsOnChainGet"></a>
-# **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+## **publicMetricsDealsOnChainGet** {#publicMetricsDealsOnChainGet}
+> String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -34,7 +33,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 MetricsApi apiInstance = new MetricsApi();
 try {
-    apiInstance.publicMetricsDealsOnChainGet();
+    String result = apiInstance.publicMetricsDealsOnChainGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MetricsApi#publicMetricsDealsOnChainGet");
     e.printStackTrace();
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

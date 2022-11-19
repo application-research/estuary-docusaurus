@@ -1,6 +1,6 @@
 # AdminApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,10 +13,9 @@ Method | HTTP request | Description
 [**adminSystemConfigGet**](AdminApi.md#adminSystemConfigGet) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**adminUsersGet**](AdminApi.md#adminUsersGet) | **GET** /admin/users | Get all users
 
-
 <a name="adminPeeringPeersDelete"></a>
-# **adminPeeringPeersDelete**
-> adminPeeringPeersDelete(body)
+## **adminPeeringPeersDelete** {#adminPeeringPeersDelete}
+> String adminPeeringPeersDelete(body)
 
 Remove peers on Peering Service
 
@@ -40,9 +39,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 AdminApi apiInstance = new AdminApi();
-List<String> body = Arrays.asList(new List<String>()); // List<String> | Peer ids
+List<Boolean> body = Arrays.asList(true); // List<Boolean> | Peer ids
 try {
-    apiInstance.adminPeeringPeersDelete(body);
+    String result = apiInstance.adminPeeringPeersDelete(body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringPeersDelete");
     e.printStackTrace();
@@ -53,11 +53,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;String&gt;**| Peer ids |
+ **body** | [**List&lt;Boolean&gt;**](Boolean.md)| Peer ids |
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -65,12 +65,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="adminPeeringPeersGet"></a>
-# **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+## **adminPeeringPeersGet** {#adminPeeringPeersGet}
+> String adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -95,7 +95,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringPeersGet();
+    String result = apiInstance.adminPeeringPeersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringPeersGet");
     e.printStackTrace();
@@ -107,7 +108,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -119,8 +120,8 @@ null (empty response body)
  - **Accept**: application/json
 
 <a name="adminPeeringPeersPost"></a>
-# **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+## **adminPeeringPeersPost** {#adminPeeringPeersPost}
+> String adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -145,7 +146,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringPeersPost();
+    String result = apiInstance.adminPeeringPeersPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
     e.printStackTrace();
@@ -157,7 +159,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -169,8 +171,8 @@ null (empty response body)
  - **Accept**: application/json
 
 <a name="adminPeeringStartPost"></a>
-# **adminPeeringStartPost**
-> adminPeeringStartPost()
+## **adminPeeringStartPost** {#adminPeeringStartPost}
+> String adminPeeringStartPost()
 
 Start Peering
 
@@ -195,7 +197,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringStartPost();
+    String result = apiInstance.adminPeeringStartPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringStartPost");
     e.printStackTrace();
@@ -207,7 +210,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -219,8 +222,8 @@ null (empty response body)
  - **Accept**: application/json
 
 <a name="adminPeeringStatusGet"></a>
-# **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+## **adminPeeringStatusGet** {#adminPeeringStatusGet}
+> String adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -245,7 +248,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringStatusGet();
+    String result = apiInstance.adminPeeringStatusGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringStatusGet");
     e.printStackTrace();
@@ -257,7 +261,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -269,8 +273,8 @@ null (empty response body)
  - **Accept**: application/json
 
 <a name="adminPeeringStopPost"></a>
-# **adminPeeringStopPost**
-> adminPeeringStopPost()
+## **adminPeeringStopPost** {#adminPeeringStopPost}
+> String adminPeeringStopPost()
 
 Stop Peering
 
@@ -295,7 +299,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringStopPost();
+    String result = apiInstance.adminPeeringStopPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringStopPost");
     e.printStackTrace();
@@ -307,7 +312,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -319,8 +324,8 @@ null (empty response body)
  - **Accept**: application/json
 
 <a name="adminSystemConfigGet"></a>
-# **adminSystemConfigGet**
-> adminSystemConfigGet()
+## **adminSystemConfigGet** {#adminSystemConfigGet}
+> String adminSystemConfigGet()
 
 Get systems(estuary/shuttle) config
 
@@ -345,7 +350,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminSystemConfigGet();
+    String result = apiInstance.adminSystemConfigGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminSystemConfigGet");
     e.printStackTrace();
@@ -357,7 +363,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -369,8 +375,8 @@ null (empty response body)
  - **Accept**: application/json
 
 <a name="adminUsersGet"></a>
-# **adminUsersGet**
-> adminUsersGet()
+## **adminUsersGet** {#adminUsersGet}
+> String adminUsersGet()
 
 Get all users
 
@@ -395,7 +401,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminUsersGet();
+    String result = apiInstance.adminUsersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminUsersGet");
     e.printStackTrace();
@@ -407,7 +414,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

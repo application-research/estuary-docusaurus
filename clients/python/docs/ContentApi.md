@@ -1,6 +1,6 @@
-# estuary-client.ContentApi
+# estuary_client.ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,9 +22,8 @@ Method | HTTP request | Description
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
 
-
-# **content_add_car_post**
-> content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
+## **content_add_car_post** {#content_add_car_post}
+> UtilContentAddResponse content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
 
 Add Car object
 
@@ -34,25 +33,26 @@ This endpoint is used to add a car object to the network. The object can be a fi
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 body = 'body_example' # str | Car
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
 filename = 'filename_example' # str | Filename (optional)
 
 try:
     # Add Car object
-    api_instance.content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
+    api_response = api_instance.content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_car_post: %s\n" % e)
 ```
@@ -61,13 +61,13 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Car | 
+ **body** | [**str**](str.md)| Car | 
  **ignore_dupes** | **str**| Ignore Dupes | [optional] 
  **filename** | **str**| Filename | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -75,13 +75,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_add_ipfs_post**
-> content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
+## **content_add_ipfs_post** {#content_add_ipfs_post}
+> str content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
 
 Add IPFS object
 
@@ -91,24 +91,25 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
-body = estuary-client.UtilContentAddIpfsBody() # UtilContentAddIpfsBody | IPFS Body
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+body = estuary_client.UtilContentAddIpfsBody() # UtilContentAddIpfsBody | IPFS Body
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
 
 try:
     # Add IPFS object
-    api_instance.content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
+    api_response = api_instance.content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_ipfs_post: %s\n" % e)
 ```
@@ -122,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -130,13 +131,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_add_post**
-> UtilContentAddResponse content_add_post(data, filename=filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
+## **content_add_post** {#content_add_post}
+> UtilContentAddResponse content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
 
 Add new content
 
@@ -146,20 +147,20 @@ This endpoint is used to upload new content.
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
-data = '/path/to/file.txt' # file | File to upload
-filename = 'filename_example' # str | Filenam to use for upload (optional)
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+data = 'data_example' # str | 
+filename = 'filename_example' # str | 
 coluuid = 'coluuid_example' # str | Collection UUID (optional)
 replication = 56 # int | Replication value (optional)
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes true/false (optional)
@@ -168,7 +169,7 @@ dir = 'dir_example' # str | Directory (optional)
 
 try:
     # Add new content
-    api_response = api_instance.content_add_post(data, filename=filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
+    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_post: %s\n" % e)
@@ -178,8 +179,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **file**| File to upload | 
- **filename** | **str**| Filenam to use for upload | [optional] 
+ **data** | **str**|  | 
+ **filename** | **str**|  | 
  **coluuid** | **str**| Collection UUID | [optional] 
  **replication** | **int**| Replication value | [optional] 
  **ignore_dupes** | **str**| Ignore Dupes true/false | [optional] 
@@ -201,7 +202,7 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_aggregated_content_get**
+## **content_aggregated_content_get** {#content_aggregated_content_get}
 > str content_aggregated_content_get(content)
 
 Get aggregated content stats
@@ -212,18 +213,18 @@ This endpoint returns aggregated content stats
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 content = 'content_example' # str | Content ID
 
 try:
@@ -255,8 +256,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_all_deals_get**
-> content_all_deals_get(begin, duration, all)
+## **content_all_deals_get** {#content_all_deals_get}
+> str content_all_deals_get(begin, duration, all)
 
 Get all deals for a user
 
@@ -266,25 +267,26 @@ This endpoint is used to get all deals for a user
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 begin = 'begin_example' # str | Begin
 duration = 'duration_example' # str | Duration
 all = 'all_example' # str | All
 
 try:
     # Get all deals for a user
-    api_instance.content_all_deals_get(begin, duration, all)
+    api_response = api_instance.content_all_deals_get(begin, duration, all)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_all_deals_get: %s\n" % e)
 ```
@@ -299,7 +301,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -312,8 +314,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_bw_usage_content_get**
-> content_bw_usage_content_get(content)
+## **content_bw_usage_content_get** {#content_bw_usage_content_get}
+> str content_bw_usage_content_get(content)
 
 Get content bandwidth
 
@@ -323,23 +325,24 @@ This endpoint returns content bandwidth
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 content = 'content_example' # str | Content ID
 
 try:
     # Get content bandwidth
-    api_instance.content_bw_usage_content_get(content)
+    api_response = api_instance.content_bw_usage_content_get(content)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_bw_usage_content_get: %s\n" % e)
 ```
@@ -352,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -365,8 +368,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_create_post**
-> content_create_post(req, ignore_dupes=ignore_dupes)
+## **content_create_post** {#content_create_post}
+> str content_create_post(body, ignore_dupes=ignore_dupes)
 
 Add a new content
 
@@ -376,24 +379,25 @@ This endpoint adds a new content
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
-req = estuary-client.UtilContentCreateBody() # UtilContentCreateBody | Content
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+body = estuary_client.UtilContentCreateBody() # UtilContentCreateBody | Content
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
 
 try:
     # Add a new content
-    api_instance.content_create_post(req, ignore_dupes=ignore_dupes)
+    api_response = api_instance.content_create_post(body, ignore_dupes=ignore_dupes)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_create_post: %s\n" % e)
 ```
@@ -402,12 +406,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
  **ignore_dupes** | **str**| Ignore Dupes | [optional] 
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -415,13 +419,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_deals_get**
-> content_deals_get(limit=limit, offset=offset)
+## **content_deals_get** {#content_deals_get}
+> str content_deals_get(limit=limit, offset=offset)
 
 Content with deals
 
@@ -431,24 +435,25 @@ This endpoint lists all content with deals
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 limit = 56 # int | Limit (optional)
 offset = 56 # int | Offset (optional)
 
 try:
     # Content with deals
-    api_instance.content_deals_get(limit=limit, offset=offset)
+    api_response = api_instance.content_deals_get(limit=limit, offset=offset)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_deals_get: %s\n" % e)
 ```
@@ -462,7 +467,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -475,8 +480,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_ensure_replication_datacid_get**
-> content_ensure_replication_datacid_get(datacid)
+## **content_ensure_replication_datacid_get** {#content_ensure_replication_datacid_get}
+> str content_ensure_replication_datacid_get(datacid)
 
 Ensure Replication
 
@@ -486,23 +491,24 @@ This endpoint ensures that the content is replicated to the specified number of 
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 datacid = 'datacid_example' # str | Data CID
 
 try:
     # Ensure Replication
-    api_instance.content_ensure_replication_datacid_get(datacid)
+    api_response = api_instance.content_ensure_replication_datacid_get(datacid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_ensure_replication_datacid_get: %s\n" % e)
 ```
@@ -515,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -528,7 +534,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_failures_content_get**
+## **content_failures_content_get** {#content_failures_content_get}
 > str content_failures_content_get(content)
 
 List all failures for a content
@@ -539,18 +545,18 @@ This endpoint returns all failures for a content
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 content = 'content_example' # str | Content ID
 
 try:
@@ -582,8 +588,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_id_get**
-> content_id_get(id)
+## **content_id_get** {#content_id_get}
+> str content_id_get(id)
 
 Content
 
@@ -593,23 +599,24 @@ This endpoint returns a content by its ID
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 id = 56 # int | Content ID
 
 try:
     # Content
-    api_instance.content_id_get(id)
+    api_response = api_instance.content_id_get(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_id_get: %s\n" % e)
 ```
@@ -622,7 +629,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -635,8 +642,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_importdeal_post**
-> content_importdeal_post(body)
+## **content_importdeal_post** {#content_importdeal_post}
+> str content_importdeal_post(body)
 
 Import a deal
 
@@ -646,23 +653,24 @@ This endpoint imports a deal into the shuttle.
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
-body = estuary-client.MainImportDealBody() # MainImportDealBody | Import a deal
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+body = estuary_client.MainImportDealBody() # MainImportDealBody | Import a deal
 
 try:
     # Import a deal
-    api_instance.content_importdeal_post(body)
+    api_response = api_instance.content_importdeal_post(body)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_importdeal_post: %s\n" % e)
 ```
@@ -675,7 +683,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -683,13 +691,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_list_get**
-> list[str] content_list_get()
+## **content_list_get** {#content_list_get}
+> str content_list_get()
 
 List all pinned content
 
@@ -699,18 +707,18 @@ This endpoint lists all content
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 
 try:
     # List all pinned content
@@ -725,7 +733,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**list[str]**
+**str**
 
 ### Authorization
 
@@ -738,8 +746,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_read_cont_get**
-> content_read_cont_get(cont)
+## **content_read_cont_get** {#content_read_cont_get}
+> str content_read_cont_get(cont)
 
 Read content
 
@@ -749,23 +757,24 @@ This endpoint reads content from the blockstore
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 cont = 'cont_example' # str | CID
 
 try:
     # Read content
-    api_instance.content_read_cont_get(cont)
+    api_response = api_instance.content_read_cont_get(cont)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_read_cont_get: %s\n" % e)
 ```
@@ -778,7 +787,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -791,8 +800,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_staging_zones_get**
-> content_staging_zones_get()
+## **content_staging_zones_get** {#content_staging_zones_get}
+> str content_staging_zones_get()
 
 Get staging zone for user
 
@@ -802,22 +811,23 @@ This endpoint is used to get staging zone for user.
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get staging zone for user
-    api_instance.content_staging_zones_get()
+    api_response = api_instance.content_staging_zones_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_staging_zones_get: %s\n" % e)
 ```
@@ -827,7 +837,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -840,8 +850,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_stats_get**
-> content_stats_get(limit, offset)
+## **content_stats_get** {#content_stats_get}
+> str content_stats_get(limit, offset)
 
 Get content statistics
 
@@ -851,24 +861,25 @@ This endpoint is used to get content statistics. Every content stored in the net
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 limit = 'limit_example' # str | limit
 offset = 'offset_example' # str | offset
 
 try:
     # Get content statistics
-    api_instance.content_stats_get(limit, offset)
+    api_response = api_instance.content_stats_get(limit, offset)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_stats_get: %s\n" % e)
 ```
@@ -882,7 +893,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -895,8 +906,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_status_id_get**
-> content_status_id_get(id)
+## **content_status_id_get** {#content_status_id_get}
+> str content_status_id_get(id)
 
 Content Status
 
@@ -906,23 +917,24 @@ This endpoint returns the status of a content
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 id = 56 # int | Content ID
 
 try:
     # Content Status
-    api_instance.content_status_id_get(id)
+    api_response = api_instance.content_status_id_get(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_status_id_get: %s\n" % e)
 ```
@@ -935,7 +947,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

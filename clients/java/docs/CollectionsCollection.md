@@ -1,4 +1,3 @@
-
 # CollectionsCollection
 
 ## Properties
@@ -10,6 +9,3 @@ Name | Type | Description | Notes
 **name** | **String** |  |  [optional]
 **userId** | **Integer** |  |  [optional]
 **uuid** | **String** |  |  [optional]
-
-
-

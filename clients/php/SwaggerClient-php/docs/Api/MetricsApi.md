@@ -1,14 +1,13 @@
 # Swagger\Client\MetricsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**publicMetricsDealsOnChainGet**](MetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
+[**publicMetricsDealsOnChainGet**](MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 
-
-# **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+## **publicMetricsDealsOnChainGet** {#publicMetricsDealsOnChainGet}
+> string publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -18,7 +17,6 @@ This endpoint is used to get deal metrics
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -32,7 +30,8 @@ $apiInstance = new Swagger\Client\Api\MetricsApi(
 );
 
 try {
-    $apiInstance->publicMetricsDealsOnChainGet();
+    $result = $apiInstance->publicMetricsDealsOnChainGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->publicMetricsDealsOnChainGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -44,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

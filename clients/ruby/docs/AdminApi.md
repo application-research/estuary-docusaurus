@@ -1,6 +1,6 @@
 # SwaggerClient::AdminApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,9 +13,8 @@ Method | HTTP request | Description
 [**admin_system_config_get**](AdminApi.md#admin_system_config_get) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**admin_users_get**](AdminApi.md#admin_users_get) | **GET** /admin/users | Get all users
 
-
-# **admin_peering_peers_delete**
-> admin_peering_peers_delete(body)
+## **admin_peering_peers_delete** {#admin_peering_peers_delete}
+> String admin_peering_peers_delete(body)
 
 Remove peers on Peering Service
 
@@ -34,13 +33,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
-
-body = [SwaggerClient::Array<String>.new] # Array<String> | Peer ids
+body = [true] # Array<BOOLEAN> | Peer ids
 
 
 begin
   #Remove peers on Peering Service
-  api_instance.admin_peering_peers_delete(body)
+  result = api_instance.admin_peering_peers_delete(body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_delete: #{e}"
 end
@@ -50,11 +49,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Array&lt;String&gt;**| Peer ids | 
+ **body** | [**Array&lt;BOOLEAN&gt;**](BOOLEAN.md)| Peer ids | 
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -62,13 +61,13 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
 
-# **admin_peering_peers_get**
-> admin_peering_peers_get
+## **admin_peering_peers_get** {#admin_peering_peers_get}
+> String admin_peering_peers_get
 
 List all Peering peers
 
@@ -90,7 +89,8 @@ api_instance = SwaggerClient::AdminApi.new
 
 begin
   #List all Peering peers
-  api_instance.admin_peering_peers_get
+  result = api_instance.admin_peering_peers_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_get: #{e}"
 end
@@ -101,7 +101,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -114,8 +114,8 @@ nil (empty response body)
 
 
 
-# **admin_peering_peers_post**
-> admin_peering_peers_post
+## **admin_peering_peers_post** {#admin_peering_peers_post}
+> String admin_peering_peers_post
 
 Add peers on Peering Service
 
@@ -137,7 +137,8 @@ api_instance = SwaggerClient::AdminApi.new
 
 begin
   #Add peers on Peering Service
-  api_instance.admin_peering_peers_post
+  result = api_instance.admin_peering_peers_post
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_post: #{e}"
 end
@@ -148,7 +149,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -161,8 +162,8 @@ nil (empty response body)
 
 
 
-# **admin_peering_start_post**
-> admin_peering_start_post
+## **admin_peering_start_post** {#admin_peering_start_post}
+> String admin_peering_start_post
 
 Start Peering
 
@@ -184,7 +185,8 @@ api_instance = SwaggerClient::AdminApi.new
 
 begin
   #Start Peering
-  api_instance.admin_peering_start_post
+  result = api_instance.admin_peering_start_post
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_start_post: #{e}"
 end
@@ -195,7 +197,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -208,8 +210,8 @@ nil (empty response body)
 
 
 
-# **admin_peering_status_get**
-> admin_peering_status_get
+## **admin_peering_status_get** {#admin_peering_status_get}
+> String admin_peering_status_get
 
 Check Peering Status
 
@@ -231,7 +233,8 @@ api_instance = SwaggerClient::AdminApi.new
 
 begin
   #Check Peering Status
-  api_instance.admin_peering_status_get
+  result = api_instance.admin_peering_status_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_status_get: #{e}"
 end
@@ -242,7 +245,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -255,8 +258,8 @@ nil (empty response body)
 
 
 
-# **admin_peering_stop_post**
-> admin_peering_stop_post
+## **admin_peering_stop_post** {#admin_peering_stop_post}
+> String admin_peering_stop_post
 
 Stop Peering
 
@@ -278,7 +281,8 @@ api_instance = SwaggerClient::AdminApi.new
 
 begin
   #Stop Peering
-  api_instance.admin_peering_stop_post
+  result = api_instance.admin_peering_stop_post
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_stop_post: #{e}"
 end
@@ -289,7 +293,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -302,8 +306,8 @@ nil (empty response body)
 
 
 
-# **admin_system_config_get**
-> admin_system_config_get
+## **admin_system_config_get** {#admin_system_config_get}
+> String admin_system_config_get
 
 Get systems(estuary/shuttle) config
 
@@ -325,7 +329,8 @@ api_instance = SwaggerClient::AdminApi.new
 
 begin
   #Get systems(estuary/shuttle) config
-  api_instance.admin_system_config_get
+  result = api_instance.admin_system_config_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_system_config_get: #{e}"
 end
@@ -336,7 +341,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -349,8 +354,8 @@ nil (empty response body)
 
 
 
-# **admin_users_get**
-> admin_users_get
+## **admin_users_get** {#admin_users_get}
+> String admin_users_get
 
 Get all users
 
@@ -372,7 +377,8 @@ api_instance = SwaggerClient::AdminApi.new
 
 begin
   #Get all users
-  api_instance.admin_users_get
+  result = api_instance.admin_users_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_users_get: #{e}"
 end
@@ -383,7 +389,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

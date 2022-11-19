@@ -1,18 +1,17 @@
 # Swagger\Client\NetApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**netAddrsGet**](NetApi.md#netAddrsGet) | **GET** /net/addrs | Net Addrs
-[**publicMinersFailuresMinerGet**](NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-[**publicMinersGet**](NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
-[**publicNetAddrsGet**](NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
-[**publicNetPeersGet**](NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
+[**netAddrsGet**](NetApi.md#netaddrsget) | **GET** /net/addrs | Net Addrs
+[**publicMinersFailuresMinerGet**](NetApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
+[**publicMinersGet**](NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
+[**publicNetAddrsGet**](NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
+[**publicNetPeersGet**](NetApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 
-
-# **netAddrsGet**
-> string[] netAddrsGet()
+## **netAddrsGet** {#netAddrsGet}
+> string netAddrsGet()
 
 Net Addrs
 
@@ -22,7 +21,6 @@ This endpoint is used to get net addrs
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -49,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string[]**
+**string**
 
 ### Authorization
 
@@ -62,8 +60,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet($miner)
+## **publicMinersFailuresMinerGet** {#publicMinersFailuresMinerGet}
+> string publicMinersFailuresMinerGet($miner)
 
 Get all miners
 
@@ -73,7 +71,6 @@ This endpoint returns all miners
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -88,7 +85,8 @@ $apiInstance = new Swagger\Client\Api\NetApi(
 $miner = "miner_example"; // string | Filter by miner
 
 try {
-    $apiInstance->publicMinersFailuresMinerGet($miner);
+    $result = $apiInstance->publicMinersFailuresMinerGet($miner);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NetApi->publicMinersFailuresMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -103,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -116,8 +114,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **publicMinersGet**
-> publicMinersGet()
+## **publicMinersGet** {#publicMinersGet}
+> string publicMinersGet()
 
 Get all miners
 
@@ -127,7 +125,6 @@ This endpoint returns all miners
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -141,7 +138,8 @@ $apiInstance = new Swagger\Client\Api\NetApi(
 );
 
 try {
-    $apiInstance->publicMinersGet();
+    $result = $apiInstance->publicMinersGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NetApi->publicMinersGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -153,7 +151,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -166,7 +164,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **publicNetAddrsGet**
+## **publicNetAddrsGet** {#publicNetAddrsGet}
 > string[] publicNetAddrsGet()
 
 Net Addrs
@@ -177,7 +175,6 @@ This endpoint is used to get net addrs
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -217,7 +214,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **publicNetPeersGet**
+## **publicNetPeersGet** {#publicNetPeersGet}
 > string[] publicNetPeersGet()
 
 Net Peers
@@ -228,7 +225,6 @@ This endpoint is used to get net peers
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

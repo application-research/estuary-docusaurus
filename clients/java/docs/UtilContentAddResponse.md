@@ -1,4 +1,3 @@
-
 # UtilContentAddResponse
 
 ## Properties
@@ -8,6 +7,3 @@ Name | Type | Description | Notes
 **estuaryId** | **Integer** |  |  [optional]
 **providers** | **List&lt;String&gt;** |  |  [optional]
 **retrievalUrl** | **String** |  |  [optional]
-
-
-

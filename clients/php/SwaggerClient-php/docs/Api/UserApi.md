@@ -1,18 +1,17 @@
 # Swagger\Client\UserApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userApiKeysGet**](UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-[**userApiKeysKeyDelete**](UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
-[**userApiKeysPost**](UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
-[**userExportGet**](UserApi.md#userExportGet) | **GET** /user/export | Export user data
-[**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
+[**userApiKeysGet**](UserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
+[**userApiKeysKeyOrHashDelete**](UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
+[**userApiKeysPost**](UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
+[**userExportGet**](UserApi.md#userexportget) | **GET** /user/export | Export user data
+[**userStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
 
-
-# **userApiKeysGet**
-> \Swagger\Client\Model\MainGetApiKeysResp[] userApiKeysGet()
+## **userApiKeysGet** {#userApiKeysGet}
+> \Swagger\Client\Model\MainGetApiKeysResp[][] userApiKeysGet()
 
 Get API keys for a user
 
@@ -22,7 +21,6 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -49,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\MainGetApiKeysResp[]**](../Model/MainGetApiKeysResp.md)
+[**\Swagger\Client\Model\MainGetApiKeysResp[][]**](../Model/array.md)
 
 ### Authorization
 
@@ -62,18 +60,17 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **userApiKeysKeyDelete**
-> userApiKeysKeyDelete($key)
+## **userApiKeysKeyOrHashDelete** {#userApiKeysKeyOrHashDelete}
+> string userApiKeysKeyOrHashDelete($key_or_hash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -85,12 +82,13 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     new GuzzleHttp\Client(),
     $config
 );
-$key = "key_example"; // string | Key
+$key_or_hash = "key_or_hash_example"; // string | Key or Hash
 
 try {
-    $apiInstance->userApiKeysKeyDelete($key);
+    $result = $apiInstance->userApiKeysKeyOrHashDelete($key_or_hash);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UserApi->userApiKeysKeyDelete: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UserApi->userApiKeysKeyOrHashDelete: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -99,11 +97,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| Key |
+ **key_or_hash** | **string**| Key or Hash |
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -116,7 +114,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **userApiKeysPost**
+## **userApiKeysPost** {#userApiKeysPost}
 > \Swagger\Client\Model\MainGetApiKeysResp userApiKeysPost($expiry, $perms)
 
 Create API keys for a user
@@ -127,7 +125,6 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -139,7 +136,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     new GuzzleHttp\Client(),
     $config
 );
-$expiry = "expiry_example"; // string | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+$expiry = "expiry_example"; // string | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 $perms = "perms_example"; // string | Permissions -- currently unused
 
 try {
@@ -155,7 +152,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional]
  **perms** | **string**| Permissions -- currently unused | [optional]
 
 ### Return type
@@ -173,7 +170,7 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **userExportGet**
+## **userExportGet** {#userExportGet}
 > string userExportGet()
 
 Export user data
@@ -184,7 +181,6 @@ This endpoint is used to get API keys for a user.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -224,8 +220,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **userStatsGet**
-> \Swagger\Client\Model\MainUserStatsResponse userStatsGet()
+## **userStatsGet** {#userStatsGet}
+> string userStatsGet()
 
 Create API keys for a user
 
@@ -235,7 +231,6 @@ This endpoint is used to create API keys for a user.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -262,7 +257,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\MainUserStatsResponse**](../Model/MainUserStatsResponse.md)
+**string**
 
 ### Authorization
 

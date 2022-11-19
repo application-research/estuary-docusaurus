@@ -1,18 +1,17 @@
 # Swagger\Client\PinningApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**pinningPinsGet**](PinningApi.md#pinningPinsGet) | **GET** /pinning/pins | List all pin status objects
-[**pinningPinsPinidDelete**](PinningApi.md#pinningPinsPinidDelete) | **DELETE** /pinning/pins/{pinid} | Delete a pinned object
-[**pinningPinsPinidGet**](PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object
-[**pinningPinsPinidPost**](PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
-[**pinningPinsPost**](PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
+[**pinningPinsGet**](PinningApi.md#pinningpinsget) | **GET** /pinning/pins | List all pin status objects
+[**pinningPinsPinidDelete**](PinningApi.md#pinningpinspiniddelete) | **DELETE** /pinning/pins/{pinid} | Delete a pinned object
+[**pinningPinsPinidGet**](PinningApi.md#pinningpinspinidget) | **GET** /pinning/pins/{pinid} | Get a pin status object
+[**pinningPinsPinidPost**](PinningApi.md#pinningpinspinidpost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
+[**pinningPinsPost**](PinningApi.md#pinningpinspost) | **POST** /pinning/pins | Add and pin object
 
-
-# **pinningPinsGet**
-> pinningPinsGet()
+## **pinningPinsGet** {#pinningPinsGet}
+> \Swagger\Client\Model\TypesIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -22,7 +21,6 @@ This endpoint lists all pin status objects
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -36,7 +34,8 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
 );
 
 try {
-    $apiInstance->pinningPinsGet();
+    $result = $apiInstance->pinningPinsGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -48,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\TypesIpfsListPinStatusResponse**](../Model/TypesIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -61,7 +60,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **pinningPinsPinidDelete**
+## **pinningPinsPinidDelete** {#pinningPinsPinidDelete}
 > pinningPinsPinidDelete($pinid)
 
 Delete a pinned object
@@ -72,7 +71,6 @@ This endpoint deletes a pinned object.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -115,8 +113,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **pinningPinsPinidGet**
-> pinningPinsPinidGet($pinid)
+## **pinningPinsPinidGet** {#pinningPinsPinidGet}
+> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPinidGet($pinid)
 
 Get a pin status object
 
@@ -126,7 +124,6 @@ This endpoint returns a pin status object.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -141,7 +138,8 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
 $pinid = "pinid_example"; // string | cid
 
 try {
-    $apiInstance->pinningPinsPinidGet($pinid);
+    $result = $apiInstance->pinningPinsPinidGet($pinid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -156,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -169,8 +167,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **pinningPinsPinidPost**
-> pinningPinsPinidPost($pinid)
+## **pinningPinsPinidPost** {#pinningPinsPinidPost}
+> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPinidPost($pinid, $body)
 
 Replace a pinned object
 
@@ -180,7 +178,6 @@ This endpoint replaces a pinned object.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -193,9 +190,11 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
     $config
 );
 $pinid = "pinid_example"; // string | Pin ID
+$body = "body_example"; // string | Meta information of new pin
 
 try {
-    $apiInstance->pinningPinsPinidPost($pinid);
+    $result = $apiInstance->pinningPinsPinidPost($pinid, $body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -207,10 +206,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **string**| Pin ID |
+ **body** | [**string**](../Model/string.md)| Meta information of new pin | [optional]
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -218,13 +218,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **pinningPinsPost**
-> pinningPinsPost($cid, $name)
+## **pinningPinsPost** {#pinningPinsPost}
+> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPost($body)
 
 Add and pin object
 
@@ -234,7 +234,6 @@ This endpoint adds a pin to the IPFS daemon.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -246,11 +245,11 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cid = "cid_example"; // string | cid
-$name = "name_example"; // string | name
+$body = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 try {
-    $apiInstance->pinningPinsPost($cid, $name);
+    $result = $apiInstance->pinningPinsPost($body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -261,12 +260,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **string**| cid |
- **name** | **string**| name |
+ **body** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -274,7 +272,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

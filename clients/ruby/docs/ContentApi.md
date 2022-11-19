@@ -1,6 +1,6 @@
 # SwaggerClient::ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,9 +22,8 @@ Method | HTTP request | Description
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
 
-
-# **content_add_car_post**
-> content_add_car_post(body, opts)
+## **content_add_car_post** {#content_add_car_post}
+> UtilContentAddResponse content_add_car_post(body, opts)
 
 Add Car object
 
@@ -43,17 +42,16 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 body = 'body_example' # String | Car
-
 opts = { 
-  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
   filename: 'filename_example' # String | Filename
 }
 
 begin
   #Add Car object
-  api_instance.content_add_car_post(body, opts)
+  result = api_instance.content_add_car_post(body, opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_car_post: #{e}"
 end
@@ -63,13 +61,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| Car | 
+ **body** | [**String**](String.md)| Car | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
  **filename** | **String**| Filename | [optional] 
 
 ### Return type
 
-nil (empty response body)
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -77,13 +75,13 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
 
-# **content_add_ipfs_post**
-> content_add_ipfs_post(body, opts)
+## **content_add_ipfs_post** {#content_add_ipfs_post}
+> String content_add_ipfs_post(body, opts)
 
 Add IPFS object
 
@@ -102,16 +100,15 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 body = SwaggerClient::UtilContentAddIpfsBody.new # UtilContentAddIpfsBody | IPFS Body
-
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
 }
 
 begin
   #Add IPFS object
-  api_instance.content_add_ipfs_post(body, opts)
+  result = api_instance.content_add_ipfs_post(body, opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_ipfs_post: #{e}"
 end
@@ -126,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -134,13 +131,13 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
 
-# **content_add_post**
-> UtilContentAddResponse content_add_post(data, opts)
+## **content_add_post** {#content_add_post}
+> UtilContentAddResponse content_add_post(datafilename, opts)
 
 Add new content
 
@@ -159,21 +156,19 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
-data = File.new('/path/to/file.txt') # File | File to upload
-
+data = 'data_example' # String | 
+filename = 'filename_example' # String | 
 opts = { 
-  filename: 'filename_example', # String | Filenam to use for upload
-  coluuid: 'coluuid_example', # String | Collection UUID
-  replication: 56, # Integer | Replication value
-  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes true/false
-  lazy_provide: 'lazy_provide_example', # String | Lazy Provide true/false
+  coluuid: 'coluuid_example' # String | Collection UUID
+  replication: 56 # Integer | Replication value
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes true/false
+  lazy_provide: 'lazy_provide_example' # String | Lazy Provide true/false
   dir: 'dir_example' # String | Directory
 }
 
 begin
   #Add new content
-  result = api_instance.content_add_post(data, opts)
+  result = api_instance.content_add_post(datafilename, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_post: #{e}"
@@ -184,8 +179,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **File**| File to upload | 
- **filename** | **String**| Filenam to use for upload | [optional] 
+ **data** | **String**|  | 
+ **filename** | **String**|  | 
  **coluuid** | **String**| Collection UUID | [optional] 
  **replication** | **Integer**| Replication value | [optional] 
  **ignore_dupes** | **String**| Ignore Dupes true/false | [optional] 
@@ -207,7 +202,7 @@ Name | Type | Description  | Notes
 
 
 
-# **content_aggregated_content_get**
+## **content_aggregated_content_get** {#content_aggregated_content_get}
 > String content_aggregated_content_get(content)
 
 Get aggregated content stats
@@ -227,7 +222,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 content = 'content_example' # String | Content ID
 
 
@@ -261,8 +255,8 @@ Name | Type | Description  | Notes
 
 
 
-# **content_all_deals_get**
-> content_all_deals_get(_begin, duration, all)
+## **content_all_deals_get** {#content_all_deals_get}
+> String content_all_deals_get(_begin, duration, all)
 
 Get all deals for a user
 
@@ -281,17 +275,15 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 _begin = '_begin_example' # String | Begin
-
 duration = 'duration_example' # String | Duration
-
 all = 'all_example' # String | All
 
 
 begin
   #Get all deals for a user
-  api_instance.content_all_deals_get(_begin, duration, all)
+  result = api_instance.content_all_deals_get(_begin, duration, all)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_all_deals_get: #{e}"
 end
@@ -307,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -320,8 +312,8 @@ nil (empty response body)
 
 
 
-# **content_bw_usage_content_get**
-> content_bw_usage_content_get(content)
+## **content_bw_usage_content_get** {#content_bw_usage_content_get}
+> String content_bw_usage_content_get(content)
 
 Get content bandwidth
 
@@ -340,13 +332,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 content = 'content_example' # String | Content ID
 
 
 begin
   #Get content bandwidth
-  api_instance.content_bw_usage_content_get(content)
+  result = api_instance.content_bw_usage_content_get(content)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_bw_usage_content_get: #{e}"
 end
@@ -360,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -373,8 +365,8 @@ nil (empty response body)
 
 
 
-# **content_create_post**
-> content_create_post(req, opts)
+## **content_create_post** {#content_create_post}
+> String content_create_post(body, opts)
 
 Add a new content
 
@@ -393,16 +385,15 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
-req = SwaggerClient::UtilContentCreateBody.new # UtilContentCreateBody | Content
-
+body = SwaggerClient::UtilContentCreateBody.new # UtilContentCreateBody | Content
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
 }
 
 begin
   #Add a new content
-  api_instance.content_create_post(req, opts)
+  result = api_instance.content_create_post(body, opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_create_post: #{e}"
 end
@@ -412,12 +403,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -425,13 +416,13 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
 
-# **content_deals_get**
-> content_deals_get(opts)
+## **content_deals_get** {#content_deals_get}
+> String content_deals_get(opts)
 
 Content with deals
 
@@ -450,7 +441,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 opts = { 
   limit: 56, # Integer | Limit
   offset: 56 # Integer | Offset
@@ -458,7 +448,8 @@ opts = {
 
 begin
   #Content with deals
-  api_instance.content_deals_get(opts)
+  result = api_instance.content_deals_get(opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_deals_get: #{e}"
 end
@@ -473,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -486,8 +477,8 @@ nil (empty response body)
 
 
 
-# **content_ensure_replication_datacid_get**
-> content_ensure_replication_datacid_get(datacid)
+## **content_ensure_replication_datacid_get** {#content_ensure_replication_datacid_get}
+> String content_ensure_replication_datacid_get(datacid)
 
 Ensure Replication
 
@@ -506,13 +497,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 datacid = 'datacid_example' # String | Data CID
 
 
 begin
   #Ensure Replication
-  api_instance.content_ensure_replication_datacid_get(datacid)
+  result = api_instance.content_ensure_replication_datacid_get(datacid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_ensure_replication_datacid_get: #{e}"
 end
@@ -526,7 +517,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -539,7 +530,7 @@ nil (empty response body)
 
 
 
-# **content_failures_content_get**
+## **content_failures_content_get** {#content_failures_content_get}
 > String content_failures_content_get(content)
 
 List all failures for a content
@@ -559,7 +550,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 content = 'content_example' # String | Content ID
 
 
@@ -593,8 +583,8 @@ Name | Type | Description  | Notes
 
 
 
-# **content_id_get**
-> content_id_get(id)
+## **content_id_get** {#content_id_get}
+> String content_id_get(id)
 
 Content
 
@@ -613,13 +603,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 id = 56 # Integer | Content ID
 
 
 begin
   #Content
-  api_instance.content_id_get(id)
+  result = api_instance.content_id_get(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_id_get: #{e}"
 end
@@ -633,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -646,8 +636,8 @@ nil (empty response body)
 
 
 
-# **content_importdeal_post**
-> content_importdeal_post(body)
+## **content_importdeal_post** {#content_importdeal_post}
+> String content_importdeal_post(body)
 
 Import a deal
 
@@ -666,13 +656,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 body = SwaggerClient::MainImportDealBody.new # MainImportDealBody | Import a deal
 
 
 begin
   #Import a deal
-  api_instance.content_importdeal_post(body)
+  result = api_instance.content_importdeal_post(body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_importdeal_post: #{e}"
 end
@@ -686,7 +676,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -694,13 +684,13 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
 
-# **content_list_get**
-> Array&lt;String&gt; content_list_get
+## **content_list_get** {#content_list_get}
+> String content_list_get
 
 List all pinned content
 
@@ -734,7 +724,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array&lt;String&gt;**
+**String**
 
 ### Authorization
 
@@ -747,8 +737,8 @@ This endpoint does not need any parameter.
 
 
 
-# **content_read_cont_get**
-> content_read_cont_get(cont)
+## **content_read_cont_get** {#content_read_cont_get}
+> String content_read_cont_get(cont)
 
 Read content
 
@@ -767,13 +757,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 cont = 'cont_example' # String | CID
 
 
 begin
   #Read content
-  api_instance.content_read_cont_get(cont)
+  result = api_instance.content_read_cont_get(cont)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_read_cont_get: #{e}"
 end
@@ -787,7 +777,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -800,8 +790,8 @@ nil (empty response body)
 
 
 
-# **content_staging_zones_get**
-> content_staging_zones_get
+## **content_staging_zones_get** {#content_staging_zones_get}
+> String content_staging_zones_get
 
 Get staging zone for user
 
@@ -823,7 +813,8 @@ api_instance = SwaggerClient::ContentApi.new
 
 begin
   #Get staging zone for user
-  api_instance.content_staging_zones_get
+  result = api_instance.content_staging_zones_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_staging_zones_get: #{e}"
 end
@@ -834,7 +825,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -847,8 +838,8 @@ nil (empty response body)
 
 
 
-# **content_stats_get**
-> content_stats_get(limit, offset)
+## **content_stats_get** {#content_stats_get}
+> String content_stats_get(limit, offset)
 
 Get content statistics
 
@@ -867,15 +858,14 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 limit = 'limit_example' # String | limit
-
 offset = 'offset_example' # String | offset
 
 
 begin
   #Get content statistics
-  api_instance.content_stats_get(limit, offset)
+  result = api_instance.content_stats_get(limit, offset)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_stats_get: #{e}"
 end
@@ -890,7 +880,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -903,8 +893,8 @@ nil (empty response body)
 
 
 
-# **content_status_id_get**
-> content_status_id_get(id)
+## **content_status_id_get** {#content_status_id_get}
+> String content_status_id_get(id)
 
 Content Status
 
@@ -923,13 +913,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 id = 56 # Integer | Content ID
 
 
 begin
   #Content Status
-  api_instance.content_status_id_get(id)
+  result = api_instance.content_status_id_get(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_status_id_get: #{e}"
 end
@@ -943,7 +933,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
