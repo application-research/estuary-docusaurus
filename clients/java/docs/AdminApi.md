@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**adminSystemConfigGet**](AdminApi.md#adminSystemConfigGet) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**adminUsersGet**](AdminApi.md#adminUsersGet) | **GET** /admin/users | Get all users
 
-<a name="adminPeeringPeersDelete"></a>
+
 ## **adminPeeringPeersDelete** {#adminPeeringPeersDelete}
 > String adminPeeringPeersDelete(body)
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="adminPeeringPeersGet"></a>
+
 ## **adminPeeringPeersGet** {#adminPeeringPeersGet}
 > String adminPeeringPeersGet()
 
@@ -119,7 +119,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringPeersPost"></a>
+
 ## **adminPeeringPeersPost** {#adminPeeringPeersPost}
 > String adminPeeringPeersPost()
 
@@ -170,7 +170,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStartPost"></a>
+
 ## **adminPeeringStartPost** {#adminPeeringStartPost}
 > String adminPeeringStartPost()
 
@@ -221,7 +221,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStatusGet"></a>
+
 ## **adminPeeringStatusGet** {#adminPeeringStatusGet}
 > String adminPeeringStatusGet()
 
@@ -272,7 +272,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStopPost"></a>
+
 ## **adminPeeringStopPost** {#adminPeeringStopPost}
 > String adminPeeringStopPost()
 
@@ -323,7 +323,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminSystemConfigGet"></a>
+
 ## **adminSystemConfigGet** {#adminSystemConfigGet}
 > String adminSystemConfigGet()
 
@@ -374,7 +374,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminUsersGet"></a>
+
 ## **adminUsersGet** {#adminUsersGet}
 > String adminUsersGet()
 

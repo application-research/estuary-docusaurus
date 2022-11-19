@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
-<a name="contentAddCarPost"></a>
+
 ## **contentAddCarPost** {#contentAddCarPost}
 > UtilContentAddResponse contentAddCarPost(body, opts)
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentAddIpfsPost"></a>
+
 ## **contentAddIpfsPost** {#contentAddIpfsPost}
 > &#x27;String&#x27; contentAddIpfsPost(body, opts)
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentAddPost"></a>
+
 ## **contentAddPost** {#contentAddPost}
 > UtilContentAddResponse contentAddPost(data, filename, opts)
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
-<a name="contentAggregatedContentGet"></a>
+
 ## **contentAggregatedContentGet** {#contentAggregatedContentGet}
 > &#x27;String&#x27; contentAggregatedContentGet(content)
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentAllDealsGet"></a>
+
 ## **contentAllDealsGet** {#contentAllDealsGet}
 > &#x27;String&#x27; contentAllDealsGet(begin, duration, all)
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentBwUsageContentGet"></a>
+
 ## **contentBwUsageContentGet** {#contentBwUsageContentGet}
 > &#x27;String&#x27; contentBwUsageContentGet(content)
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentCreatePost"></a>
+
 ## **contentCreatePost** {#contentCreatePost}
 > &#x27;String&#x27; contentCreatePost(body, opts)
 
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentDealsGet"></a>
+
 ## **contentDealsGet** {#contentDealsGet}
 > &#x27;String&#x27; contentDealsGet(opts)
 
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentEnsureReplicationDatacidGet"></a>
+
 ## **contentEnsureReplicationDatacidGet** {#contentEnsureReplicationDatacidGet}
 > &#x27;String&#x27; contentEnsureReplicationDatacidGet(datacid)
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentFailuresContentGet"></a>
+
 ## **contentFailuresContentGet** {#contentFailuresContentGet}
 > &#x27;String&#x27; contentFailuresContentGet(content)
 
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentIdGet"></a>
+
 ## **contentIdGet** {#contentIdGet}
 > &#x27;String&#x27; contentIdGet(id)
 
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentImportdealPost"></a>
+
 ## **contentImportdealPost** {#contentImportdealPost}
 > &#x27;String&#x27; contentImportdealPost(body)
 
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentListGet"></a>
+
 ## **contentListGet** {#contentListGet}
 > &#x27;String&#x27; contentListGet()
 
@@ -698,7 +698,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentReadContGet"></a>
+
 ## **contentReadContGet** {#contentReadContGet}
 > &#x27;String&#x27; contentReadContGet(cont)
 
@@ -748,7 +748,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStagingZonesGet"></a>
+
 ## **contentStagingZonesGet** {#contentStagingZonesGet}
 > &#x27;String&#x27; contentStagingZonesGet()
 
@@ -793,7 +793,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStatsGet"></a>
+
 ## **contentStatsGet** {#contentStatsGet}
 > &#x27;String&#x27; contentStatsGet(limit, offset)
 
@@ -845,7 +845,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStatusIdGet"></a>
+
 ## **contentStatusIdGet** {#contentStatusIdGet}
 > &#x27;String&#x27; contentStatusIdGet(id)
 

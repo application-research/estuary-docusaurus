@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**adminAutoretrieveListGet**](AutoretrieveApi.md#adminAutoretrieveListGet) | **GET** /admin/autoretrieve/list | List autoretrieve servers
 [**autoretrieveHeartbeatPost**](AutoretrieveApi.md#autoretrieveHeartbeatPost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
 
-<a name="adminAutoretrieveInitPost"></a>
+
 ## **adminAutoretrieveInitPost** {#adminAutoretrieveInitPost}
 > &#x27;String&#x27; adminAutoretrieveInitPost(addresses, pubKey)
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
-<a name="adminAutoretrieveListGet"></a>
+
 ## **adminAutoretrieveListGet** {#adminAutoretrieveListGet}
 > &#x27;String&#x27; adminAutoretrieveListGet()
 
@@ -105,7 +105,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="autoretrieveHeartbeatPost"></a>
+
 ## **autoretrieveHeartbeatPost** {#autoretrieveHeartbeatPost}
 > &#x27;String&#x27; autoretrieveHeartbeatPost(token)
 

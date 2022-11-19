@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**publicNetPeersGet**](PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 [**publicStatsGet**](PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 
-<a name="publicByCidCidGet"></a>
+
 ## **publicByCidCidGet** {#publicByCidCidGet}
 > String publicByCidCidGet(cid)
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicInfoGet"></a>
+
 ## **publicInfoGet** {#publicInfoGet}
 > String publicInfoGet()
 
@@ -121,7 +121,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMetricsDealsOnChainGet"></a>
+
 ## **publicMetricsDealsOnChainGet** {#publicMetricsDealsOnChainGet}
 > String publicMetricsDealsOnChainGet()
 
@@ -172,7 +172,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersDealsMinerGet"></a>
+
 ## **publicMinersDealsMinerGet** {#publicMinersDealsMinerGet}
 > String publicMinersDealsMinerGet(miner, ignoreFailed)
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersFailuresMinerGet"></a>
+
 ## **publicMinersFailuresMinerGet** {#publicMinersFailuresMinerGet}
 > String publicMinersFailuresMinerGet(miner)
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersGet"></a>
+
 ## **publicMinersGet** {#publicMinersGet}
 > String publicMinersGet()
 
@@ -335,7 +335,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersStatsMinerGet"></a>
+
 ## **publicMinersStatsMinerGet** {#publicMinersStatsMinerGet}
 > String publicMinersStatsMinerGet(miner)
 
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicNetAddrsGet"></a>
+
 ## **publicNetAddrsGet** {#publicNetAddrsGet}
 > List&lt;String&gt; publicNetAddrsGet()
 
@@ -441,7 +441,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicNetPeersGet"></a>
+
 ## **publicNetPeersGet** {#publicNetPeersGet}
 > List&lt;String&gt; publicNetPeersGet()
 
@@ -492,7 +492,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicStatsGet"></a>
+
 ## **publicStatsGet** {#publicStatsGet}
 > String publicStatsGet()
 

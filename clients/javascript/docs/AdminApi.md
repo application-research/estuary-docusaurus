@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**adminSystemConfigGet**](AdminApi.md#adminSystemConfigGet) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**adminUsersGet**](AdminApi.md#adminUsersGet) | **GET** /admin/users | Get all users
 
-<a name="adminPeeringPeersDelete"></a>
+
 ## **adminPeeringPeersDelete** {#adminPeeringPeersDelete}
 > &#x27;String&#x27; adminPeeringPeersDelete(body)
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="adminPeeringPeersGet"></a>
+
 ## **adminPeeringPeersGet** {#adminPeeringPeersGet}
 > &#x27;String&#x27; adminPeeringPeersGet()
 
@@ -108,7 +108,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringPeersPost"></a>
+
 ## **adminPeeringPeersPost** {#adminPeeringPeersPost}
 > &#x27;String&#x27; adminPeeringPeersPost()
 
@@ -153,7 +153,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStartPost"></a>
+
 ## **adminPeeringStartPost** {#adminPeeringStartPost}
 > &#x27;String&#x27; adminPeeringStartPost()
 
@@ -198,7 +198,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStatusGet"></a>
+
 ## **adminPeeringStatusGet** {#adminPeeringStatusGet}
 > &#x27;String&#x27; adminPeeringStatusGet()
 
@@ -243,7 +243,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStopPost"></a>
+
 ## **adminPeeringStopPost** {#adminPeeringStopPost}
 > &#x27;String&#x27; adminPeeringStopPost()
 
@@ -288,7 +288,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminSystemConfigGet"></a>
+
 ## **adminSystemConfigGet** {#adminSystemConfigGet}
 > &#x27;String&#x27; adminSystemConfigGet()
 
@@ -333,7 +333,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminUsersGet"></a>
+
 ## **adminUsersGet** {#adminUsersGet}
 > &#x27;String&#x27; adminUsersGet()
 

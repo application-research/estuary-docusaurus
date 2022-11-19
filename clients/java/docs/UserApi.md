@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**userExportGet**](UserApi.md#userExportGet) | **GET** /user/export | Export user data
 [**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
 
-<a name="userApiKeysGet"></a>
+
 ## **userApiKeysGet** {#userApiKeysGet}
 > List&lt;List&lt;MainGetApiKeysResp&gt;&gt; userApiKeysGet()
 
@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userApiKeysKeyOrHashDelete"></a>
+
 ## **userApiKeysKeyOrHashDelete** {#userApiKeysKeyOrHashDelete}
 > String userApiKeysKeyOrHashDelete(keyOrHash)
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userApiKeysPost"></a>
+
 ## **userApiKeysPost** {#userApiKeysPost}
 > MainGetApiKeysResp userApiKeysPost(expiry, perms)
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userExportGet"></a>
+
 ## **userExportGet** {#userExportGet}
 > String userExportGet()
 
@@ -224,7 +224,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userStatsGet"></a>
+
 ## **userStatsGet** {#userStatsGet}
 > String userStatsGet()
 

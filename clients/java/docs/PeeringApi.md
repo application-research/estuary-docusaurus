@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**adminPeeringStatusGet**](PeeringApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
 [**adminPeeringStopPost**](PeeringApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
 
-<a name="adminPeeringPeersDelete"></a>
+
 ## **adminPeeringPeersDelete** {#adminPeeringPeersDelete}
 > String adminPeeringPeersDelete(body)
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="adminPeeringPeersGet"></a>
+
 ## **adminPeeringPeersGet** {#adminPeeringPeersGet}
 > String adminPeeringPeersGet()
 
@@ -117,7 +117,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringPeersPost"></a>
+
 ## **adminPeeringPeersPost** {#adminPeeringPeersPost}
 > String adminPeeringPeersPost()
 
@@ -168,7 +168,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStartPost"></a>
+
 ## **adminPeeringStartPost** {#adminPeeringStartPost}
 > String adminPeeringStartPost()
 
@@ -219,7 +219,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStatusGet"></a>
+
 ## **adminPeeringStatusGet** {#adminPeeringStatusGet}
 > String adminPeeringStatusGet()
 
@@ -270,7 +270,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminPeeringStopPost"></a>
+
 ## **adminPeeringStopPost** {#adminPeeringStopPost}
 > String adminPeeringStopPost()
 

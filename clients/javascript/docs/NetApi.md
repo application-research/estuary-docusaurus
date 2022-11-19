@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**publicNetAddrsGet**](NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 
-<a name="netAddrsGet"></a>
+
 ## **netAddrsGet** {#netAddrsGet}
 > &#x27;String&#x27; netAddrsGet()
 
@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersFailuresMinerGet"></a>
+
 ## **publicMinersFailuresMinerGet** {#publicMinersFailuresMinerGet}
 > &#x27;String&#x27; publicMinersFailuresMinerGet(miner)
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersGet"></a>
+
 ## **publicMinersGet** {#publicMinersGet}
 > &#x27;String&#x27; publicMinersGet()
 
@@ -150,7 +150,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicNetAddrsGet"></a>
+
 ## **publicNetAddrsGet** {#publicNetAddrsGet}
 > [&#x27;String&#x27;] publicNetAddrsGet()
 
@@ -195,7 +195,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicNetPeersGet"></a>
+
 ## **publicNetPeersGet** {#publicNetPeersGet}
 > [&#x27;String&#x27;] publicNetPeersGet()
 

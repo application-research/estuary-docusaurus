@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**publicMinersDealsMinerGet**](MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 [**publicMinersStatsMinerGet**](MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 
-<a name="publicMinersDealsMinerGet"></a>
+
 ## **publicMinersDealsMinerGet** {#publicMinersDealsMinerGet}
 > &#x27;String&#x27; publicMinersDealsMinerGet(miner, opts)
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersStatsMinerGet"></a>
+
 ## **publicMinersStatsMinerGet** {#publicMinersStatsMinerGet}
 > &#x27;String&#x27; publicMinersStatsMinerGet(miner)
 

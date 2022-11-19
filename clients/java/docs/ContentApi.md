@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
-<a name="contentAddCarPost"></a>
+
 ## **contentAddCarPost** {#contentAddCarPost}
 > UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentAddIpfsPost"></a>
+
 ## **contentAddIpfsPost** {#contentAddIpfsPost}
 > String contentAddIpfsPost(body, ignoreDupes)
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentAddPost"></a>
+
 ## **contentAddPost** {#contentAddPost}
 > UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
-<a name="contentAggregatedContentGet"></a>
+
 ## **contentAggregatedContentGet** {#contentAggregatedContentGet}
 > String contentAggregatedContentGet(content)
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentAllDealsGet"></a>
+
 ## **contentAllDealsGet** {#contentAllDealsGet}
 > String contentAllDealsGet(begin, duration, all)
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentBwUsageContentGet"></a>
+
 ## **contentBwUsageContentGet** {#contentBwUsageContentGet}
 > String contentBwUsageContentGet(content)
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentCreatePost"></a>
+
 ## **contentCreatePost** {#contentCreatePost}
 > String contentCreatePost(body, ignoreDupes)
 
@@ -431,7 +431,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentDealsGet"></a>
+
 ## **contentDealsGet** {#contentDealsGet}
 > String contentDealsGet(limit, offset)
 
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentEnsureReplicationDatacidGet"></a>
+
 ## **contentEnsureReplicationDatacidGet** {#contentEnsureReplicationDatacidGet}
 > String contentEnsureReplicationDatacidGet(datacid)
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentFailuresContentGet"></a>
+
 ## **contentFailuresContentGet** {#contentFailuresContentGet}
 > String contentFailuresContentGet(content)
 
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentIdGet"></a>
+
 ## **contentIdGet** {#contentIdGet}
 > String contentIdGet(id)
 
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentImportdealPost"></a>
+
 ## **contentImportdealPost** {#contentImportdealPost}
 > String contentImportdealPost(body)
 
@@ -708,7 +708,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentListGet"></a>
+
 ## **contentListGet** {#contentListGet}
 > String contentListGet()
 
@@ -759,7 +759,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentReadContGet"></a>
+
 ## **contentReadContGet** {#contentReadContGet}
 > String contentReadContGet(cont)
 
@@ -814,7 +814,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStagingZonesGet"></a>
+
 ## **contentStagingZonesGet** {#contentStagingZonesGet}
 > String contentStagingZonesGet()
 
@@ -865,7 +865,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStatsGet"></a>
+
 ## **contentStatsGet** {#contentStatsGet}
 > String contentStatsGet(limit, offset)
 
@@ -922,7 +922,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStatusIdGet"></a>
+
 ## **contentStatusIdGet** {#contentStatusIdGet}
 > String contentStatusIdGet(id)
 

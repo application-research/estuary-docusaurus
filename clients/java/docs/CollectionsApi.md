@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**collectionsGet**](CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 [**collectionsPost**](CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
 
-<a name="collectionsColuuidCommitPost"></a>
+
 ## **collectionsColuuidCommitPost** {#collectionsColuuidCommitPost}
 > String collectionsColuuidCommitPost(coluuid)
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="collectionsColuuidContentsDelete"></a>
+
 ## **collectionsColuuidContentsDelete** {#collectionsColuuidContentsDelete}
 > String collectionsColuuidContentsDelete(body, coluuid, contentid)
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="collectionsColuuidDelete"></a>
+
 ## **collectionsColuuidDelete** {#collectionsColuuidDelete}
 > String collectionsColuuidDelete(coluuid)
 
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: */*
 
-<a name="collectionsColuuidGet"></a>
+
 ## **collectionsColuuidGet** {#collectionsColuuidGet}
 > String collectionsColuuidGet(coluuid, dir)
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="collectionsColuuidPost"></a>
+
 ## **collectionsColuuidPost** {#collectionsColuuidPost}
 > String collectionsColuuidPost(body, coluuid)
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="collectionsFsAddPost"></a>
+
 ## **collectionsFsAddPost** {#collectionsFsAddPost}
 > String collectionsFsAddPost(coluuid, content, path)
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="collectionsGet"></a>
+
 ## **collectionsGet** {#collectionsGet}
 > List&lt;List&lt;CollectionsCollection&gt;&gt; collectionsGet()
 
@@ -406,7 +406,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="collectionsPost"></a>
+
 ## **collectionsPost** {#collectionsPost}
 > CollectionsCollection collectionsPost(body)
 

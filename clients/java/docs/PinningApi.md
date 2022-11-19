@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**pinningPinsPinidPost**](PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 [**pinningPinsPost**](PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
 
-<a name="pinningPinsGet"></a>
+
 ## **pinningPinsGet** {#pinningPinsGet}
 > TypesIpfsListPinStatusResponse pinningPinsGet()
 
@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="pinningPinsPinidDelete"></a>
+
 ## **pinningPinsPinidDelete** {#pinningPinsPinidDelete}
 > pinningPinsPinidDelete(pinid)
 
@@ -115,7 +115,7 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="pinningPinsPinidGet"></a>
+
 ## **pinningPinsPinidGet** {#pinningPinsPinidGet}
 > TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="pinningPinsPinidPost"></a>
+
 ## **pinningPinsPinidPost** {#pinningPinsPinidPost}
 > TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, body)
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="pinningPinsPost"></a>
+
 ## **pinningPinsPost** {#pinningPinsPost}
 > TypesIpfsPinStatusResponse pinningPinsPost(body)
 

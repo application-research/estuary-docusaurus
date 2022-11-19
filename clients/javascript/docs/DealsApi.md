@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**publicDealsFailuresGet**](DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 [**publicMinersStorageQueryMinerGet**](DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
 
-<a name="dealEstimatePost"></a>
+
 ## **dealEstimatePost** {#dealEstimatePost}
 > &#x27;String&#x27; dealEstimatePost(body)
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="dealInfoDealidGet"></a>
+
 ## **dealInfoDealidGet** {#dealInfoDealidGet}
 > &#x27;String&#x27; dealInfoDealidGet(dealid)
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="dealProposalPropcidGet"></a>
+
 ## **dealProposalPropcidGet** {#dealProposalPropcidGet}
 > &#x27;String&#x27; dealProposalPropcidGet(propcid)
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="dealQueryMinerGet"></a>
+
 ## **dealQueryMinerGet** {#dealQueryMinerGet}
 > &#x27;String&#x27; dealQueryMinerGet(miner)
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="dealStatusByProposalPropcidGet"></a>
+
 ## **dealStatusByProposalPropcidGet** {#dealStatusByProposalPropcidGet}
 > &#x27;String&#x27; dealStatusByProposalPropcidGet(propcid)
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="dealStatusMinerPropcidGet"></a>
+
 ## **dealStatusMinerPropcidGet** {#dealStatusMinerPropcidGet}
 > &#x27;String&#x27; dealStatusMinerPropcidGet(miner, propcid)
 
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="dealTransferInProgressGet"></a>
+
 ## **dealTransferInProgressGet** {#dealTransferInProgressGet}
 > &#x27;String&#x27; dealTransferInProgressGet()
 
@@ -365,7 +365,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="dealTransferStatusPost"></a>
+
 ## **dealTransferStatusPost** {#dealTransferStatusPost}
 > &#x27;String&#x27; dealTransferStatusPost(body)
 
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="dealsFailuresGet"></a>
+
 ## **dealsFailuresGet** {#dealsFailuresGet}
 > &#x27;String&#x27; dealsFailuresGet()
 
@@ -460,7 +460,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="dealsMakeMinerPost"></a>
+
 ## **dealsMakeMinerPost** {#dealsMakeMinerPost}
 > &#x27;String&#x27; dealsMakeMinerPost(body, miner)
 
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="dealsStatusDealGet"></a>
+
 ## **dealsStatusDealGet** {#dealsStatusDealGet}
 > &#x27;String&#x27; dealsStatusDealGet(deal)
 
@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicDealsFailuresGet"></a>
+
 ## **publicDealsFailuresGet** {#publicDealsFailuresGet}
 > &#x27;String&#x27; publicDealsFailuresGet()
 
@@ -607,7 +607,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersStorageQueryMinerGet"></a>
+
 ## **publicMinersStorageQueryMinerGet** {#publicMinersStorageQueryMinerGet}
 > &#x27;String&#x27; publicMinersStorageQueryMinerGet(miner)
 
