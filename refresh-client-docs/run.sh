@@ -19,7 +19,7 @@ for folder in $folders; do
     destination_filename="$SCRIPT_DIR/../clients/$filename"
     mkdir -p "$destination_folder"
     cp -v "$filename" "$destination_folder"
-    sed -i -e 's/^# \*\*\([0-9a-zA-Z_]*\)\*\*/## **\1** {#\1}/g' "$destination_filename" 
+    sed -i ''  's/^# \*\*\([0-9a-zA-Z_]*\)\*\*/## **\1** {#\1}/g' "$destination_filename" 
   done
 
 
