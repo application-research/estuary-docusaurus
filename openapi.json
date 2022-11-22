@@ -121,6 +121,97 @@
                 }
             }
         },
+        "/admin/invites": {
+            "get": {
+                "description": "This endpoint is used to list all estuary invites.",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get Estuary invites",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint is used to create an estuary invite.",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Create an Estuary invite",
+                "parameters": [
+                    {
+                        "description": "Invite code to be created",
+                        "name": "code",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/admin/peering/peers": {
             "get": {
                 "description": "This endpoint can be used to list all peers on Peering Service",
@@ -218,7 +309,7 @@
                             "schema": {
                                 "type": "array",
                                 "items": {
-                                    "type": "string"
+                                    "type": "boolean"
                                 }
                             }
                         }
@@ -777,7 +868,7 @@
                 "summary": "Add contents to a collection",
                 "parameters": [
                     {
-                        "description": "coluuid",
+                        "description": "Collection UUID",
                         "name": "coluuid",
                         "in": "path",
                         "required": true,
@@ -806,10 +897,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "additionalProperties": {
-                                        "type": "string"
-                                    }
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1160,7 +1248,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "string"
+                                    "$ref": "#/components/schemas/util.ContentAddResponse"
                                 }
                             }
                         }
@@ -2570,6 +2658,58 @@
                 }
             }
         },
+        "/get/{cid}": {
+            "get": {
+                "description": "This endpoint returns the content associated with a CID",
+                "tags": [
+                    "public"
+                ],
+                "summary": "Get Full Content by Cid",
+                "parameters": [
+                    {
+                        "description": "Cid",
+                        "name": "cid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "307": {
+                        "description": "Temporary Redirect",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/net/addrs": {
             "get": {
                 "description": "This endpoint is used to get net addrs",
@@ -2624,23 +2764,13 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "string"
+                                    "$ref": "#/components/schemas/types.IpfsListPinStatusResponse"
                                 }
                             }
                         }
                     },
                     "400": {
                         "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2667,43 +2797,24 @@
                     "pinning"
                 ],
                 "summary": "Add and pin object",
-                "parameters": [
-                    {
-                        "description": "cid",
-                        "name": "cid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "name",
-                        "name": "name",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "string"
-                                }
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/types.IpfsPin"
                             }
                         }
                     },
-                    "400": {
-                        "description": "Bad Request",
+                    "description": "Pin Body {cid:cid, name:name}",
+                    "required": true
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
+                                    "$ref": "#/components/schemas/types.IpfsPinStatusResponse"
                                 }
                             }
                         }
@@ -2745,13 +2856,13 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "string"
+                                    "$ref": "#/components/schemas/types.IpfsPinStatusResponse"
                                 }
                             }
                         }
                     },
-                    "400": {
-                        "description": "Bad Request",
+                    "404": {
+                        "description": "Not Found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2789,19 +2900,31 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "description": "CID of new pin",
+                    "required": true,
+                    "x-s2o-overloaded": true
+                },
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "202": {
+                        "description": "Accepted",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "string"
+                                    "$ref": "#/components/schemas/types.IpfsPinStatusResponse"
                                 }
                             }
                         }
                     },
-                    "400": {
-                        "description": "Bad Request",
+                    "404": {
+                        "description": "Not Found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2820,7 +2943,8 @@
                             }
                         }
                     }
-                }
+                },
+                "x-s2o-warning": "Operation post:/pinning/pins/{pinid} has multiple requestBodies"
             },
             "delete": {
                 "description": "This endpoint deletes a pinned object.",
@@ -2840,25 +2964,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
-                                }
-                            }
-                        }
+                    "202": {
+                        "description": ""
                     },
                     "500": {
                         "description": "Internal Server Error",
@@ -2875,7 +2982,7 @@
         },
         "/public/by-cid/{cid}": {
             "get": {
-                "description": "This endpoint returns the content associated with a CID",
+                "description": "This endpoint returns the content record associated with a CID",
                 "tags": [
                     "public"
                 ],
@@ -3545,17 +3652,17 @@
                 }
             }
         },
-        "/user/api-keys/{key}": {
+        "/user/api-keys/{key_or_hash}": {
             "delete": {
-                "description": "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.",
+                "description": "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.",
                 "tags": [
                     "User"
                 ],
                 "summary": "Revoke a User API Key.",
                 "parameters": [
                     {
-                        "description": "Key",
-                        "name": "key",
+                        "description": "Key or Hash",
+                        "name": "key_or_hash",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -3640,11 +3747,11 @@
         },
         "/user/stats": {
             "get": {
-                "description": "This endpoint is used to create API keys for a user.",
+                "description": "This endpoint is used to geet stats for the current user.",
                 "tags": [
                     "User"
                 ],
-                "summary": "Create API keys for a user",
+                "summary": "Get stats for the current user",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3687,7 +3794,7 @@
     ],
     "servers": [
         {
-            "url": "https://api.estuary.tech"
+            "url": "//api.estuary.tech"
         }
     ],
     "components": {
@@ -3781,7 +3888,13 @@
                     "expiry": {
                         "type": "string"
                     },
+                    "label": {
+                        "type": "string"
+                    },
                     "token": {
+                        "type": "string"
+                    },
+                    "tokenHash": {
                         "type": "string"
                     }
                 }
@@ -3802,6 +3915,68 @@
                         "type": "string"
                     },
                     "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "types.IpfsListPinStatusResponse": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/types.IpfsPinStatusResponse"
+                        }
+                    }
+                }
+            },
+            "types.IpfsPin": {
+                "type": "object",
+                "properties": {
+                    "cid": {
+                        "type": "string"
+                    },
+                    "meta": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "origins": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "types.IpfsPinStatusResponse": {
+                "type": "object",
+                "properties": {
+                    "created": {
+                        "type": "string"
+                    },
+                    "delegates": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "info": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "pin": {
+                        "$ref": "#/components/schemas/types.IpfsPin"
+                    },
+                    "requestid": {
+                        "type": "string"
+                    },
+                    "status": {
                         "type": "string"
                     }
                 }
@@ -3837,6 +4012,9 @@
                     },
                     "estuaryId": {
                         "type": "integer"
+                    },
+                    "estuary_retrieval_url": {
+                        "type": "string"
                     },
                     "providers": {
                         "type": "array",
