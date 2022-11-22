@@ -1,9 +1,11 @@
-# \ContentApi
+# ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AdminInvitesGet**](ContentApi.md#AdminInvitesGet) | **Get** /admin/invites | Get Estuary invites
+[**AdminInvitesPost**](ContentApi.md#AdminInvitesPost) | **Post** /admin/invites | Create an Estuary invite
 [**ContentAddCarPost**](ContentApi.md#ContentAddCarPost) | **Post** /content/add-car | Add Car object
 [**ContentAddIpfsPost**](ContentApi.md#ContentAddIpfsPost) | **Post** /content/add-ipfs | Add IPFS object
 [**ContentAddPost**](ContentApi.md#ContentAddPost) | **Post** /content/add | Add new content
@@ -22,33 +24,18 @@ Method | HTTP request | Description
 [**ContentStatsGet**](ContentApi.md#ContentStatsGet) | **Get** /content/stats | Get content statistics
 [**ContentStatusIdGet**](ContentApi.md#ContentStatusIdGet) | **Get** /content/status/{id} | Content Status
 
+## **AdminInvitesGet** {#AdminInvitesGet}
+> string AdminInvitesGet(ctx, )
+Get Estuary invites
 
-# **ContentAddCarPost**
-> ContentAddCarPost(ctx, body, optional)
-Add Car object
-
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
+This endpoint is used to list all estuary invites.
 
 ### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | **string**| Car | 
- **optional** | ***ContentApiContentAddCarPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ContentApiContentAddCarPostOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **ignoreDupes** | **optional.String**| Ignore Dupes | 
- **filename** | **optional.String**| Filename | 
+This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -61,8 +48,73 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentAddIpfsPost**
-> ContentAddIpfsPost(ctx, body, optional)
+## **AdminInvitesPost** {#AdminInvitesPost}
+> string AdminInvitesPost(ctx, code)
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **code** | **string**| Invite code to be created | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+## **ContentAddCarPost** {#ContentAddCarPost}
+> UtilContentAddResponse ContentAddCarPost(ctx, body, optional)
+Add Car object
+
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**string**](string.md)| Car | 
+ **optional** | ***ContentApiContentAddCarPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ContentApiContentAddCarPostOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **ignoreDupes** | **optional.**| Ignore Dupes | 
+ **filename** | **optional.**| Filename | 
+
+### Return type
+
+[**UtilContentAddResponse**](util.ContentAddResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: */*
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+## **ContentAddIpfsPost** {#ContentAddIpfsPost}
+> string ContentAddIpfsPost(ctx, body, optional)
 Add IPFS object
 
 This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -77,15 +129,14 @@ Name | Type | Description  | Notes
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a ContentApiContentAddIpfsPostOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **ignoreDupes** | **optional.String**| Ignore Dupes | 
+ **ignoreDupes** | **optional.**| Ignore Dupes | 
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -93,13 +144,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentAddPost**
-> UtilContentAddResponse ContentAddPost(ctx, data, optional)
+## **ContentAddPost** {#ContentAddPost}
+> UtilContentAddResponse ContentAddPost(ctx, data, filename, optional)
 Add new content
 
 This endpoint is used to upload new content.
@@ -109,21 +160,21 @@ This endpoint is used to upload new content.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **data** | ***os.File**| File to upload | 
+  **data** | ***os.File*****os.File**|  | 
+  **filename** | **string**|  | 
  **optional** | ***ContentApiContentAddPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a ContentApiContentAddPostOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **filename** | **optional.String**| Filenam to use for upload | 
- **coluuid** | **optional.String**| Collection UUID | 
- **replication** | **optional.Int32**| Replication value | 
- **ignoreDupes** | **optional.String**| Ignore Dupes true/false | 
- **lazyProvide** | **optional.String**| Lazy Provide true/false | 
- **dir** | **optional.String**| Directory | 
+
+ **coluuid** | **optional.**| Collection UUID | 
+ **replication** | **optional.**| Replication value | 
+ **ignoreDupes** | **optional.**| Ignore Dupes true/false | 
+ **lazyProvide** | **optional.**| Lazy Provide true/false | 
+ **dir** | **optional.**| Directory | 
 
 ### Return type
 
@@ -140,7 +191,7 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentAggregatedContentGet**
+## **ContentAggregatedContentGet** {#ContentAggregatedContentGet}
 > string ContentAggregatedContentGet(ctx, content)
 Get aggregated content stats
 
@@ -168,8 +219,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentAllDealsGet**
-> ContentAllDealsGet(ctx, begin, duration, all)
+## **ContentAllDealsGet** {#ContentAllDealsGet}
+> string ContentAllDealsGet(ctx, begin, duration, all)
 Get all deals for a user
 
 This endpoint is used to get all deals for a user
@@ -185,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -198,8 +249,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentBwUsageContentGet**
-> ContentBwUsageContentGet(ctx, content)
+## **ContentBwUsageContentGet** {#ContentBwUsageContentGet}
+> string ContentBwUsageContentGet(ctx, content)
 Get content bandwidth
 
 This endpoint returns content bandwidth
@@ -213,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -226,8 +277,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentCreatePost**
-> ContentCreatePost(ctx, req, optional)
+## **ContentCreatePost** {#ContentCreatePost}
+> string ContentCreatePost(ctx, body, optional)
 Add a new content
 
 This endpoint adds a new content
@@ -237,20 +288,19 @@ This endpoint adds a new content
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+  **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
  **optional** | ***ContentApiContentCreatePostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a ContentApiContentCreatePostOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **ignoreDupes** | **optional.String**| Ignore Dupes | 
+ **ignoreDupes** | **optional.**| Ignore Dupes | 
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -258,13 +308,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentDealsGet**
-> ContentDealsGet(ctx, optional)
+## **ContentDealsGet** {#ContentDealsGet}
+> string ContentDealsGet(ctx, optional)
 Content with deals
 
 This endpoint lists all content with deals
@@ -278,7 +328,6 @@ Name | Type | Description  | Notes
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a ContentApiContentDealsGetOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **optional.Int32**| Limit | 
@@ -286,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -299,8 +348,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentEnsureReplicationDatacidGet**
-> ContentEnsureReplicationDatacidGet(ctx, datacid)
+## **ContentEnsureReplicationDatacidGet** {#ContentEnsureReplicationDatacidGet}
+> string ContentEnsureReplicationDatacidGet(ctx, datacid)
 Ensure Replication
 
 This endpoint ensures that the content is replicated to the specified number of providers
@@ -314,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -327,7 +376,7 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentFailuresContentGet**
+## **ContentFailuresContentGet** {#ContentFailuresContentGet}
 > string ContentFailuresContentGet(ctx, content)
 List all failures for a content
 
@@ -355,8 +404,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentIdGet**
-> ContentIdGet(ctx, id)
+## **ContentIdGet** {#ContentIdGet}
+> string ContentIdGet(ctx, id)
 Content
 
 This endpoint returns a content by its ID
@@ -370,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -383,8 +432,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentImportdealPost**
-> ContentImportdealPost(ctx, body)
+## **ContentImportdealPost** {#ContentImportdealPost}
+> string ContentImportdealPost(ctx, body)
 Import a deal
 
 This endpoint imports a deal into the shuttle.
@@ -398,7 +447,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -406,13 +455,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentListGet**
-> []string ContentListGet(ctx, )
+## **ContentListGet** {#ContentListGet}
+> string ContentListGet(ctx, )
 List all pinned content
 
 This endpoint lists all content
@@ -422,7 +471,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[]string**
+**string**
 
 ### Authorization
 
@@ -435,8 +484,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentReadContGet**
-> ContentReadContGet(ctx, cont)
+## **ContentReadContGet** {#ContentReadContGet}
+> string ContentReadContGet(ctx, cont)
 Read content
 
 This endpoint reads content from the blockstore
@@ -450,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -463,8 +512,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentStagingZonesGet**
-> ContentStagingZonesGet(ctx, )
+## **ContentStagingZonesGet** {#ContentStagingZonesGet}
+> string ContentStagingZonesGet(ctx, )
 Get staging zone for user
 
 This endpoint is used to get staging zone for user.
@@ -474,7 +523,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -487,8 +536,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentStatsGet**
-> ContentStatsGet(ctx, limit, offset)
+## **ContentStatsGet** {#ContentStatsGet}
+> string ContentStatsGet(ctx, limit, offset)
 Get content statistics
 
 This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
@@ -503,7 +552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -516,8 +565,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentStatusIdGet**
-> ContentStatusIdGet(ctx, id)
+## **ContentStatusIdGet** {#ContentStatusIdGet}
+> string ContentStatusIdGet(ctx, id)
 Content Status
 
 This endpoint returns the status of a content
@@ -531,7 +580,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

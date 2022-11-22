@@ -1,6 +1,6 @@
-# \NetApi
+# NetApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,9 +10,8 @@ Method | HTTP request | Description
 [**PublicNetAddrsGet**](NetApi.md#PublicNetAddrsGet) | **Get** /public/net/addrs | Net Addrs
 [**PublicNetPeersGet**](NetApi.md#PublicNetPeersGet) | **Get** /public/net/peers | Net Peers
 
-
-# **NetAddrsGet**
-> []string NetAddrsGet(ctx, )
+## **NetAddrsGet** {#NetAddrsGet}
+> string NetAddrsGet(ctx, )
 Net Addrs
 
 This endpoint is used to get net addrs
@@ -22,7 +21,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[]string**
+**string**
 
 ### Authorization
 
@@ -35,8 +34,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicMinersFailuresMinerGet**
-> PublicMinersFailuresMinerGet(ctx, miner)
+## **PublicMinersFailuresMinerGet** {#PublicMinersFailuresMinerGet}
+> string PublicMinersFailuresMinerGet(ctx, miner)
 Get all miners
 
 This endpoint returns all miners
@@ -50,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -63,8 +62,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicMinersGet**
-> PublicMinersGet(ctx, )
+## **PublicMinersGet** {#PublicMinersGet}
+> string PublicMinersGet(ctx, )
 Get all miners
 
 This endpoint returns all miners
@@ -74,7 +73,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -87,7 +86,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicNetAddrsGet**
+## **PublicNetAddrsGet** {#PublicNetAddrsGet}
 > []string PublicNetAddrsGet(ctx, )
 Net Addrs
 
@@ -111,7 +110,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicNetPeersGet**
+## **PublicNetPeersGet** {#PublicNetPeersGet}
 > []string PublicNetPeersGet(ctx, )
 Net Peers
 

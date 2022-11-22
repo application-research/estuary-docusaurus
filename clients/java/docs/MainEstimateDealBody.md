@@ -1,4 +1,3 @@
-
 # MainEstimateDealBody
 
 ## Properties
@@ -8,6 +7,3 @@ Name | Type | Description | Notes
 **replication** | **Integer** |  |  [optional]
 **size** | **Integer** |  |  [optional]
 **verified** | **Boolean** |  |  [optional]
-
-
-

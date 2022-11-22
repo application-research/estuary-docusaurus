@@ -1,6 +1,6 @@
-# estuary-client.DealsApi
+# estuary_client.DealsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,15 +11,15 @@ Method | HTTP request | Description
 [**deal_status_by_proposal_propcid_get**](DealsApi.md#deal_status_by_proposal_propcid_get) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**deal_status_miner_propcid_get**](DealsApi.md#deal_status_miner_propcid_get) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**deal_transfer_in_progress_get**](DealsApi.md#deal_transfer_in_progress_get) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**deal_transfer_status_post**](DealsApi.md#deal_transfer_status_post) | **POST** /deal/transfer/status | Transfer Status
 [**deals_failures_get**](DealsApi.md#deals_failures_get) | **GET** /deals/failures | Get storage failures for user
 [**deals_make_miner_post**](DealsApi.md#deals_make_miner_post) | **POST** /deals/make/{miner} | Make Deal
 [**deals_status_deal_get**](DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 [**public_deals_failures_get**](DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 [**public_miners_storage_query_miner_get**](DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
 
-
-# **deal_estimate_post**
-> deal_estimate_post(body)
+## **deal_estimate_post** {#deal_estimate_post}
+> str deal_estimate_post(body)
 
 Estimate the cost of a deal
 
@@ -29,23 +29,24 @@ This endpoint estimates the cost of a deal
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
-body = estuary-client.MainEstimateDealBody() # MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
+body = estuary_client.MainEstimateDealBody() # MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 try:
     # Estimate the cost of a deal
-    api_instance.deal_estimate_post(body)
+    api_response = api_instance.deal_estimate_post(body)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_estimate_post: %s\n" % e)
 ```
@@ -58,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -66,13 +67,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deal_info_dealid_get**
-> deal_info_dealid_get(dealid)
+## **deal_info_dealid_get** {#deal_info_dealid_get}
+> str deal_info_dealid_get(dealid)
 
 Get Deal Info
 
@@ -82,23 +83,24 @@ This endpoint returns the deal info for a deal
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 dealid = 56 # int | Deal ID
 
 try:
     # Get Deal Info
-    api_instance.deal_info_dealid_get(dealid)
+    api_response = api_instance.deal_info_dealid_get(dealid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_info_dealid_get: %s\n" % e)
 ```
@@ -111,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -124,8 +126,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deal_proposal_propcid_get**
-> deal_proposal_propcid_get(propcid)
+## **deal_proposal_propcid_get** {#deal_proposal_propcid_get}
+> str deal_proposal_propcid_get(propcid)
 
 Get Proposal
 
@@ -135,23 +137,24 @@ This endpoint returns the proposal for a deal
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 propcid = 'propcid_example' # str | Proposal CID
 
 try:
     # Get Proposal
-    api_instance.deal_proposal_propcid_get(propcid)
+    api_response = api_instance.deal_proposal_propcid_get(propcid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_proposal_propcid_get: %s\n" % e)
 ```
@@ -164,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -177,8 +180,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deal_query_miner_get**
-> deal_query_miner_get(miner)
+## **deal_query_miner_get** {#deal_query_miner_get}
+> str deal_query_miner_get(miner)
 
 Query Ask
 
@@ -188,23 +191,24 @@ This endpoint returns the ask for a given CID
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | CID
 
 try:
     # Query Ask
-    api_instance.deal_query_miner_get(miner)
+    api_response = api_instance.deal_query_miner_get(miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_query_miner_get: %s\n" % e)
 ```
@@ -217,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -230,8 +234,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deal_status_by_proposal_propcid_get**
-> deal_status_by_proposal_propcid_get(propcid)
+## **deal_status_by_proposal_propcid_get** {#deal_status_by_proposal_propcid_get}
+> str deal_status_by_proposal_propcid_get(propcid)
 
 Get Deal Status by PropCid
 
@@ -241,23 +245,24 @@ Get Deal Status by PropCid
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 propcid = 'propcid_example' # str | PropCid
 
 try:
     # Get Deal Status by PropCid
-    api_instance.deal_status_by_proposal_propcid_get(propcid)
+    api_response = api_instance.deal_status_by_proposal_propcid_get(propcid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_status_by_proposal_propcid_get: %s\n" % e)
 ```
@@ -270,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -283,8 +288,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deal_status_miner_propcid_get**
-> deal_status_miner_propcid_get(miner, propcid)
+## **deal_status_miner_propcid_get** {#deal_status_miner_propcid_get}
+> str deal_status_miner_propcid_get(miner, propcid)
 
 Deal Status
 
@@ -294,24 +299,25 @@ This endpoint returns the status of a deal
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | Miner
 propcid = 'propcid_example' # str | Proposal CID
 
 try:
     # Deal Status
-    api_instance.deal_status_miner_propcid_get(miner, propcid)
+    api_response = api_instance.deal_status_miner_propcid_get(miner, propcid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_status_miner_propcid_get: %s\n" % e)
 ```
@@ -325,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -338,8 +344,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deal_transfer_in_progress_get**
-> deal_transfer_in_progress_get()
+## **deal_transfer_in_progress_get** {#deal_transfer_in_progress_get}
+> str deal_transfer_in_progress_get()
 
 Transfer In Progress
 
@@ -349,22 +355,23 @@ This endpoint returns the in-progress transfers
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 
 try:
     # Transfer In Progress
-    api_instance.deal_transfer_in_progress_get()
+    api_response = api_instance.deal_transfer_in_progress_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_transfer_in_progress_get: %s\n" % e)
 ```
@@ -374,7 +381,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -387,8 +394,62 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deals_failures_get**
-> deals_failures_get()
+## **deal_transfer_status_post** {#deal_transfer_status_post}
+> str deal_transfer_status_post(body)
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
+body = estuary_client.MainChannelIDParam() # MainChannelIDParam | Channel ID
+
+try:
+    # Transfer Status
+    api_response = api_instance.deal_transfer_status_post(body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DealsApi->deal_transfer_status_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: */*
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+## **deals_failures_get** {#deals_failures_get}
+> str deals_failures_get()
 
 Get storage failures for user
 
@@ -398,22 +459,23 @@ This endpoint returns a list of storage failures for user
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get storage failures for user
-    api_instance.deals_failures_get()
+    api_response = api_instance.deals_failures_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deals_failures_get: %s\n" % e)
 ```
@@ -423,7 +485,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -436,8 +498,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deals_make_miner_post**
-> deals_make_miner_post(miner, deal_request)
+## **deals_make_miner_post** {#deals_make_miner_post}
+> str deals_make_miner_post(body, miner)
 
 Make Deal
 
@@ -447,24 +509,25 @@ This endpoint makes a deal for a given content and miner
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
+body = 'body_example' # str | Deal Request
 miner = 'miner_example' # str | Miner
-deal_request = 'deal_request_example' # str | Deal Request
 
 try:
     # Make Deal
-    api_instance.deals_make_miner_post(miner, deal_request)
+    api_response = api_instance.deals_make_miner_post(body, miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deals_make_miner_post: %s\n" % e)
 ```
@@ -473,12 +536,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**str**](str.md)| Deal Request | 
  **miner** | **str**| Miner | 
- **deal_request** | **str**| Deal Request | 
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -486,13 +549,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deals_status_deal_get**
-> deals_status_deal_get(deal)
+## **deals_status_deal_get** {#deals_status_deal_get}
+> str deals_status_deal_get(deal)
 
 Get Deal Status
 
@@ -502,23 +565,24 @@ This endpoint returns the status of a deal
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 deal = 56 # int | Deal ID
 
 try:
     # Get Deal Status
-    api_instance.deals_status_deal_get(deal)
+    api_response = api_instance.deals_status_deal_get(deal)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deals_status_deal_get: %s\n" % e)
 ```
@@ -531,7 +595,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -544,8 +608,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **public_deals_failures_get**
-> public_deals_failures_get()
+## **public_deals_failures_get** {#public_deals_failures_get}
+> str public_deals_failures_get()
 
 Get storage failures
 
@@ -555,22 +619,23 @@ This endpoint returns a list of storage failures
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get storage failures
-    api_instance.public_deals_failures_get()
+    api_response = api_instance.public_deals_failures_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->public_deals_failures_get: %s\n" % e)
 ```
@@ -580,7 +645,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -593,8 +658,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **public_miners_storage_query_miner_get**
-> public_miners_storage_query_miner_get(miner)
+## **public_miners_storage_query_miner_get** {#public_miners_storage_query_miner_get}
+> str public_miners_storage_query_miner_get(miner)
 
 Query Ask
 
@@ -604,23 +669,24 @@ This endpoint returns the ask for a given CID
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | CID
 
 try:
     # Query Ask
-    api_instance.public_miners_storage_query_miner_get(miner)
+    api_response = api_instance.public_miners_storage_query_miner_get(miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->public_miners_storage_query_miner_get: %s\n" % e)
 ```
@@ -633,7 +699,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

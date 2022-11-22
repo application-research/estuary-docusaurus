@@ -1,9 +1,10 @@
-# \PublicApi
+# PublicApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetCidGet**](PublicApi.md#GetCidGet) | **Get** /get/{cid} | Get Full Content by Cid
 [**PublicByCidCidGet**](PublicApi.md#PublicByCidCidGet) | **Get** /public/by-cid/{cid} | Get Content by Cid
 [**PublicInfoGet**](PublicApi.md#PublicInfoGet) | **Get** /public/info | Get public node info
 [**PublicMetricsDealsOnChainGet**](PublicApi.md#PublicMetricsDealsOnChainGet) | **Get** /public/metrics/deals-on-chain | Get deal metrics
@@ -15,10 +16,9 @@ Method | HTTP request | Description
 [**PublicNetPeersGet**](PublicApi.md#PublicNetPeersGet) | **Get** /public/net/peers | Net Peers
 [**PublicStatsGet**](PublicApi.md#PublicStatsGet) | **Get** /public/stats | Public stats
 
-
-# **PublicByCidCidGet**
-> PublicByCidCidGet(ctx, cid)
-Get Content by Cid
+## **GetCidGet** {#GetCidGet}
+> GetCidGet(ctx, cid)
+Get Full Content by Cid
 
 This endpoint returns the content associated with a CID
 
@@ -44,8 +44,36 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicInfoGet**
-> PublicInfoGet(ctx, )
+## **PublicByCidCidGet** {#PublicByCidCidGet}
+> string PublicByCidCidGet(ctx, cid)
+Get Content by Cid
+
+This endpoint returns the content record associated with a CID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **cid** | **string**| Cid | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+## **PublicInfoGet** {#PublicInfoGet}
+> string PublicInfoGet(ctx, )
 Get public node info
 
 This endpoint returns information about the node
@@ -55,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -68,8 +96,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicMetricsDealsOnChainGet**
-> PublicMetricsDealsOnChainGet(ctx, )
+## **PublicMetricsDealsOnChainGet** {#PublicMetricsDealsOnChainGet}
+> string PublicMetricsDealsOnChainGet(ctx, )
 Get deal metrics
 
 This endpoint is used to get deal metrics
@@ -79,7 +107,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -92,8 +120,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicMinersDealsMinerGet**
-> PublicMinersDealsMinerGet(ctx, miner, optional)
+## **PublicMinersDealsMinerGet** {#PublicMinersDealsMinerGet}
+> string PublicMinersDealsMinerGet(ctx, miner, optional)
 Get all miners deals
 
 This endpoint returns all miners deals
@@ -108,7 +136,6 @@ Name | Type | Description  | Notes
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a PublicApiPublicMinersDealsMinerGetOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -116,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -129,8 +156,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicMinersFailuresMinerGet**
-> PublicMinersFailuresMinerGet(ctx, miner)
+## **PublicMinersFailuresMinerGet** {#PublicMinersFailuresMinerGet}
+> string PublicMinersFailuresMinerGet(ctx, miner)
 Get all miners
 
 This endpoint returns all miners
@@ -144,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -157,8 +184,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicMinersGet**
-> PublicMinersGet(ctx, )
+## **PublicMinersGet** {#PublicMinersGet}
+> string PublicMinersGet(ctx, )
 Get all miners
 
 This endpoint returns all miners
@@ -168,7 +195,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -181,8 +208,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicMinersStatsMinerGet**
-> PublicMinersStatsMinerGet(ctx, miner)
+## **PublicMinersStatsMinerGet** {#PublicMinersStatsMinerGet}
+> string PublicMinersStatsMinerGet(ctx, miner)
 Get miner stats
 
 This endpoint returns miner stats
@@ -196,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -209,7 +236,7 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicNetAddrsGet**
+## **PublicNetAddrsGet** {#PublicNetAddrsGet}
 > []string PublicNetAddrsGet(ctx, )
 Net Addrs
 
@@ -233,7 +260,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicNetPeersGet**
+## **PublicNetPeersGet** {#PublicNetPeersGet}
 > []string PublicNetPeersGet(ctx, )
 Net Peers
 
@@ -257,8 +284,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicStatsGet**
-> PublicStatsGet(ctx, )
+## **PublicStatsGet** {#PublicStatsGet}
+> string PublicStatsGet(ctx, )
 Public stats
 
 This endpoint is used to get public stats.
@@ -268,7 +295,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

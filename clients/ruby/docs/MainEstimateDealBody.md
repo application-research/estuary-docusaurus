@@ -8,4 +8,3 @@ Name | Type | Description | Notes
 **size** | **Integer** |  | [optional] 
 **verified** | **BOOLEAN** |  | [optional] 
 
-

@@ -1,14 +1,13 @@
-# \MetricsApi
+# MetricsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PublicMetricsDealsOnChainGet**](MetricsApi.md#PublicMetricsDealsOnChainGet) | **Get** /public/metrics/deals-on-chain | Get deal metrics
 
-
-# **PublicMetricsDealsOnChainGet**
-> PublicMetricsDealsOnChainGet(ctx, )
+## **PublicMetricsDealsOnChainGet** {#PublicMetricsDealsOnChainGet}
+> string PublicMetricsDealsOnChainGet(ctx, )
 Get deal metrics
 
 This endpoint is used to get deal metrics
@@ -18,7 +17,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

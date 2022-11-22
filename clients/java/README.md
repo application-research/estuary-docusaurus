@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-10-25T22:52:57.283Z
+  - Build date: 2022-11-21T16:22:16.042Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -72,7 +72,6 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-
 import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -85,7 +84,7 @@ public class AdminApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
+
         // Configure API key authorization: bearerAuth
         ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
         bearerAuth.setApiKey("YOUR API KEY");
@@ -93,21 +92,224 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
-        List<String> body = Arrays.asList(new List<String>()); // List<String> | Peer ids
+        List<Boolean> body = Arrays.asList(true); // List<Boolean> | Peer ids
         try {
-            apiInstance.adminPeeringPeersDelete(body);
+            String result = apiInstance.adminPeeringPeersDelete(body);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#adminPeeringPeersDelete");
             e.printStackTrace();
         }
     }
 }
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
 
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringPeersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringPeersGet");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringPeersPost();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringStartPost();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringStartPost");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringStatusGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringStatusGet");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringStopPost();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringStopPost");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminSystemConfigGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminSystemConfigGet");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminUsersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminUsersGet");
+            e.printStackTrace();
+        }
+    }
+}
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -130,6 +332,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](docs/CollectionsApi.md#collectionsFsAddPost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](docs/CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+*ContentApi* | [**adminInvitesPost**](docs/ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
@@ -154,12 +358,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealStatusByProposalPropcidGet**](docs/DealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**dealStatusMinerPropcidGet**](docs/DealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**dealTransferInProgressGet**](docs/DealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | [**dealTransferStatusPost**](docs/DealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**dealsFailuresGet**](docs/DealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**dealsMakeMinerPost**](docs/DealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**dealsStatusDealGet**](docs/DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | [**dealTransferStatusPost**](docs/DefaultApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -185,6 +389,7 @@ Class | Method | HTTP request | Description
 *PinningApi* | [**pinningPinsPinidGet**](docs/PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *PinningApi* | [**pinningPinsPinidPost**](docs/PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *PinningApi* | [**pinningPinsPost**](docs/PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
+*PublicApi* | [**getCidGet**](docs/PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 *PublicApi* | [**publicByCidCidGet**](docs/PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *PublicApi* | [**publicInfoGet**](docs/PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 *PublicApi* | [**publicMetricsDealsOnChainGet**](docs/PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -196,26 +401,29 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**publicStatsGet**](docs/PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 *UserApi* | [**userApiKeysGet**](docs/UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-*UserApi* | [**userApiKeysKeyDelete**](docs/UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](docs/UserApi.md#userExportGet) | **GET** /user/export | Export user data
-*UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
-
+*UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Get stats for the current user
 
 ## Documentation for Models
 
+ - [AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [CollectionsCollection](docs/CollectionsCollection.md)
+ - [ContentAddBody](docs/ContentAddBody.md)
+ - [MainChannelIDParam](docs/MainChannelIDParam.md)
  - [MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
  - [MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](docs/MainEstimateDealBody.md)
  - [MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
  - [MainImportDealBody](docs/MainImportDealBody.md)
- - [MainUserStatsResponse](docs/MainUserStatsResponse.md)
+ - [TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
+ - [TypesIpfsPin](docs/TypesIpfsPin.md)
+ - [TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [UtilHttpError](docs/UtilHttpError.md)
-
 
 ## Documentation for Authorization
 
@@ -232,6 +440,5 @@ Authentication schemes defined for the API:
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
 ## Author
-
 
 

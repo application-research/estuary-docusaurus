@@ -4,8 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coluuid** | **String** |  | [optional] 
-**deal_i_ds** | **Array&lt;Integer&gt;** |  | [optional] 
+**deal_ids** | **Array&lt;Integer&gt;** |  | [optional] 
 **dir** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
-
 

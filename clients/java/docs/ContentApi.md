@@ -1,9 +1,11 @@
 # ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
@@ -23,9 +25,114 @@ Method | HTTP request | Description
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
 
-<a name="contentAddCarPost"></a>
-# **contentAddCarPost**
-> contentAddCarPost(body, ignoreDupes, filename)
+## **adminInvitesGet** {#adminInvitesGet}
+> String adminInvitesGet()
+
+Get Estuary invites
+
+This endpoint is used to list all estuary invites.
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+try {
+    String result = apiInstance.adminInvitesGet();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#adminInvitesGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+## **adminInvitesPost** {#adminInvitesPost}
+> String adminInvitesPost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+String code = "code_example"; // String | Invite code to be created
+try {
+    String result = apiInstance.adminInvitesPost(code);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#adminInvitesPost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+## **contentAddCarPost** {#contentAddCarPost}
+> UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -53,7 +160,8 @@ String body = "body_example"; // String | Car
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 String filename = "filename_example"; // String | Filename
 try {
-    apiInstance.contentAddCarPost(body, ignoreDupes, filename);
+    UtilContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddCarPost");
     e.printStackTrace();
@@ -64,13 +172,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| Car |
+ **body** | [**String**](String.md)| Car |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
  **filename** | **String**| Filename | [optional]
 
 ### Return type
 
-null (empty response body)
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -78,12 +186,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentAddIpfsPost"></a>
-# **contentAddIpfsPost**
-> contentAddIpfsPost(body, ignoreDupes)
+
+## **contentAddIpfsPost** {#contentAddIpfsPost}
+> String contentAddIpfsPost(body, ignoreDupes)
 
 Add IPFS object
 
@@ -110,7 +218,8 @@ ContentApi apiInstance = new ContentApi();
 UtilContentAddIpfsBody body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 try {
-    apiInstance.contentAddIpfsPost(body, ignoreDupes);
+    String result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddIpfsPost");
     e.printStackTrace();
@@ -126,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -134,11 +243,11 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentAddPost"></a>
-# **contentAddPost**
+
+## **contentAddPost** {#contentAddPost}
 > UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
 
 Add new content
@@ -163,8 +272,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-File data = new File("/path/to/file.txt"); // File | File to upload
-String filename = "filename_example"; // String | Filenam to use for upload
+File data = new File("data_example"); // File | 
+String filename = "filename_example"; // String | 
 String coluuid = "coluuid_example"; // String | Collection UUID
 Integer replication = 56; // Integer | Replication value
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes true/false
@@ -183,8 +292,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **File**| File to upload |
- **filename** | **String**| Filenam to use for upload | [optional]
+ **data** | **File**|  |
+ **filename** | **String**|  |
  **coluuid** | **String**| Collection UUID | [optional]
  **replication** | **Integer**| Replication value | [optional]
  **ignoreDupes** | **String**| Ignore Dupes true/false | [optional]
@@ -204,8 +313,8 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
-<a name="contentAggregatedContentGet"></a>
-# **contentAggregatedContentGet**
+
+## **contentAggregatedContentGet** {#contentAggregatedContentGet}
 > String contentAggregatedContentGet(content)
 
 Get aggregated content stats
@@ -259,9 +368,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentAllDealsGet"></a>
-# **contentAllDealsGet**
-> contentAllDealsGet(begin, duration, all)
+
+## **contentAllDealsGet** {#contentAllDealsGet}
+> String contentAllDealsGet(begin, duration, all)
 
 Get all deals for a user
 
@@ -289,7 +398,8 @@ String begin = "begin_example"; // String | Begin
 String duration = "duration_example"; // String | Duration
 String all = "all_example"; // String | All
 try {
-    apiInstance.contentAllDealsGet(begin, duration, all);
+    String result = apiInstance.contentAllDealsGet(begin, duration, all);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAllDealsGet");
     e.printStackTrace();
@@ -306,7 +416,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -317,9 +427,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentBwUsageContentGet"></a>
-# **contentBwUsageContentGet**
-> contentBwUsageContentGet(content)
+
+## **contentBwUsageContentGet** {#contentBwUsageContentGet}
+> String contentBwUsageContentGet(content)
 
 Get content bandwidth
 
@@ -345,7 +455,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 ContentApi apiInstance = new ContentApi();
 String content = "content_example"; // String | Content ID
 try {
-    apiInstance.contentBwUsageContentGet(content);
+    String result = apiInstance.contentBwUsageContentGet(content);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentBwUsageContentGet");
     e.printStackTrace();
@@ -360,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -371,9 +482,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentCreatePost"></a>
-# **contentCreatePost**
-> contentCreatePost(req, ignoreDupes)
+
+## **contentCreatePost** {#contentCreatePost}
+> String contentCreatePost(body, ignoreDupes)
 
 Add a new content
 
@@ -397,10 +508,11 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-UtilContentCreateBody req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
+UtilContentCreateBody body = new UtilContentCreateBody(); // UtilContentCreateBody | Content
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 try {
-    apiInstance.contentCreatePost(req, ignoreDupes);
+    String result = apiInstance.contentCreatePost(body, ignoreDupes);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentCreatePost");
     e.printStackTrace();
@@ -411,12 +523,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content |
+ **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -424,12 +536,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentDealsGet"></a>
-# **contentDealsGet**
-> contentDealsGet(limit, offset)
+
+## **contentDealsGet** {#contentDealsGet}
+> String contentDealsGet(limit, offset)
 
 Content with deals
 
@@ -456,7 +568,8 @@ ContentApi apiInstance = new ContentApi();
 Integer limit = 56; // Integer | Limit
 Integer offset = 56; // Integer | Offset
 try {
-    apiInstance.contentDealsGet(limit, offset);
+    String result = apiInstance.contentDealsGet(limit, offset);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentDealsGet");
     e.printStackTrace();
@@ -472,7 +585,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -483,9 +596,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentEnsureReplicationDatacidGet"></a>
-# **contentEnsureReplicationDatacidGet**
-> contentEnsureReplicationDatacidGet(datacid)
+
+## **contentEnsureReplicationDatacidGet** {#contentEnsureReplicationDatacidGet}
+> String contentEnsureReplicationDatacidGet(datacid)
 
 Ensure Replication
 
@@ -511,7 +624,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 ContentApi apiInstance = new ContentApi();
 String datacid = "datacid_example"; // String | Data CID
 try {
-    apiInstance.contentEnsureReplicationDatacidGet(datacid);
+    String result = apiInstance.contentEnsureReplicationDatacidGet(datacid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentEnsureReplicationDatacidGet");
     e.printStackTrace();
@@ -526,7 +640,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -537,8 +651,8 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentFailuresContentGet"></a>
-# **contentFailuresContentGet**
+
+## **contentFailuresContentGet** {#contentFailuresContentGet}
 > String contentFailuresContentGet(content)
 
 List all failures for a content
@@ -592,9 +706,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentIdGet"></a>
-# **contentIdGet**
-> contentIdGet(id)
+
+## **contentIdGet** {#contentIdGet}
+> String contentIdGet(id)
 
 Content
 
@@ -620,7 +734,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 ContentApi apiInstance = new ContentApi();
 Integer id = 56; // Integer | Content ID
 try {
-    apiInstance.contentIdGet(id);
+    String result = apiInstance.contentIdGet(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentIdGet");
     e.printStackTrace();
@@ -635,7 +750,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -646,9 +761,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentImportdealPost"></a>
-# **contentImportdealPost**
-> contentImportdealPost(body)
+
+## **contentImportdealPost** {#contentImportdealPost}
+> String contentImportdealPost(body)
 
 Import a deal
 
@@ -674,7 +789,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 ContentApi apiInstance = new ContentApi();
 MainImportDealBody body = new MainImportDealBody(); // MainImportDealBody | Import a deal
 try {
-    apiInstance.contentImportdealPost(body);
+    String result = apiInstance.contentImportdealPost(body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentImportdealPost");
     e.printStackTrace();
@@ -689,7 +805,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -697,12 +813,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
-<a name="contentListGet"></a>
-# **contentListGet**
-> List&lt;String&gt; contentListGet()
+
+## **contentListGet** {#contentListGet}
+> String contentListGet()
 
 List all pinned content
 
@@ -727,7 +843,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 ContentApi apiInstance = new ContentApi();
 try {
-    List<String> result = apiInstance.contentListGet();
+    String result = apiInstance.contentListGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentListGet");
@@ -740,7 +856,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List&lt;String&gt;**
+**String**
 
 ### Authorization
 
@@ -751,9 +867,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentReadContGet"></a>
-# **contentReadContGet**
-> contentReadContGet(cont)
+
+## **contentReadContGet** {#contentReadContGet}
+> String contentReadContGet(cont)
 
 Read content
 
@@ -779,7 +895,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 ContentApi apiInstance = new ContentApi();
 String cont = "cont_example"; // String | CID
 try {
-    apiInstance.contentReadContGet(cont);
+    String result = apiInstance.contentReadContGet(cont);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentReadContGet");
     e.printStackTrace();
@@ -794,7 +911,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -805,9 +922,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStagingZonesGet"></a>
-# **contentStagingZonesGet**
-> contentStagingZonesGet()
+
+## **contentStagingZonesGet** {#contentStagingZonesGet}
+> String contentStagingZonesGet()
 
 Get staging zone for user
 
@@ -832,7 +949,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 ContentApi apiInstance = new ContentApi();
 try {
-    apiInstance.contentStagingZonesGet();
+    String result = apiInstance.contentStagingZonesGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentStagingZonesGet");
     e.printStackTrace();
@@ -844,7 +962,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -855,9 +973,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStatsGet"></a>
-# **contentStatsGet**
-> contentStatsGet(limit, offset)
+
+## **contentStatsGet** {#contentStatsGet}
+> String contentStatsGet(limit, offset)
 
 Get content statistics
 
@@ -884,7 +1002,8 @@ ContentApi apiInstance = new ContentApi();
 String limit = "limit_example"; // String | limit
 String offset = "offset_example"; // String | offset
 try {
-    apiInstance.contentStatsGet(limit, offset);
+    String result = apiInstance.contentStatsGet(limit, offset);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentStatsGet");
     e.printStackTrace();
@@ -900,7 +1019,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -911,9 +1030,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentStatusIdGet"></a>
-# **contentStatusIdGet**
-> contentStatusIdGet(id)
+
+## **contentStatusIdGet** {#contentStatusIdGet}
+> String contentStatusIdGet(id)
 
 Content Status
 
@@ -939,7 +1058,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 ContentApi apiInstance = new ContentApi();
 Integer id = 56; // Integer | Content ID
 try {
-    apiInstance.contentStatusIdGet(id);
+    String result = apiInstance.contentStatusIdGet(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentStatusIdGet");
     e.printStackTrace();
@@ -954,7 +1074,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

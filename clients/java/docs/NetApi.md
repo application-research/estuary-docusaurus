@@ -1,6 +1,6 @@
 # NetApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,9 +11,8 @@ Method | HTTP request | Description
 [**publicNetPeersGet**](NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 
 
-<a name="netAddrsGet"></a>
-# **netAddrsGet**
-> List&lt;String&gt; netAddrsGet()
+## **netAddrsGet** {#netAddrsGet}
+> String netAddrsGet()
 
 Net Addrs
 
@@ -38,7 +37,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 NetApi apiInstance = new NetApi();
 try {
-    List<String> result = apiInstance.netAddrsGet();
+    String result = apiInstance.netAddrsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NetApi#netAddrsGet");
@@ -51,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List&lt;String&gt;**
+**String**
 
 ### Authorization
 
@@ -62,9 +61,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersFailuresMinerGet"></a>
-# **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+
+## **publicMinersFailuresMinerGet** {#publicMinersFailuresMinerGet}
+> String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -90,7 +89,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 NetApi apiInstance = new NetApi();
 String miner = "miner_example"; // String | Filter by miner
 try {
-    apiInstance.publicMinersFailuresMinerGet(miner);
+    String result = apiInstance.publicMinersFailuresMinerGet(miner);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NetApi#publicMinersFailuresMinerGet");
     e.printStackTrace();
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -116,9 +116,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersGet"></a>
-# **publicMinersGet**
-> publicMinersGet()
+
+## **publicMinersGet** {#publicMinersGet}
+> String publicMinersGet()
 
 Get all miners
 
@@ -143,7 +143,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 NetApi apiInstance = new NetApi();
 try {
-    apiInstance.publicMinersGet();
+    String result = apiInstance.publicMinersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NetApi#publicMinersGet");
     e.printStackTrace();
@@ -155,7 +156,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -166,8 +167,8 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicNetAddrsGet"></a>
-# **publicNetAddrsGet**
+
+## **publicNetAddrsGet** {#publicNetAddrsGet}
 > List&lt;String&gt; publicNetAddrsGet()
 
 Net Addrs
@@ -217,8 +218,8 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicNetPeersGet"></a>
-# **publicNetPeersGet**
+
+## **publicNetPeersGet** {#publicNetPeersGet}
 > List&lt;String&gt; publicNetPeersGet()
 
 Net Peers

@@ -1,4 +1,3 @@
-
 # UtilContentAddIpfsBody
 
 ## Properties
@@ -9,6 +8,3 @@ Name | Type | Description | Notes
 **filename** | **String** |  |  [optional]
 **peers** | **List&lt;String&gt;** |  |  [optional]
 **root** | **String** |  |  [optional]
-
-
-

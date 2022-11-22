@@ -1,21 +1,20 @@
 # Swagger\Client\AdminApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adminPeeringPeersDelete**](AdminApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-[**adminPeeringPeersGet**](AdminApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
-[**adminPeeringPeersPost**](AdminApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
-[**adminPeeringStartPost**](AdminApi.md#adminPeeringStartPost) | **POST** /admin/peering/start | Start Peering
-[**adminPeeringStatusGet**](AdminApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
-[**adminPeeringStopPost**](AdminApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
-[**adminSystemConfigGet**](AdminApi.md#adminSystemConfigGet) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
-[**adminUsersGet**](AdminApi.md#adminUsersGet) | **GET** /admin/users | Get all users
+[**adminPeeringPeersDelete**](AdminApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
+[**adminPeeringPeersGet**](AdminApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
+[**adminPeeringPeersPost**](AdminApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
+[**adminPeeringStartPost**](AdminApi.md#adminpeeringstartpost) | **POST** /admin/peering/start | Start Peering
+[**adminPeeringStatusGet**](AdminApi.md#adminpeeringstatusget) | **GET** /admin/peering/status | Check Peering Status
+[**adminPeeringStopPost**](AdminApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
+[**adminSystemConfigGet**](AdminApi.md#adminsystemconfigget) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
+[**adminUsersGet**](AdminApi.md#adminusersget) | **GET** /admin/users | Get all users
 
-
-# **adminPeeringPeersDelete**
-> adminPeeringPeersDelete($body)
+## **adminPeeringPeersDelete** {#adminPeeringPeersDelete}
+> string adminPeeringPeersDelete($body)
 
 Remove peers on Peering Service
 
@@ -25,7 +24,6 @@ This endpoint can be used to remove a Peer from the Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -37,10 +35,11 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(new \Swagger\Client\Model\string[]()); // string[] | Peer ids
+$body = array(True); // bool[] | Peer ids
 
 try {
-    $apiInstance->adminPeeringPeersDelete($body);
+    $result = $apiInstance->adminPeeringPeersDelete($body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -51,11 +50,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **string[]**| Peer ids |
+ **body** | [**bool[]**](../Model/bool.md)| Peer ids |
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -63,13 +62,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+## **adminPeeringPeersGet** {#adminPeeringPeersGet}
+> string adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -79,7 +78,6 @@ This endpoint can be used to list all peers on Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -93,7 +91,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringPeersGet();
+    $result = $apiInstance->adminPeeringPeersGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -105,7 +104,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -118,8 +117,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+## **adminPeeringPeersPost** {#adminPeeringPeersPost}
+> string adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -129,7 +128,6 @@ This endpoint can be used to add a Peer from the Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -143,7 +141,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringPeersPost();
+    $result = $apiInstance->adminPeeringPeersPost();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -155,7 +154,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -168,8 +167,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **adminPeeringStartPost**
-> adminPeeringStartPost()
+## **adminPeeringStartPost** {#adminPeeringStartPost}
+> string adminPeeringStartPost()
 
 Start Peering
 
@@ -179,7 +178,6 @@ This endpoint can be used to start the Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -193,7 +191,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringStartPost();
+    $result = $apiInstance->adminPeeringStartPost();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringStartPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -205,7 +204,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -218,8 +217,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+## **adminPeeringStatusGet** {#adminPeeringStatusGet}
+> string adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -229,7 +228,6 @@ This endpoint can be used to check the Peering status
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -243,7 +241,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringStatusGet();
+    $result = $apiInstance->adminPeeringStatusGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringStatusGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -255,7 +254,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -268,8 +267,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **adminPeeringStopPost**
-> adminPeeringStopPost()
+## **adminPeeringStopPost** {#adminPeeringStopPost}
+> string adminPeeringStopPost()
 
 Stop Peering
 
@@ -279,7 +278,6 @@ This endpoint can be used to stop the Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -293,7 +291,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringStopPost();
+    $result = $apiInstance->adminPeeringStopPost();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringStopPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -305,7 +304,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -318,8 +317,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **adminSystemConfigGet**
-> adminSystemConfigGet()
+## **adminSystemConfigGet** {#adminSystemConfigGet}
+> string adminSystemConfigGet()
 
 Get systems(estuary/shuttle) config
 
@@ -329,7 +328,6 @@ This endpoint is used to get system configs.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -343,7 +341,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminSystemConfigGet();
+    $result = $apiInstance->adminSystemConfigGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminSystemConfigGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -355,7 +354,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -368,8 +367,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **adminUsersGet**
-> adminUsersGet()
+## **adminUsersGet** {#adminUsersGet}
+> string adminUsersGet()
 
 Get all users
 
@@ -379,7 +378,6 @@ This endpoint is used to get all users.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -393,7 +391,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminUsersGet();
+    $result = $apiInstance->adminUsersGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminUsersGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -405,7 +404,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

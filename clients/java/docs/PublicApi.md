@@ -1,9 +1,10 @@
 # PublicApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getCidGet**](PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 [**publicByCidCidGet**](PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 [**publicInfoGet**](PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -16,11 +17,10 @@ Method | HTTP request | Description
 [**publicStatsGet**](PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 
 
-<a name="publicByCidCidGet"></a>
-# **publicByCidCidGet**
-> publicByCidCidGet(cid)
+## **getCidGet** {#getCidGet}
+> getCidGet(cid)
 
-Get Content by Cid
+Get Full Content by Cid
 
 This endpoint returns the content associated with a CID
 
@@ -44,9 +44,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 PublicApi apiInstance = new PublicApi();
 String cid = "cid_example"; // String | Cid
 try {
-    apiInstance.publicByCidCidGet(cid);
+    apiInstance.getCidGet(cid);
 } catch (ApiException e) {
-    System.err.println("Exception when calling PublicApi#publicByCidCidGet");
+    System.err.println("Exception when calling PublicApi#getCidGet");
     e.printStackTrace();
 }
 ```
@@ -70,9 +70,64 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicInfoGet"></a>
-# **publicInfoGet**
-> publicInfoGet()
+
+## **publicByCidCidGet** {#publicByCidCidGet}
+> String publicByCidCidGet(cid)
+
+Get Content by Cid
+
+This endpoint returns the content record associated with a CID
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.PublicApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+PublicApi apiInstance = new PublicApi();
+String cid = "cid_example"; // String | Cid
+try {
+    String result = apiInstance.publicByCidCidGet(cid);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PublicApi#publicByCidCidGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cid** | **String**| Cid |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+## **publicInfoGet** {#publicInfoGet}
+> String publicInfoGet()
 
 Get public node info
 
@@ -97,7 +152,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    apiInstance.publicInfoGet();
+    String result = apiInstance.publicInfoGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicInfoGet");
     e.printStackTrace();
@@ -109,7 +165,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -120,9 +176,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMetricsDealsOnChainGet"></a>
-# **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+
+## **publicMetricsDealsOnChainGet** {#publicMetricsDealsOnChainGet}
+> String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -147,7 +203,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    apiInstance.publicMetricsDealsOnChainGet();
+    String result = apiInstance.publicMetricsDealsOnChainGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMetricsDealsOnChainGet");
     e.printStackTrace();
@@ -159,7 +216,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -170,9 +227,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersDealsMinerGet"></a>
-# **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+
+## **publicMinersDealsMinerGet** {#publicMinersDealsMinerGet}
+> String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -199,7 +256,8 @@ PublicApi apiInstance = new PublicApi();
 String miner = "miner_example"; // String | Filter by miner
 String ignoreFailed = "ignoreFailed_example"; // String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    String result = apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersDealsMinerGet");
     e.printStackTrace();
@@ -215,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -226,9 +284,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersFailuresMinerGet"></a>
-# **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+
+## **publicMinersFailuresMinerGet** {#publicMinersFailuresMinerGet}
+> String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -254,7 +312,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 PublicApi apiInstance = new PublicApi();
 String miner = "miner_example"; // String | Filter by miner
 try {
-    apiInstance.publicMinersFailuresMinerGet(miner);
+    String result = apiInstance.publicMinersFailuresMinerGet(miner);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersFailuresMinerGet");
     e.printStackTrace();
@@ -269,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -280,9 +339,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersGet"></a>
-# **publicMinersGet**
-> publicMinersGet()
+
+## **publicMinersGet** {#publicMinersGet}
+> String publicMinersGet()
 
 Get all miners
 
@@ -307,7 +366,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    apiInstance.publicMinersGet();
+    String result = apiInstance.publicMinersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersGet");
     e.printStackTrace();
@@ -319,7 +379,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -330,9 +390,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersStatsMinerGet"></a>
-# **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+
+## **publicMinersStatsMinerGet** {#publicMinersStatsMinerGet}
+> String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -358,7 +418,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 PublicApi apiInstance = new PublicApi();
 String miner = "miner_example"; // String | Filter by miner
 try {
-    apiInstance.publicMinersStatsMinerGet(miner);
+    String result = apiInstance.publicMinersStatsMinerGet(miner);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersStatsMinerGet");
     e.printStackTrace();
@@ -373,7 +434,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -384,8 +445,8 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicNetAddrsGet"></a>
-# **publicNetAddrsGet**
+
+## **publicNetAddrsGet** {#publicNetAddrsGet}
 > List&lt;String&gt; publicNetAddrsGet()
 
 Net Addrs
@@ -435,8 +496,8 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicNetPeersGet"></a>
-# **publicNetPeersGet**
+
+## **publicNetPeersGet** {#publicNetPeersGet}
 > List&lt;String&gt; publicNetPeersGet()
 
 Net Peers
@@ -486,9 +547,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicStatsGet"></a>
-# **publicStatsGet**
-> publicStatsGet()
+
+## **publicStatsGet** {#publicStatsGet}
+> String publicStatsGet()
 
 Public stats
 
@@ -513,7 +574,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    apiInstance.publicStatsGet();
+    String result = apiInstance.publicStatsGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicStatsGet");
     e.printStackTrace();
@@ -525,7 +587,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

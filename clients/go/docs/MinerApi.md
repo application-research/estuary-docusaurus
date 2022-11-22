@@ -1,15 +1,14 @@
-# \MinerApi
+# MinerApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PublicMinersDealsMinerGet**](MinerApi.md#PublicMinersDealsMinerGet) | **Get** /public/miners/deals/{miner} | Get all miners deals
 [**PublicMinersStatsMinerGet**](MinerApi.md#PublicMinersStatsMinerGet) | **Get** /public/miners/stats/{miner} | Get miner stats
 
-
-# **PublicMinersDealsMinerGet**
-> PublicMinersDealsMinerGet(ctx, miner, optional)
+## **PublicMinersDealsMinerGet** {#PublicMinersDealsMinerGet}
+> string PublicMinersDealsMinerGet(ctx, miner, optional)
 Get all miners deals
 
 This endpoint returns all miners deals
@@ -24,7 +23,6 @@ Name | Type | Description  | Notes
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a MinerApiPublicMinersDealsMinerGetOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -32,7 +30,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -45,8 +43,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PublicMinersStatsMinerGet**
-> PublicMinersStatsMinerGet(ctx, miner)
+## **PublicMinersStatsMinerGet** {#PublicMinersStatsMinerGet}
+> string PublicMinersStatsMinerGet(ctx, miner)
 Get miner stats
 
 This endpoint returns miner stats
@@ -60,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

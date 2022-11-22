@@ -1,6 +1,6 @@
 # MinerApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,9 +8,8 @@ Method | HTTP request | Description
 [**publicMinersStatsMinerGet**](MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 
 
-<a name="publicMinersDealsMinerGet"></a>
-# **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+## **publicMinersDealsMinerGet** {#publicMinersDealsMinerGet}
+> String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -37,7 +36,8 @@ MinerApi apiInstance = new MinerApi();
 String miner = "miner_example"; // String | Filter by miner
 String ignoreFailed = "ignoreFailed_example"; // String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    String result = apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#publicMinersDealsMinerGet");
     e.printStackTrace();
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -64,9 +64,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="publicMinersStatsMinerGet"></a>
-# **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+
+## **publicMinersStatsMinerGet** {#publicMinersStatsMinerGet}
+> String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -92,7 +92,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 MinerApi apiInstance = new MinerApi();
 String miner = "miner_example"; // String | Filter by miner
 try {
-    apiInstance.publicMinersStatsMinerGet(miner);
+    String result = apiInstance.publicMinersStatsMinerGet(miner);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#publicMinersStatsMinerGet");
     e.printStackTrace();
@@ -107,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

@@ -1,6 +1,6 @@
 # PinningApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,9 +11,8 @@ Method | HTTP request | Description
 [**pinningPinsPost**](PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
 
 
-<a name="pinningPinsGet"></a>
-# **pinningPinsGet**
-> pinningPinsGet()
+## **pinningPinsGet** {#pinningPinsGet}
+> TypesIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -38,7 +37,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PinningApi apiInstance = new PinningApi();
 try {
-    apiInstance.pinningPinsGet();
+    TypesIpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsGet");
     e.printStackTrace();
@@ -50,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -61,8 +61,8 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="pinningPinsPinidDelete"></a>
-# **pinningPinsPinidDelete**
+
+## **pinningPinsPinidDelete** {#pinningPinsPinidDelete}
 > pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
@@ -115,9 +115,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="pinningPinsPinidGet"></a>
-# **pinningPinsPinidGet**
-> pinningPinsPinidGet(pinid)
+
+## **pinningPinsPinidGet** {#pinningPinsPinidGet}
+> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -143,7 +143,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | cid
 try {
-    apiInstance.pinningPinsPinidGet(pinid);
+    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidGet");
     e.printStackTrace();
@@ -158,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -169,9 +170,9 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="pinningPinsPinidPost"></a>
-# **pinningPinsPinidPost**
-> pinningPinsPinidPost(pinid)
+
+## **pinningPinsPinidPost** {#pinningPinsPinidPost}
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, body)
 
 Replace a pinned object
 
@@ -196,8 +197,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | Pin ID
+String body = "body_example"; // String | Meta information of new pin
 try {
-    apiInstance.pinningPinsPinidPost(pinid);
+    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(pinid, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
     e.printStackTrace();
@@ -209,10 +212,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **String**| Pin ID |
+ **body** | [**String**](String.md)| Meta information of new pin | [optional]
 
 ### Return type
 
-null (empty response body)
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -220,12 +224,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="pinningPinsPost"></a>
-# **pinningPinsPost**
-> pinningPinsPost(cid, name)
+
+## **pinningPinsPost** {#pinningPinsPost}
+> TypesIpfsPinStatusResponse pinningPinsPost(body)
 
 Add and pin object
 
@@ -249,10 +253,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 PinningApi apiInstance = new PinningApi();
-String cid = "cid_example"; // String | cid
-String name = "name_example"; // String | name
+TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 try {
-    apiInstance.pinningPinsPost(cid, name);
+    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPost(body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPost");
     e.printStackTrace();
@@ -263,12 +267,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **String**| cid |
- **name** | **String**| name |
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
 
 ### Return type
 
-null (empty response body)
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -276,6 +279,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 

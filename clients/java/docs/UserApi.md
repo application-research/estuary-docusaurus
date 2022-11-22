@@ -1,19 +1,18 @@
 # UserApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userApiKeysGet**](UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-[**userApiKeysKeyDelete**](UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**userApiKeysKeyOrHashDelete**](UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](UserApi.md#userExportGet) | **GET** /user/export | Export user data
-[**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
+[**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Get stats for the current user
 
 
-<a name="userApiKeysGet"></a>
-# **userApiKeysGet**
-> List&lt;MainGetApiKeysResp&gt; userApiKeysGet()
+## **userApiKeysGet** {#userApiKeysGet}
+> List&lt;List&lt;MainGetApiKeysResp&gt;&gt; userApiKeysGet()
 
 Get API keys for a user
 
@@ -38,7 +37,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 UserApi apiInstance = new UserApi();
 try {
-    List<MainGetApiKeysResp> result = apiInstance.userApiKeysGet();
+    List<List<MainGetApiKeysResp>> result = apiInstance.userApiKeysGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userApiKeysGet");
@@ -51,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;MainGetApiKeysResp&gt;**](MainGetApiKeysResp.md)
+[**List&lt;List&lt;MainGetApiKeysResp&gt;&gt;**](List.md)
 
 ### Authorization
 
@@ -62,13 +61,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userApiKeysKeyDelete"></a>
-# **userApiKeysKeyDelete**
-> userApiKeysKeyDelete(key)
+
+## **userApiKeysKeyOrHashDelete** {#userApiKeysKeyOrHashDelete}
+> String userApiKeysKeyOrHashDelete(keyOrHash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#x27;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```java
@@ -88,11 +87,12 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 UserApi apiInstance = new UserApi();
-String key = "key_example"; // String | Key
+String keyOrHash = "keyOrHash_example"; // String | Key or Hash
 try {
-    apiInstance.userApiKeysKeyDelete(key);
+    String result = apiInstance.userApiKeysKeyOrHashDelete(keyOrHash);
+    System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling UserApi#userApiKeysKeyDelete");
+    System.err.println("Exception when calling UserApi#userApiKeysKeyOrHashDelete");
     e.printStackTrace();
 }
 ```
@@ -101,11 +101,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **String**| Key |
+ **keyOrHash** | **String**| Key or Hash |
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -116,8 +116,8 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userApiKeysPost"></a>
-# **userApiKeysPost**
+
+## **userApiKeysPost** {#userApiKeysPost}
 > MainGetApiKeysResp userApiKeysPost(expiry, perms)
 
 Create API keys for a user
@@ -142,7 +142,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 UserApi apiInstance = new UserApi();
-String expiry = "expiry_example"; // String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+String expiry = "expiry_example"; // String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 String perms = "perms_example"; // String | Permissions -- currently unused
 try {
     MainGetApiKeysResp result = apiInstance.userApiKeysPost(expiry, perms);
@@ -157,7 +157,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional]
  **perms** | **String**| Permissions -- currently unused | [optional]
 
 ### Return type
@@ -173,8 +173,8 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userExportGet"></a>
-# **userExportGet**
+
+## **userExportGet** {#userExportGet}
 > String userExportGet()
 
 Export user data
@@ -224,13 +224,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userStatsGet"></a>
-# **userStatsGet**
-> MainUserStatsResponse userStatsGet()
 
-Create API keys for a user
+## **userStatsGet** {#userStatsGet}
+> String userStatsGet()
 
-This endpoint is used to create API keys for a user.
+Get stats for the current user
+
+This endpoint is used to geet stats for the current user.
 
 ### Example
 ```java
@@ -251,7 +251,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 UserApi apiInstance = new UserApi();
 try {
-    MainUserStatsResponse result = apiInstance.userStatsGet();
+    String result = apiInstance.userStatsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userStatsGet");
@@ -264,7 +264,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**String**
 
 ### Authorization
 

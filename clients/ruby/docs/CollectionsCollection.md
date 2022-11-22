@@ -10,4 +10,3 @@ Name | Type | Description | Notes
 **user_id** | **Integer** |  | [optional] 
 **uuid** | **String** |  | [optional] 
 
-
