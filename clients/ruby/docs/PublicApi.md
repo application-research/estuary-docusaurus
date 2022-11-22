@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_cid_get**](PublicApi.md#get_cid_get) | **GET** /get/{cid} | Get Full Content by Cid
 [**public_by_cid_cid_get**](PublicApi.md#public_by_cid_cid_get) | **GET** /public/by-cid/{cid} | Get Content by Cid
 [**public_info_get**](PublicApi.md#public_info_get) | **GET** /public/info | Get public node info
 [**public_metrics_deals_on_chain_get**](PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -15,12 +16,64 @@ Method | HTTP request | Description
 [**public_net_peers_get**](PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 [**public_stats_get**](PublicApi.md#public_stats_get) | **GET** /public/stats | Public stats
 
+## **get_cid_get** {#get_cid_get}
+> get_cid_get(cid)
+
+Get Full Content by Cid
+
+This endpoint returns the content associated with a CID
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::PublicApi.new
+cid = 'cid_example' # String | Cid
+
+
+begin
+  #Get Full Content by Cid
+  api_instance.get_cid_get(cid)
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling PublicApi->get_cid_get: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cid** | **String**| Cid | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 ## **public_by_cid_cid_get** {#public_by_cid_cid_get}
 > String public_by_cid_cid_get(cid)
 
 Get Content by Cid
 
-This endpoint returns the content associated with a CID
+This endpoint returns the content record associated with a CID
 
 ### Example
 ```ruby

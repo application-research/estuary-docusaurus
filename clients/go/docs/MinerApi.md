@@ -1,4 +1,4 @@
-# {{classname}}
+# MinerApi
 
 All URIs are relative to *//api.estuary.tech/*
 

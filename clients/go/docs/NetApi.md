@@ -1,4 +1,4 @@
-# {{classname}}
+# NetApi
 
 All URIs are relative to *//api.estuary.tech/*
 

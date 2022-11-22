@@ -4,6 +4,8 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**admin_invites_get**](ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
+[**admin_invites_post**](ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
 [**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 [**content_add_ipfs_post**](ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
 [**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Add new content
@@ -21,6 +23,110 @@ Method | HTTP request | Description
 [**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
+
+## **admin_invites_get** {#admin_invites_get}
+> str admin_invites_get()
+
+Get Estuary invites
+
+This endpoint is used to list all estuary invites.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+
+try:
+    # Get Estuary invites
+    api_response = api_instance.admin_invites_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContentApi->admin_invites_get: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+## **admin_invites_post** {#admin_invites_post}
+> str admin_invites_post(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+code = 'code_example' # str | Invite code to be created
+
+try:
+    # Create an Estuary invite
+    api_response = api_instance.admin_invites_post(code)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContentApi->admin_invites_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **str**| Invite code to be created | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **content_add_car_post** {#content_add_car_post}
 > UtilContentAddResponse content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)

@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getCidGet**](PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 [**publicByCidCidGet**](PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 [**publicInfoGet**](PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -16,12 +17,62 @@ Method | HTTP request | Description
 [**publicStatsGet**](PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 
 
+## **getCidGet** {#getCidGet}
+> getCidGet(cid)
+
+Get Full Content by Cid
+
+This endpoint returns the content associated with a CID
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.PublicApi();
+let cid = "cid_example"; // String | Cid
+
+apiInstance.getCidGet(cid, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cid** | **String**| Cid | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
 ## **publicByCidCidGet** {#publicByCidCidGet}
 > &#x27;String&#x27; publicByCidCidGet(cid)
 
 Get Content by Cid
 
-This endpoint returns the content associated with a CID
+This endpoint returns the content record associated with a CID
 
 ### Example
 ```javascript

@@ -116,6 +116,8 @@ Class | Method | HTTP request | Description
 *EstuaryClient.CollectionsApi* | [**collectionsFsAddPost**](docs/CollectionsApi.md#collectionsFsAddPost) | **POST** /collections/fs/add | Add a file to a collection
 *EstuaryClient.CollectionsApi* | [**collectionsGet**](docs/CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 *EstuaryClient.CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
+*EstuaryClient.ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+*EstuaryClient.ContentApi* | [**adminInvitesPost**](docs/ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 *EstuaryClient.ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *EstuaryClient.ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 *EstuaryClient.ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
@@ -171,6 +173,7 @@ Class | Method | HTTP request | Description
 *EstuaryClient.PinningApi* | [**pinningPinsPinidGet**](docs/PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *EstuaryClient.PinningApi* | [**pinningPinsPinidPost**](docs/PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *EstuaryClient.PinningApi* | [**pinningPinsPost**](docs/PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
+*EstuaryClient.PublicApi* | [**getCidGet**](docs/PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 *EstuaryClient.PublicApi* | [**publicByCidCidGet**](docs/PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *EstuaryClient.PublicApi* | [**publicInfoGet**](docs/PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 *EstuaryClient.PublicApi* | [**publicMetricsDealsOnChainGet**](docs/PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -185,7 +188,7 @@ Class | Method | HTTP request | Description
 *EstuaryClient.UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *EstuaryClient.UserApi* | [**userApiKeysPost**](docs/UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *EstuaryClient.UserApi* | [**userExportGet**](docs/UserApi.md#userExportGet) | **GET** /user/export | Export user data
-*EstuaryClient.UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
+*EstuaryClient.UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Get stats for the current user
 
 ## Documentation for Models
 

@@ -1,4 +1,4 @@
-# {{classname}}
+# UserApi
 
 All URIs are relative to *//api.estuary.tech/*
 
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**UserApiKeysKeyOrHashDelete**](UserApi.md#UserApiKeysKeyOrHashDelete) | **Delete** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**UserApiKeysPost**](UserApi.md#UserApiKeysPost) | **Post** /user/api-keys | Create API keys for a user
 [**UserExportGet**](UserApi.md#UserExportGet) | **Get** /user/export | Export user data
-[**UserStatsGet**](UserApi.md#UserStatsGet) | **Get** /user/stats | Create API keys for a user
+[**UserStatsGet**](UserApi.md#UserStatsGet) | **Get** /user/stats | Get stats for the current user
 
 ## **UserApiKeysGet** {#UserApiKeysGet}
 > [][]MainGetApiKeysResp UserApiKeysGet(ctx, )
@@ -123,9 +123,9 @@ This endpoint does not need any parameter.
 
 ## **UserStatsGet** {#UserStatsGet}
 > string UserStatsGet(ctx, )
-Create API keys for a user
+Get stats for the current user
 
-This endpoint is used to create API keys for a user.
+This endpoint is used to geet stats for the current user.
 
 ### Required Parameters
 This endpoint does not need any parameter.

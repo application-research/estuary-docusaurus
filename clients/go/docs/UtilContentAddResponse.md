@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Cid** | **string** |  | [optional] [default to null]
 **EstuaryId** | **int32** |  | [optional] [default to null]
+**EstuaryRetrievalUrl** | **string** |  | [optional] [default to null]
 **Providers** | **[]string** |  | [optional] [default to null]
 **RetrievalUrl** | **string** |  | [optional] [default to null]
 

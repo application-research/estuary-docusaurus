@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_cid_get**](PublicApi.md#get_cid_get) | **GET** /get/{cid} | Get Full Content by Cid
 [**public_by_cid_cid_get**](PublicApi.md#public_by_cid_cid_get) | **GET** /public/by-cid/{cid} | Get Content by Cid
 [**public_info_get**](PublicApi.md#public_info_get) | **GET** /public/info | Get public node info
 [**public_metrics_deals_on_chain_get**](PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -15,12 +16,65 @@ Method | HTTP request | Description
 [**public_net_peers_get**](PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 [**public_stats_get**](PublicApi.md#public_stats_get) | **GET** /public/stats | Public stats
 
+## **get_cid_get** {#get_cid_get}
+> get_cid_get(cid)
+
+Get Full Content by Cid
+
+This endpoint returns the content associated with a CID
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
+cid = 'cid_example' # str | Cid
+
+try:
+    # Get Full Content by Cid
+    api_instance.get_cid_get(cid)
+except ApiException as e:
+    print("Exception when calling PublicApi->get_cid_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cid** | **str**| Cid | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 ## **public_by_cid_cid_get** {#public_by_cid_cid_get}
 > str public_by_cid_cid_get(cid)
 
 Get Content by Cid
 
-This endpoint returns the content associated with a CID
+This endpoint returns the content record associated with a CID
 
 ### Example
 ```python

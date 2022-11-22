@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**userApiKeysKeyOrHashDelete**](UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](UserApi.md#userExportGet) | **GET** /user/export | Export user data
-[**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
+[**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Get stats for the current user
 
 
 ## **userApiKeysGet** {#userApiKeysGet}
@@ -207,9 +207,9 @@ This endpoint does not need any parameter.
 ## **userStatsGet** {#userStatsGet}
 > &#x27;String&#x27; userStatsGet()
 
-Create API keys for a user
+Get stats for the current user
 
-This endpoint is used to create API keys for a user.
+This endpoint is used to geet stats for the current user.
 
 ### Example
 ```javascript

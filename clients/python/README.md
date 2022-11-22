@@ -129,7 +129,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.UserApi(estuary_client.ApiClient(configuration))
 
 try:
-    # Create API keys for a user
+    # Get stats for the current user
     api_response = api_instance.user_stats_get()
     pprint(api_response)
 except ApiException as e:
@@ -146,7 +146,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**user_api_keys_key_or_hash_delete**](docs/UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**user_api_keys_post**](docs/UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**user_export_get**](docs/UserApi.md#user_export_get) | **GET** /user/export | Export user data
-*UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
+*UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Get stats for the current user
 *AdminApi* | [**admin_peering_peers_delete**](docs/AdminApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**admin_peering_peers_get**](docs/AdminApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**admin_peering_peers_post**](docs/AdminApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -166,6 +166,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collections_fs_add_post**](docs/CollectionsApi.md#collections_fs_add_post) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collections_get**](docs/CollectionsApi.md#collections_get) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collections_post**](docs/CollectionsApi.md#collections_post) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**admin_invites_get**](docs/ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
+*ContentApi* | [**admin_invites_post**](docs/ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**content_add_car_post**](docs/ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**content_add_ipfs_post**](docs/ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**content_add_post**](docs/ContentApi.md#content_add_post) | **POST** /content/add | Add new content
@@ -221,6 +223,7 @@ Class | Method | HTTP request | Description
 *PinningApi* | [**pinning_pins_pinid_get**](docs/PinningApi.md#pinning_pins_pinid_get) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *PinningApi* | [**pinning_pins_pinid_post**](docs/PinningApi.md#pinning_pins_pinid_post) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *PinningApi* | [**pinning_pins_post**](docs/PinningApi.md#pinning_pins_post) | **POST** /pinning/pins | Add and pin object
+*PublicApi* | [**get_cid_get**](docs/PublicApi.md#get_cid_get) | **GET** /get/{cid} | Get Full Content by Cid
 *PublicApi* | [**public_by_cid_cid_get**](docs/PublicApi.md#public_by_cid_cid_get) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *PublicApi* | [**public_info_get**](docs/PublicApi.md#public_info_get) | **GET** /public/info | Get public node info
 *PublicApi* | [**public_metrics_deals_on_chain_get**](docs/PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics

@@ -1,4 +1,4 @@
-# {{classname}}
+# PeersApi
 
 All URIs are relative to *//api.estuary.tech/*
 

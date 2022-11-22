@@ -1,4 +1,4 @@
-# {{classname}}
+# CollectionsApi
 
 All URIs are relative to *//api.estuary.tech/*
 

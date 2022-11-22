@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**userApiKeysKeyOrHashDelete**](UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](UserApi.md#userexportget) | **GET** /user/export | Export user data
-[**userStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
+[**userStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Get stats for the current user
 
 ## **userApiKeysGet** {#userApiKeysGet}
 > \Swagger\Client\Model\MainGetApiKeysResp[][] userApiKeysGet()
@@ -223,9 +223,9 @@ This endpoint does not need any parameter.
 ## **userStatsGet** {#userStatsGet}
 > string userStatsGet()
 
-Create API keys for a user
+Get stats for the current user
 
-This endpoint is used to create API keys for a user.
+This endpoint is used to geet stats for the current user.
 
 ### Example
 ```php

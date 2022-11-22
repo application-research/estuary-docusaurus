@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-11-18T01:22:39.488Z[GMT]
+  - Build date: 2022-11-21T16:22:16.042Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -332,6 +332,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](docs/CollectionsApi.md#collectionsFsAddPost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](docs/CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+*ContentApi* | [**adminInvitesPost**](docs/ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
@@ -387,6 +389,7 @@ Class | Method | HTTP request | Description
 *PinningApi* | [**pinningPinsPinidGet**](docs/PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *PinningApi* | [**pinningPinsPinidPost**](docs/PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *PinningApi* | [**pinningPinsPost**](docs/PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
+*PublicApi* | [**getCidGet**](docs/PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 *PublicApi* | [**publicByCidCidGet**](docs/PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *PublicApi* | [**publicInfoGet**](docs/PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 *PublicApi* | [**publicMetricsDealsOnChainGet**](docs/PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -401,7 +404,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](docs/UserApi.md#userExportGet) | **GET** /user/export | Export user data
-*UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
+*UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Get stats for the current user
 
 ## Documentation for Models
 

@@ -4,6 +4,8 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
@@ -21,6 +23,101 @@ Method | HTTP request | Description
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
+
+
+## **adminInvitesGet** {#adminInvitesGet}
+> &#x27;String&#x27; adminInvitesGet()
+
+Get Estuary invites
+
+This endpoint is used to list all estuary invites.
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+apiInstance.adminInvitesGet((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+## **adminInvitesPost** {#adminInvitesPost}
+> &#x27;String&#x27; adminInvitesPost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let code = "code_example"; // String | Invite code to be created
+
+apiInstance.adminInvitesPost(code, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created | 
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 
 ## **contentAddCarPost** {#contentAddCarPost}

@@ -1,9 +1,11 @@
-# {{classname}}
+# ContentApi
 
 All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AdminInvitesGet**](ContentApi.md#AdminInvitesGet) | **Get** /admin/invites | Get Estuary invites
+[**AdminInvitesPost**](ContentApi.md#AdminInvitesPost) | **Post** /admin/invites | Create an Estuary invite
 [**ContentAddCarPost**](ContentApi.md#ContentAddCarPost) | **Post** /content/add-car | Add Car object
 [**ContentAddIpfsPost**](ContentApi.md#ContentAddIpfsPost) | **Post** /content/add-ipfs | Add IPFS object
 [**ContentAddPost**](ContentApi.md#ContentAddPost) | **Post** /content/add | Add new content
@@ -21,6 +23,58 @@ Method | HTTP request | Description
 [**ContentStagingZonesGet**](ContentApi.md#ContentStagingZonesGet) | **Get** /content/staging-zones | Get staging zone for user
 [**ContentStatsGet**](ContentApi.md#ContentStatsGet) | **Get** /content/stats | Get content statistics
 [**ContentStatusIdGet**](ContentApi.md#ContentStatusIdGet) | **Get** /content/status/{id} | Content Status
+
+## **AdminInvitesGet** {#AdminInvitesGet}
+> string AdminInvitesGet(ctx, )
+Get Estuary invites
+
+This endpoint is used to list all estuary invites.
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+## **AdminInvitesPost** {#AdminInvitesPost}
+> string AdminInvitesPost(ctx, code)
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **code** | **string**| Invite code to be created | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **ContentAddCarPost** {#ContentAddCarPost}
 > UtilContentAddResponse ContentAddCarPost(ctx, body, optional)

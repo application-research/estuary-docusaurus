@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cid** | **string** |  | [optional] 
 **estuary_id** | **int** |  | [optional] 
+**estuary_retrieval_url** | **string** |  | [optional] 
 **providers** | **string[]** |  | [optional] 
 **retrieval_url** | **string** |  | [optional] 
 

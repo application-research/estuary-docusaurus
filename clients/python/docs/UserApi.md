@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**user_api_keys_key_or_hash_delete**](UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**user_api_keys_post**](UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 [**user_export_get**](UserApi.md#user_export_get) | **GET** /user/export | Export user data
-[**user_stats_get**](UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
+[**user_stats_get**](UserApi.md#user_stats_get) | **GET** /user/stats | Get stats for the current user
 
 ## **user_api_keys_get** {#user_api_keys_get}
 > list[list[MainGetApiKeysResp]] user_api_keys_get()
@@ -223,9 +223,9 @@ This endpoint does not need any parameter.
 ## **user_stats_get** {#user_stats_get}
 > str user_stats_get()
 
-Create API keys for a user
+Get stats for the current user
 
-This endpoint is used to create API keys for a user.
+This endpoint is used to geet stats for the current user.
 
 ### Example
 ```python
@@ -245,7 +245,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.UserApi(estuary_client.ApiClient(configuration))
 
 try:
-    # Create API keys for a user
+    # Get stats for the current user
     api_response = api_instance.user_stats_get()
     pprint(api_response)
 except ApiException as e:

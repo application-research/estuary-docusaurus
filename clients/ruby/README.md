@@ -414,6 +414,42 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+
+begin
+  #Get Estuary invites
+  result = api_instance.admin_invites_get
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->admin_invites_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+code = 'code_example' # String | Invite code to be created
+
+
+begin
+  #Create an Estuary invite
+  result = api_instance.admin_invites_post(code)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->admin_invites_post: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
 body = 'body_example' # String | Car
 opts = { 
   ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
@@ -1445,6 +1481,24 @@ cid = 'cid_example' # String | Cid
 
 
 begin
+  #Get Full Content by Cid
+  api_instance.get_cid_get(cid)
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling PublicApi->get_cid_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::PublicApi.new
+cid = 'cid_example' # String | Cid
+
+
+begin
   #Get Content by Cid
   result = api_instance.public_by_cid_cid_get(cid)
   p result
@@ -1697,7 +1751,7 @@ end
 api_instance = SwaggerClient::UserApi.new
 
 begin
-  #Create API keys for a user
+  #Get stats for the current user
   result = api_instance.user_stats_get
   p result
 rescue SwaggerClient::ApiError => e
@@ -1730,6 +1784,8 @@ Class | Method | HTTP request | Description
 *SwaggerClient::CollectionsApi* | [**collections_fs_add_post**](docs/CollectionsApi.md#collections_fs_add_post) | **POST** /collections/fs/add | Add a file to a collection
 *SwaggerClient::CollectionsApi* | [**collections_get**](docs/CollectionsApi.md#collections_get) | **GET** /collections/ | List all collections
 *SwaggerClient::CollectionsApi* | [**collections_post**](docs/CollectionsApi.md#collections_post) | **POST** /collections/ | Create a new collection
+*SwaggerClient::ContentApi* | [**admin_invites_get**](docs/ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
+*SwaggerClient::ContentApi* | [**admin_invites_post**](docs/ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
 *SwaggerClient::ContentApi* | [**content_add_car_post**](docs/ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 *SwaggerClient::ContentApi* | [**content_add_ipfs_post**](docs/ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
 *SwaggerClient::ContentApi* | [**content_add_post**](docs/ContentApi.md#content_add_post) | **POST** /content/add | Add new content
@@ -1785,6 +1841,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::PinningApi* | [**pinning_pins_pinid_get**](docs/PinningApi.md#pinning_pins_pinid_get) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *SwaggerClient::PinningApi* | [**pinning_pins_pinid_post**](docs/PinningApi.md#pinning_pins_pinid_post) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *SwaggerClient::PinningApi* | [**pinning_pins_post**](docs/PinningApi.md#pinning_pins_post) | **POST** /pinning/pins | Add and pin object
+*SwaggerClient::PublicApi* | [**get_cid_get**](docs/PublicApi.md#get_cid_get) | **GET** /get/{cid} | Get Full Content by Cid
 *SwaggerClient::PublicApi* | [**public_by_cid_cid_get**](docs/PublicApi.md#public_by_cid_cid_get) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *SwaggerClient::PublicApi* | [**public_info_get**](docs/PublicApi.md#public_info_get) | **GET** /public/info | Get public node info
 *SwaggerClient::PublicApi* | [**public_metrics_deals_on_chain_get**](docs/PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -1799,7 +1856,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::UserApi* | [**user_api_keys_key_or_hash_delete**](docs/UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *SwaggerClient::UserApi* | [**user_api_keys_post**](docs/UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 *SwaggerClient::UserApi* | [**user_export_get**](docs/UserApi.md#user_export_get) | **GET** /user/export | Export user data
-*SwaggerClient::UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
+*SwaggerClient::UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Get stats for the current user
 
 ## Documentation for Models
 

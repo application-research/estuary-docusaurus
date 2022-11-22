@@ -41,6 +41,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**CollectionsFsAddPost**](docs/CollectionsApi.md#collectionsfsaddpost) | **Post** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**CollectionsGet**](docs/CollectionsApi.md#collectionsget) | **Get** /collections/ | List all collections
 *CollectionsApi* | [**CollectionsPost**](docs/CollectionsApi.md#collectionspost) | **Post** /collections/ | Create a new collection
+*ContentApi* | [**AdminInvitesGet**](docs/ContentApi.md#admininvitesget) | **Get** /admin/invites | Get Estuary invites
+*ContentApi* | [**AdminInvitesPost**](docs/ContentApi.md#admininvitespost) | **Post** /admin/invites | Create an Estuary invite
 *ContentApi* | [**ContentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **Post** /content/add-car | Add Car object
 *ContentApi* | [**ContentAddIpfsPost**](docs/ContentApi.md#contentaddipfspost) | **Post** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**ContentAddPost**](docs/ContentApi.md#contentaddpost) | **Post** /content/add | Add new content
@@ -96,6 +98,7 @@ Class | Method | HTTP request | Description
 *PinningApi* | [**PinningPinsPinidGet**](docs/PinningApi.md#pinningpinspinidget) | **Get** /pinning/pins/{pinid} | Get a pin status object
 *PinningApi* | [**PinningPinsPinidPost**](docs/PinningApi.md#pinningpinspinidpost) | **Post** /pinning/pins/{pinid} | Replace a pinned object
 *PinningApi* | [**PinningPinsPost**](docs/PinningApi.md#pinningpinspost) | **Post** /pinning/pins | Add and pin object
+*PublicApi* | [**GetCidGet**](docs/PublicApi.md#getcidget) | **Get** /get/{cid} | Get Full Content by Cid
 *PublicApi* | [**PublicByCidCidGet**](docs/PublicApi.md#publicbycidcidget) | **Get** /public/by-cid/{cid} | Get Content by Cid
 *PublicApi* | [**PublicInfoGet**](docs/PublicApi.md#publicinfoget) | **Get** /public/info | Get public node info
 *PublicApi* | [**PublicMetricsDealsOnChainGet**](docs/PublicApi.md#publicmetricsdealsonchainget) | **Get** /public/metrics/deals-on-chain | Get deal metrics
@@ -110,7 +113,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**UserApiKeysKeyOrHashDelete**](docs/UserApi.md#userapikeyskeyorhashdelete) | **Delete** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**UserApiKeysPost**](docs/UserApi.md#userapikeyspost) | **Post** /user/api-keys | Create API keys for a user
 *UserApi* | [**UserExportGet**](docs/UserApi.md#userexportget) | **Get** /user/export | Export user data
-*UserApi* | [**UserStatsGet**](docs/UserApi.md#userstatsget) | **Get** /user/stats | Create API keys for a user
+*UserApi* | [**UserStatsGet**](docs/UserApi.md#userstatsget) | **Get** /user/stats | Get stats for the current user
 
 ## Documentation For Models
 
