@@ -23,7 +23,7 @@ const config = {
       /** @type {import('docusaurus-preset-openapi').Options} */
       ({
         docs: {
-          routeBasePath: '/',
+          routeBasePath: '/docs',
           editUrl:
             'https://github.com/application-research/estuary-documentation/tree/main/',
         },
