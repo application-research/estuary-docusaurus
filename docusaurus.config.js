@@ -23,7 +23,8 @@ const config = {
       /** @type {import('docusaurus-preset-openapi').Options} */
       ({
         docs: {
-          routeBasePath: '/docs',
+          routeBasePath: "/docs",
+          breadcrumbs: false,
           editUrl:
             "https://github.com/application-research/estuary-documentation/tree/main/",
         },
@@ -141,8 +142,8 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
-                to: "/docs/learn/intro",
+                label: "Quickstart",
+                to: "/docs/Quickstart/What is Estuary",
               },
             ],
           },
@@ -170,10 +171,10 @@ const config = {
           {
             title: "More",
             items: [
-              {
-                label: "Blog",
-                to: "/blog",
-              },
+              // {
+              //   label: "Blog",
+              //   to: "/blog",
+              // },
               {
                 label: "GitHub",
                 href: "https://github.com/application-research/estuary",
@@ -200,7 +201,6 @@ const config = {
         id: "clients",
         path: "clients",
         routeBasePath: "clients",
-        breadcrumbs: false,
         sidebarPath: require.resolve("./sidebars.js"),
         // ... other options
       },
