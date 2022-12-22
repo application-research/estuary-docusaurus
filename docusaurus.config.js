@@ -200,6 +200,7 @@ const config = {
         id: "clients",
         path: "clients",
         routeBasePath: "clients",
+        breadcrumbs: false,
         sidebarPath: require.resolve("./sidebars.js"),
         // ... other options
       },
