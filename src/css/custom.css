@@ -15,6 +15,9 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  --ifm-navbar-height: 48px;
+  --ifm-navbar-item-padding-vertical: 0px;
+
 }
 [data-theme='dark'] {
   --ifm-color-primary: hsl(240, 100%, 69%)
@@ -46,6 +49,11 @@ body {
   --color-primary: rgba(0, 2, 255, 1);
 
   --main-text-details: #8d8d8d;
+}
+
+.navbar__link{
+  font-size:14px;
+  font-weight:600 !important;
 }
 
 pre {
