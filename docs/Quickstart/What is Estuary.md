@@ -5,10 +5,8 @@ sidebar_label: What is Estuary?
 
 # Quickstart Guide
 
-We're excited to have you try out Estuary! Estuary is an open source software that allows easy sending of public data to the Filecoin network that can be retrieved from anywhere.
+We're excited to have you try out Estuary! Estuary is a reliable way to upload public data onto [Filecoin](https://filecoin.io) and pin it to [IPFS](https://ipfs.io/).
 
-### Why does Estuary Exist?
+For more information on what Estuary is, visit our [home page](https://estuary.tech). If you are a developer looking to use Estuary, continue through this quickstart guide.
 
-The [Application Research Group (ARG)](https://arg.protocol.ai) helped make [Filecoin](https://filecoin.io) and the [ARG](https://arg.protocol.ai) wanted to provide an end-to-end example of how to use IPFS, Filecoin, and other technologies together.
-
-Read our [FAQ](../Learn/faq) for more frequently asked questions and criticism.
+Visit our [FAQ](/docs/learn/faq) for more frequently asked questions.
