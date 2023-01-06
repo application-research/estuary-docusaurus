@@ -128,11 +128,6 @@ const config = {
           },
           { to: "/api", label: "API Documentation", position: "left" },
           // { to: '/blog', label: 'Blog', position: 'left' }, (Removing the link to blog for now)
-          {
-            href: "https://github.com/application-research/estuary",
-            label: "GitHub",
-            position: "right",
-          },
         ],
       },
       footer: {
