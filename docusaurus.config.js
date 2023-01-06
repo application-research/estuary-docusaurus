@@ -106,14 +106,14 @@ const config = {
         },
       },
       navbar: {
-        logo: {
-          target: "_self",
-          href: "https://estuary.tech",
-          alt: "Estuary Logo",
-          src: "img/Estuary.svg",
-          srcDark: "img/Estuary_dark.svg",
-        },
         items: [
+          {
+            label: "Estuary",
+            to: "https://estuary.tech",
+            position: "left",
+            className: 'logo'
+
+          },
           {
             type: "doc",
             docId: "Learn/intro",

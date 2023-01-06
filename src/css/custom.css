@@ -17,6 +17,7 @@
   --ifm-code-font-size: 95%;
   --ifm-navbar-height: 48px;
   --ifm-navbar-item-padding-vertical: 0px;
+  --ifm-navbar-padding-horizontal: 0px;
 
 }
 [data-theme='dark'] {
@@ -53,7 +54,13 @@ body {
 
 .navbar__link{
   font-size:14px;
-  font-weight:600 !important;
+  font-weight:600;
+}
+
+
+.navbar__items .logo{
+  padding-left:0 !important;
+  font-weight:700;
 }
 
 pre {
