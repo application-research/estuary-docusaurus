@@ -1,0 +1,11 @@
+# Setting up your own dev environment
+0. Create a blank working directory - for example ~/$username/estuary-dev and open a terminal in that folder
+1. clone https://github.com/application-research/estuary-www
+2. run `npm install` and then `npm run dev` to start a web server on [http://localhost:4444]
+2. clone https://github.com/application-research/estuary.git
+3. run `make` to build your estuary server. There are instructions here for building estuary https://github.com/application-research/estuary#readme
+4. run the command `./estuary setup --username admin --password password` to set up your auth token which should look something like this: `Auth Token: ESTxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxARY`
+6. start the estuary server by running these commands: `ulimit -n 10000; ./estuary`
+7. go to the url http://localhost:4444/sign-in in your web browser and put in your auth token at the bottom of the page and click authenticate
+8. After you login go to http://localhost:4444/admin/shuttle and click initialize a shuttle
+9. Notice the handle and token secrets in the website and then start an estuary shuttle with the command `./estuary-shuttle --dev --estuary-api=localhost:3004 --auth-token=ESTxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxARY --handle=SHUTTLEHANDLE --logging --host=localhost:3005`
