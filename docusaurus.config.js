@@ -138,7 +138,7 @@ const config = {
             items: [
               {
                 label: "Quickstart",
-                to: "/docs/Quickstart/What is Estuary",
+                to: "/docs/Quickstart/Get an API Key",
               },
             ],
           },
