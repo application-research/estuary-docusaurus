@@ -1,3 +1,11 @@
+# Quickstart Guide
+
+We're excited to have you try out Estuary! Estuary is a reliable way to upload public data onto [Filecoin](https://filecoin.io) and pin it to [IPFS](https://ipfs.io/).
+
+For more information on what Estuary is, visit our [home page](https://estuary.tech). If you are a developer looking to use Estuary, continue through this quickstart guide.
+
+Questions? Visit the [FAQ](/docs/learn/faq) or reach out to us on [Slack](https://filecoin.io/slack)!
+
 # Get an API key
 
 As a developer you have probably used API keys before. Estuary provides a unique identifier used to authenticate a user, developer, or calling program to an application programming interface we have created.
@@ -32,10 +40,9 @@ On this screen you should see a button to generate an API key, click it.
 
 ### Test your API key
 
-Use your new API key on the screen to the right by clicking the Authorize button and pasting in your Api Key. 
+Use your new API key on the screen to the right by clicking the Authorize button and pasting in your Api Key.
 
 ** HOWEVER ** please note that the Authorize button sets the HTTP Authorization Header and to properly use the Estuary API you should enter a value for the header in the format Bearer ESTxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxARY
-
 
 ### What is next?
 
