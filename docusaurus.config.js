@@ -120,13 +120,7 @@ const config = {
             position: "left",
             label: "Docs",
           },
-          {
-            to: "/clients",
-            docsPluginId: "clients",
-            label: "Supported API Clients",
-            position: "left",
-          },
-          { to: "/api", label: "API Documentation", position: "left" },
+          { to: "/api", label: "API", position: "left" },
           // { to: '/blog', label: 'Blog', position: 'left' }, (Removing the link to blog for now)
         ],
       },
@@ -190,16 +184,6 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     "docusaurus-plugin-sass",
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "clients",
-        path: "clients",
-        routeBasePath: "clients",
-        sidebarPath: require.resolve("./sidebars.js"),
-        // ... other options
-      },
-    ],
   ],
 };
 
