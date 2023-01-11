@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# What is Estuary?
+# FAQ 2
 
 Estuary is an open source software that allows easy sending of public data to the Filecoin network that can be retrieved from anywhere.
 
