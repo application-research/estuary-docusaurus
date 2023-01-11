@@ -115,8 +115,7 @@ const config = {
 
           },
           {
-            type: "doc",
-            docId: "Learn/intro",
+	    to: "/",
             position: "left",
             label: "Docs",
           },
@@ -132,7 +131,7 @@ const config = {
             items: [
               {
                 label: "Quickstart",
-                to: "/docs/Quickstart/Get an API Key",
+                to: "/",
               },
             ],
           },
