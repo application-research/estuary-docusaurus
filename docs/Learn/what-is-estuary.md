@@ -14,6 +14,8 @@ Read our [FAQ](../Learn/faq) for more frequently asked questions and criticism.
 
 ### How do you make Filecoin storage deals?
 
+![alt text](https://user-images.githubusercontent.com/28320272/212175640-273f467a-b8a5-4236-b8e5-977e546e43ef.png)
+
 All data is currently uploaded to our hosted Estuary Node (Written in Go) in North America. Filecoin deals are made immediately against miners listed on our index. When a file is uploaded:
 
 1. A proposal receipt is provided.
