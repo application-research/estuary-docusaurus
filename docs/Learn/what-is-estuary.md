@@ -65,6 +65,12 @@ Given any given person, let us imagine they made a request for their data. As an
 
 Still confusing? Check out the [source code](https://github.com/application-research/estuary/blob/master/retrieval.go).
 
+### Who is a Storage Provider
+
+![alt text](https://user-images.githubusercontent.com/28320272/212178311-7dd89211-0b40-4281-88e3-75f1f5c7b966.png)
+
+**Storage providers** are the heart of the Filecoin network. They earn Filecoin by storing data for clients and computing cryptographic proofs to verify storage over time. The more storage a provider contributes to the network, the higher their chances of earning transaction fees and block rewards. Learn more about [how providing storage works](https://docs.filecoin.io/storage-provider/basics/how-providing-storage-works/). You can apply to be a storage provider [here](https://docs-beta.estuary.tech/docs/Learn/get-provider-added).
+
 ### People are making deals against my system, where are the logs?
 
 - All of the miners we work with are located on this [API documentation page](https://docs.estuary.tech/api-public-miners) and [here](https://estuary.tech/ecosystem).
