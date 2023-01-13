@@ -14,6 +14,8 @@ Read our [FAQ](../Learn/faq) for more frequently asked questions and criticism.
 
 ### How do you make Filecoin storage deals?
 
+![alt text](https://user-images.githubusercontent.com/28320272/212175640-273f467a-b8a5-4236-b8e5-977e546e43ef.png)
+
 All data is currently uploaded to our hosted Estuary Node (Written in Go) in North America. Filecoin deals are made immediately against miners listed on our index. When a file is uploaded:
 
 1. A proposal receipt is provided.
@@ -62,6 +64,12 @@ Given any given person, let us imagine they made a request for their data. As an
 - The CID is served back to the requester.
 
 Still confusing? Check out the [source code](https://github.com/application-research/estuary/blob/master/retrieval.go).
+
+### Who is a Storage Provider
+
+![alt text](https://user-images.githubusercontent.com/28320272/212178311-7dd89211-0b40-4281-88e3-75f1f5c7b966.png)
+
+**Storage providers** are the heart of the Filecoin network. They earn Filecoin by storing data for clients and computing cryptographic proofs to verify storage over time. The more storage a provider contributes to the network, the higher their chances of earning transaction fees and block rewards. Learn more about [how providing storage works](https://docs.filecoin.io/storage-provider/basics/how-providing-storage-works/). You can apply to be a storage provider [here](https://docs-beta.estuary.tech/docs/Learn/get-provider-added).
 
 ### People are making deals against my system, where are the logs?
 
