@@ -16,9 +16,17 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/Tutorials/Quickstart/Get an API Key"
+            to="/docs/Learn/Quickstart/Get an API Key"
           >
             Get Started
+          </Link>
+        </div>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/get-provider-added"
+          >
+            SP Application
           </Link>
         </div>
       </div>

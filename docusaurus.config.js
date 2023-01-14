@@ -111,11 +111,10 @@ const config = {
             label: "Estuary",
             to: "https://estuary.tech",
             position: "left",
-            className: 'logo'
-
+            className: "logo",
           },
           {
-	    to: "/",
+            to: "/",
             position: "left",
             label: "Docs",
           },
@@ -131,7 +130,7 @@ const config = {
             items: [
               {
                 label: "Quickstart",
-                to: "/",
+                to: "/docs/Learn/Quickstart/Get an API Key",
               },
             ],
           },
@@ -144,7 +143,7 @@ const config = {
               },
               {
                 label: "Join Slack",
-                href: "https://docs.estuary.tech/#:~:text=Join%20Slack%20(%23ecosystem%2Ddev)",
+                href: "https://filecoin.io/slack",
               },
               {
                 label: "Stack Overflow",

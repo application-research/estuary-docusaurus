@@ -1,25 +1,26 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
+
 # Managing files with Rclone
 
 ### What is rclone?
 
-Rclone *("rsync for cloud storage")* is a **command-line program** to sync files and directories to and from different cloud storage providers. According to the official [rclone website](https://rclone.org/), there are over 40 cloud storage providers that support rclone. Estuary's rclone support gives developers and users the ability to easily manage their data in either centralized or decentralized manner among various storage providers.
+Rclone _("rsync for cloud storage")_ is a **command-line program** to sync files and directories to and from different cloud storage providers. According to the official [rclone website](https://rclone.org/), there are over 40 cloud storage providers that support rclone. Estuary's rclone support gives developers and users the ability to easily manage their data in either centralized or decentralized manner among various storage providers.
 
 In this tutorial, we will walk you through the process of using rclone to manage your files across several storage options, including local storage, Estuary and Google Drive. We will cover the following：
 
-+ Run a Estuary local node
-+ Install and setup rclone
-+ Manage files between local computer and Estuary
-+ Manage files between Google Drive and Estuary
+- Run a Estuary local node
+- Install and setup rclone
+- Manage files between local computer and Estuary
+- Manage files between Google Drive and Estuary
 
 **Prerequisites**:
 
-+ go (1.15 or higher)
-+ hwloc
-+ opencl
-+ git
+- go (1.15 or higher)
+- hwloc
+- opencl
+- git
 
 ### Step 1: Run Estuary local node
 
@@ -27,7 +28,7 @@ For this tutorial, we will run an Estuary local node to store files to IPFS and 
 
 For more detailed instructions on running a local Estuary node, see [Getting Started Developing With Estuary](https://github.com/application-research/estuary/blob/master/DEVELOPMENT.md).
 
-+ **Download Estuary and build it locally**
+- **Download Estuary and build it locally**
 
 ```
 git clone https://github.com/application-research/estuary.git
@@ -37,7 +38,7 @@ make clean all
 
 If the build is successful, you can move on to the next step.
 
-+ **Start Estuary node**
+- **Start Estuary node**
 
 This step will generate an authorization token for you. It is very important to save this auth token; you will need it to access your files via your Estuary local node.
 
@@ -93,11 +94,11 @@ rclone v1.58.0-DEV
 
 In this tutorial, we will use some of the rclone commands. Let's get familiar with them first:
 
-+ **rclone mkdir remote:path** - make the path if it doesn't already exist
-+ **rclone lsd remote:path** - list all the directories in remote:path 
-+ **rclone ls remote:path** - list all the objects in the path/directory
-+ **rclone copy source:path dest:path** - copy files from source to dest
-+ **rclone sync source:path dest:path** - sync files from source to dest to ensure source and dest are identical
+- **rclone mkdir remote:path** - make the path if it doesn't already exist
+- **rclone lsd remote:path** - list all the directories in remote:path
+- **rclone ls remote:path** - list all the objects in the path/directory
+- **rclone copy source:path dest:path** - copy files from source to dest
+- **rclone sync source:path dest:path** - sync files from source to dest to ensure source and dest are identical
 
 To learn more about rclone commands, see [Rclone Commands Instruction](https://rclone.org/commands/) or use rclone's help menu:
 
@@ -105,7 +106,7 @@ To learn more about rclone commands, see [Rclone Commands Instruction](https://r
 ./rclone help
 ```
 
-+ **Configure rclone for Estuary access**
+- **Configure rclone for Estuary access**
 
 In order to let rclone on your local machine access remote storage providers like Estuary and Google Drive, you will need to first configure rclone allow access from the command-line.
 
@@ -147,13 +148,13 @@ Once you finish configuring rclone to allow Estuary access, let's try to managin
 
 There are various ways to move your files from local storage to Estuary.
 
-+ Copy or move files one by one
-+ Sync the whole folder from local storage to Estuary
-+ Bi-sync folder between local storage and Estuary
+- Copy or move files one by one
+- Sync the whole folder from local storage to Estuary
+- Bi-sync folder between local storage and Estuary
 
 Next, we will explore a few of these methods.
 
-+ **Create a new folder which will be treated as collection in Estuary**
+- **Create a new folder which will be treated as collection in Estuary**
 
 ```shell
 ./rclone mkdir estuaryLocal:testLocal -v
@@ -163,7 +164,7 @@ Next, we will explore a few of these methods.
  -1 2022-02-25 17:04:43        -1 testLocal
 ```
 
-+ **Copy one file to Estuary**
+- **Copy one file to Estuary**
 
 ```shell
 ./rclone copy /path-to-your-file/estuary-file2.txt estuaryLocal:testLocal
@@ -173,7 +174,7 @@ Next, we will explore a few of these methods.
      1682 estuary-file2.txt
 ```
 
-+ **Sync a local folder to Estuary**
+- **Sync a local folder to Estuary**
 
 ```shell
 ./rclone sync /path-to-your-folder/ estuary:/longfei
@@ -190,7 +191,7 @@ Next, we will explore a few of these methods.
 
 In this step, we will demonstrate how to sync files between Estuary and Google Drive. Note that rclone supports over [40 different storage providers](https://rclone.org/#providers), so you can use the same steps to sync between Estuary and other storage providers of your choice.
 
-+ **Configure rclone for Google Drive**
+- **Configure rclone for Google Drive**
 
 Moving files between Estuary and Google Drive is as simple as moving files from local to Estuary. But first, you will need to configure rclone to access your Google Drive. You can configure Google Drive following this [tutorial](https://rclone.org/drive/).
 
@@ -221,9 +222,9 @@ Now you will be able to check folders and files in your Google Drive directly us
       175 rclone-lf.txt
 ```
 
-+ **Create an Estuary collection for your Google Drive files**
+- **Create an Estuary collection for your Google Drive files**
 
-Run the following command to create a directory in your Estuary node, which will be created as a collection in Estuary. 
+Run the following command to create a directory in your Estuary node, which will be created as a collection in Estuary.
 
 ```shell
 ./rclone mkdir estuaryLocal:ggDrive
@@ -234,9 +235,9 @@ Run the following command to create a directory in your Estuary node, which will
   -1 2022-02-28 09:41:08        -1 testLocal
 ```
 
-+ **Sync a folder from Google Drive to Estuary**
+- **Sync a folder from Google Drive to Estuary**
 
-In this step, we will sync an entire folder (and its contents) from Google Drive to Estuary. This will copy all the files to your Estuary collection. In this example, our folder is named *ggDrive:/estuaryTest*.
+In this step, we will sync an entire folder (and its contents) from Google Drive to Estuary. This will copy all the files to your Estuary collection. In this example, our folder is named _ggDrive:/estuaryTest_.
 
 ```shell
 ./rclone sync ggDrive:estuaryTest estuaryLocal:ggDrive -v
@@ -250,7 +251,7 @@ Elapsed time:         5.1s
       175 rclone-lf.txt
 ```
 
-+ **Move single file**
+- **Move single file**
 
 You can also just copy a single file from Google Drive to Estuary with the copy command.
 
@@ -266,7 +267,7 @@ You can also just copy a single file from Google Drive to Estuary with the copy 
 
 ### Step 5: Verify your stored files
 
-In addition to checking the list of files in your Estuary node using rclone commands, you can also verify whether or not those files are actually moved to Estuary by directly querying via the Estuary API. First, let's check if the *ggDrive* collection is created in Estuary.
+In addition to checking the list of files in your Estuary node using rclone commands, you can also verify whether or not those files are actually moved to Estuary by directly querying via the Estuary API. First, let's check if the _ggDrive_ collection is created in Estuary.
 
 ```shell
 curl -X GET http://localhost:3004/collections/list -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -s | jq .
@@ -286,7 +287,7 @@ curl -X GET http://localhost:3004/collections/list -H "Authorization: Bearer REP
 ]
 ```
 
-This output shows that the *ggDrive* collection was created successfully, and is being listed with its details. You can use a collection's *uuid* to query files within that collection.
+This output shows that the _ggDrive_ collection was created successfully, and is being listed with its details. You can use a collection's _uuid_ to query files within that collection.
 
 ```shell
 curl -X GET http://localhost:3004/collections/content/uuid-for-ggDrive -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -s | jq .
@@ -323,7 +324,7 @@ Once Estuary stores your files on IPFS and Filecoin, corresponding CIDs will be 
 #Get the list of URL for IPFS-compatible browser
 ./rclone backend lscid estuaryLocal:ggDrive -o format=url
  13575031 Feb 28 11:39:26  ipfs://bafkreifkhy32wd3qowprao4632iqa55nifxmc44mgj4hs7xqxqutirjh4q Estuary-addContent.png
- 
+
 #Get the list of IPFS gateway URL
  ./rclone backend lscid estuaryLocal:ggDrive -o format=gateway
   158798 Feb 28 10:51:20  https://dweb.link/ipfs/bafkreifkhy32wd3qowprao4632iqa55nifxmc44mgj4hs7xqxqutirjh4q Estuary-addContent.png

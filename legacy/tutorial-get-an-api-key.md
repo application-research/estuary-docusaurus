@@ -4,7 +4,7 @@ We're excited to have you try out Estuary! Estuary is a reliable way to upload p
 
 For more information on what Estuary is, visit our [home page](https://estuary.tech). If you are a developer looking to use Estuary, continue through this quickstart guide.
 
-Questions? Visit the [FAQ](/docs/learn/faq) or reach out to us on [Slack](https://filecoin.io/slack)!
+Questions? Visit the [FAQ](/docs/FAQ) or reach out to us on [Slack](https://filecoin.io/slack)!
 
 # Get an API key
 
