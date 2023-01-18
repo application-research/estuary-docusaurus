@@ -111,22 +111,14 @@ const config = {
             label: "Estuary",
             to: "https://estuary.tech",
             position: "left",
-            className: 'logo'
-
+            className: "logo",
           },
           {
-            type: "doc",
-            docId: "Learn/intro",
+            to: "/",
             position: "left",
             label: "Docs",
           },
-          {
-            to: "/clients",
-            docsPluginId: "clients",
-            label: "Supported API Clients",
-            position: "left",
-          },
-          { to: "/api", label: "API Documentation", position: "left" },
+          { to: "/api", label: "API", position: "left" },
           // { to: '/blog', label: 'Blog', position: 'left' }, (Removing the link to blog for now)
         ],
       },
@@ -138,7 +130,7 @@ const config = {
             items: [
               {
                 label: "Quickstart",
-                to: "/docs/Quickstart/Get an API Key",
+                to: "/docs/Learn/Quickstart/Get an API Key",
               },
             ],
           },
@@ -151,7 +143,7 @@ const config = {
               },
               {
                 label: "Join Slack",
-                href: "https://docs.estuary.tech/#:~:text=Join%20Slack%20(%23ecosystem%2Ddev)",
+                href: "https://filecoin.io/slack",
               },
               {
                 label: "Stack Overflow",
@@ -190,16 +182,6 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     "docusaurus-plugin-sass",
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "clients",
-        path: "clients",
-        routeBasePath: "clients",
-        sidebarPath: require.resolve("./sidebars.js"),
-        // ... other options
-      },
-    ],
   ],
 };
 

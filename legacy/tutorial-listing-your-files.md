@@ -7,7 +7,7 @@ After you have [uploaded a file](/Tutorial/tutorial-uploading-your-first-file). 
 
 Once you do so, here is an example of the output:
 
-`
+```
  "42": {
   "id": 36534620,
   "updatedAt": "2022-09-06T22:21:08.039349Z",
@@ -31,7 +31,7 @@ Once you do so, here is an example of the output:
   "dagSplit": false,
   "splitFrom": 0
  },
-`
+```
 
 You can use the CID to retrieve the file immediately by using an IPFS Gateway. Here is an example:
 
