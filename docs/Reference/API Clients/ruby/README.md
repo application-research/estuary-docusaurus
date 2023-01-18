@@ -63,7 +63,24 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
-body = [true] # Array<BOOLEAN> | Peer ids
+
+begin
+  #Get all miners
+  result = api_instance.admin_miners_get
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling AdminApi->admin_miners_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::AdminApi.new
+body = ['body_example'] # Array<String> | Peer ids
 
 
 begin
@@ -99,10 +116,12 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
+body = [SwaggerClient::PeeringPeeringPeer.new] # Array<PeeringPeeringPeer> | Peering Peer array
+
 
 begin
   #Add peers on Peering Service
-  result = api_instance.admin_peering_peers_post
+  result = api_instance.admin_peering_peers_post(body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_post: #{e}"
@@ -276,14 +295,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-body = SwaggerClient::MainDeleteContentFromCollectionBody.new # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+body = SwaggerClient::ApiDeleteContentFromCollectionBody.new # ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 coluuid = 'coluuid_example' # String | Collection ID
-contentid = 'contentid_example' # String | Content ID
 
 
 begin
   #Deletes a content from a collection
-  result = api_instance.collections_coluuid_contents_delete(body, coluuid, contentid)
+  result = api_instance.collections_coluuid_contents_delete(body, coluuid)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_contents_delete: #{e}"
@@ -339,11 +357,14 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 body = [56] # Array<Integer> | Content IDs to add to collection
 coluuid = 'coluuid_example' # String | Collection UUID
-
+opts = { 
+  dir: 'dir_example', # String | Directory
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files
+}
 
 begin
   #Add contents to a collection
-  result = api_instance.collections_coluuid_post(body, coluuid)
+  result = api_instance.collections_coluuid_post(body, coluuid, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_post: #{e}"
@@ -359,12 +380,14 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 coluuid = 'coluuid_example' # String | Collection ID
 content = 'content_example' # String | Content
-path = 'path_example' # String | Path to file
-
+opts = { 
+  dir: 'dir_example', # String | Directory inside collection
+  overwrite: 'overwrite_example' # String | Overwrite file if already exists in path
+}
 
 begin
   #Add a file to a collection
-  result = api_instance.collections_fs_add_post(coluuid, content, path)
+  result = api_instance.collections_fs_add_post(coluuid, content, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_fs_add_post: #{e}"
@@ -395,7 +418,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-body = SwaggerClient::MainCreateCollectionBody.new # MainCreateCollectionBody | Collection name and description
+body = SwaggerClient::ApiCreateCollectionBody.new # ApiCreateCollectionBody | Collection name and description
 
 
 begin
@@ -414,13 +437,15 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+code = 'code_example' # String | Invite code to be created
+
 
 begin
-  #Get Estuary invites
-  result = api_instance.admin_invites_get
+  #Create an Estuary invite
+  result = api_instance.admin_invites_code_post(code)
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->admin_invites_get: #{e}"
+  puts "Exception when calling ContentApi->admin_invites_code_post: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -431,15 +456,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-code = 'code_example' # String | Invite code to be created
-
 
 begin
-  #Create an Estuary invite
-  result = api_instance.admin_invites_post(code)
+  #Get Estuary invites
+  result = api_instance.admin_invites_get
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->admin_invites_post: #{e}"
+  puts "Exception when calling ContentApi->admin_invites_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -472,9 +495,10 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::UtilContentAddIpfsBody.new # UtilContentAddIpfsBody | IPFS Body
+body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | IPFS Body
 opts = { 
-  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
+  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
 }
 
 begin
@@ -499,6 +523,7 @@ opts = {
   coluuid: 'coluuid_example', # String | Collection UUID
   replication: 56, # Integer | Replication value
   ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes true/false
+  overwrite: 'overwrite_example', # String | Overwrite files with the same path on same collection
   lazy_provide: 'lazy_provide_example', # String | Lazy Provide true/false
   dir: 'dir_example' # String | Directory
 }
@@ -568,6 +593,26 @@ begin
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_bw_usage_content_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+limit = 'limit_example' # String | limit
+offset = 'offset_example' # String | offset
+
+
+begin
+  #Get user contents
+  result = api_instance.content_contents_get(limit, offset)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_contents_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -677,25 +722,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::MainImportDealBody.new # MainImportDealBody | Import a deal
-
-
-begin
-  #Import a deal
-  result = api_instance.content_importdeal_post(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_importdeal_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
 
 begin
   #List all pinned content
@@ -713,15 +739,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-cont = 'cont_example' # String | CID
-
 
 begin
-  #Read content
-  result = api_instance.content_read_cont_get(cont)
+  #Get staging zone for user, excluding its contents
+  result = api_instance.content_staging_zones_get
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_read_cont_get: #{e}"
+  puts "Exception when calling ContentApi->content_staging_zones_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -732,13 +756,36 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+staging_zone = 56 # Integer | Staging Zone Content ID
+limit = 'limit_example' # String | limit
+offset = 'offset_example' # String | offset
+
 
 begin
-  #Get staging zone for user
-  result = api_instance.content_staging_zones_get
+  #Get contents for a staging zone
+  result = api_instance.content_staging_zones_staging_zone_contents_get(staging_zone, limit, offset)
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_staging_zones_get: #{e}"
+  puts "Exception when calling ContentApi->content_staging_zones_staging_zone_contents_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+staging_zone = 56 # Integer | Staging Zone Content ID
+
+
+begin
+  #Get staging zone without its contents field populated
+  result = api_instance.content_staging_zones_staging_zone_get(staging_zone)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_staging_zones_staging_zone_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -788,7 +835,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-body = SwaggerClient::MainEstimateDealBody.new # MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+body = SwaggerClient::ApiEstimateDealBody.new # ApiEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 
 begin
@@ -920,7 +967,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-body = SwaggerClient::MainChannelIDParam.new # MainChannelIDParam | Channel ID
+body = SwaggerClient::ApiChannelIDParam.new # ApiChannelIDParam | Channel ID
 
 
 begin
@@ -1030,6 +1077,23 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
+api_instance = SwaggerClient::DefaultApi.new
+
+begin
+  #Fetch viewer details
+  result = api_instance.viewer_get
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling DefaultApi->viewer_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
 api_instance = SwaggerClient::MetricsApi.new
 
 begin
@@ -1038,6 +1102,103 @@ begin
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling MetricsApi->public_metrics_deals_on_chain_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::MinerApi.new
+miner = 'miner_example' # String | Miner claim message
+
+
+begin
+  #Get Claim Miner Message
+  result = api_instance.miner_claim_miner_get(miner)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling MinerApi->miner_claim_miner_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::MinerApi.new
+body = SwaggerClient::MinerClaimMinerBody.new # MinerClaimMinerBody | Claim Miner Body
+
+
+begin
+  #Claim Miner
+  result = api_instance.miner_claim_post(body)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling MinerApi->miner_claim_post: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::MinerApi.new
+body = SwaggerClient::MinerMinerSetInfoParams.new # MinerMinerSetInfoParams | Miner set info params
+miner = 'miner_example' # String | Miner to set info for
+
+
+begin
+  #Set Miner Info
+  result = api_instance.miner_set_info_miner_put(body, miner)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling MinerApi->miner_set_info_miner_put: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::MinerApi.new
+body = SwaggerClient::MinerSuspendMinerBody.new # MinerSuspendMinerBody | Suspend Miner Body
+miner = 'miner_example' # String | Miner to suspend
+
+
+begin
+  #Suspend Miner
+  result = api_instance.miner_suspend_miner_post(body, miner)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling MinerApi->miner_suspend_miner_post: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::MinerApi.new
+miner = 'miner_example' # String | Miner to unsuspend
+
+
+begin
+  #Unuspend Miner
+  result = api_instance.miner_unsuspend_miner_put(miner)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling MinerApi->miner_unsuspend_miner_put: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1090,11 +1251,11 @@ end
 api_instance = SwaggerClient::NetApi.new
 
 begin
-  #Net Addrs
-  result = api_instance.net_addrs_get
+  #Get all miners
+  result = api_instance.admin_miners_get
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling NetApi->net_addrs_get: #{e}"
+  puts "Exception when calling NetApi->admin_miners_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1114,23 +1275,6 @@ begin
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling NetApi->public_miners_failures_miner_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::NetApi.new
-
-begin
-  #Get all miners
-  result = api_instance.public_miners_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling NetApi->public_miners_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1165,214 +1309,6 @@ begin
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling NetApi->public_net_peers_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-body = [true] # Array<BOOLEAN> | Peer ids
-
-
-begin
-  #Remove peers on Peering Service
-  result = api_instance.admin_peering_peers_delete(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_peers_delete: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #List all Peering peers
-  result = api_instance.admin_peering_peers_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_peers_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #Add peers on Peering Service
-  result = api_instance.admin_peering_peers_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_peers_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #Start Peering
-  result = api_instance.admin_peering_start_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_start_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #Check Peering Status
-  result = api_instance.admin_peering_status_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_status_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #Stop Peering
-  result = api_instance.admin_peering_stop_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_stop_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-body = [true] # Array<BOOLEAN> | Peer ids
-
-
-begin
-  #Remove peers on Peering Service
-  result = api_instance.admin_peering_peers_delete(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_peers_delete: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #List all Peering peers
-  result = api_instance.admin_peering_peers_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_peers_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #Add peers on Peering Service
-  result = api_instance.admin_peering_peers_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_peers_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #Start Peering
-  result = api_instance.admin_peering_start_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_start_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #Check Peering Status
-  result = api_instance.admin_peering_status_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_status_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #Stop Peering
-  result = api_instance.admin_peering_stop_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_stop_post: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1437,14 +1373,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-pinid = 'pinid_example' # String | Pin ID
-opts = { 
-  body: 'body_example' # String | Meta information of new pin
-}
+body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | New pin
+pinid = 'pinid_example' # String | Pin ID to be replaced
+
 
 begin
   #Replace a pinned object
-  result = api_instance.pinning_pins_pinid_post(pinid, opts)
+  result = api_instance.pinning_pins_pinid_post(body, pinid)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_pinid_post: #{e}"
@@ -1459,11 +1394,14 @@ end
 
 api_instance = SwaggerClient::PinningApi.new
 body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | Pin Body {cid:cid, name:name}
-
+opts = { 
+  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
+}
 
 begin
   #Add and pin object
-  result = api_instance.pinning_pins_post(body)
+  result = api_instance.pinning_pins_post(body, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_post: #{e}"
@@ -1578,23 +1516,6 @@ begin
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PublicApi->public_miners_failures_miner_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PublicApi.new
-
-begin
-  #Get all miners
-  result = api_instance.public_miners_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PublicApi->public_miners_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1765,6 +1686,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SwaggerClient::AdminApi* | [**admin_miners_get**](docs/AdminApi.md#admin_miners_get) | **GET** /admin/miners/ | Get all miners
 *SwaggerClient::AdminApi* | [**admin_peering_peers_delete**](docs/AdminApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *SwaggerClient::AdminApi* | [**admin_peering_peers_get**](docs/AdminApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
 *SwaggerClient::AdminApi* | [**admin_peering_peers_post**](docs/AdminApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -1784,23 +1706,24 @@ Class | Method | HTTP request | Description
 *SwaggerClient::CollectionsApi* | [**collections_fs_add_post**](docs/CollectionsApi.md#collections_fs_add_post) | **POST** /collections/fs/add | Add a file to a collection
 *SwaggerClient::CollectionsApi* | [**collections_get**](docs/CollectionsApi.md#collections_get) | **GET** /collections/ | List all collections
 *SwaggerClient::CollectionsApi* | [**collections_post**](docs/CollectionsApi.md#collections_post) | **POST** /collections/ | Create a new collection
+*SwaggerClient::ContentApi* | [**admin_invites_code_post**](docs/ContentApi.md#admin_invites_code_post) | **POST** /admin/invites/{code} | Create an Estuary invite
 *SwaggerClient::ContentApi* | [**admin_invites_get**](docs/ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
-*SwaggerClient::ContentApi* | [**admin_invites_post**](docs/ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
 *SwaggerClient::ContentApi* | [**content_add_car_post**](docs/ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 *SwaggerClient::ContentApi* | [**content_add_ipfs_post**](docs/ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
 *SwaggerClient::ContentApi* | [**content_add_post**](docs/ContentApi.md#content_add_post) | **POST** /content/add | Add new content
 *SwaggerClient::ContentApi* | [**content_aggregated_content_get**](docs/ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *SwaggerClient::ContentApi* | [**content_all_deals_get**](docs/ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 *SwaggerClient::ContentApi* | [**content_bw_usage_content_get**](docs/ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*SwaggerClient::ContentApi* | [**content_contents_get**](docs/ContentApi.md#content_contents_get) | **GET** /content/contents | Get user contents
 *SwaggerClient::ContentApi* | [**content_create_post**](docs/ContentApi.md#content_create_post) | **POST** /content/create | Add a new content
 *SwaggerClient::ContentApi* | [**content_deals_get**](docs/ContentApi.md#content_deals_get) | **GET** /content/deals | Content with deals
 *SwaggerClient::ContentApi* | [**content_ensure_replication_datacid_get**](docs/ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *SwaggerClient::ContentApi* | [**content_failures_content_get**](docs/ContentApi.md#content_failures_content_get) | **GET** /content/failures/{content} | List all failures for a content
 *SwaggerClient::ContentApi* | [**content_id_get**](docs/ContentApi.md#content_id_get) | **GET** /content/{id} | Content
-*SwaggerClient::ContentApi* | [**content_importdeal_post**](docs/ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 *SwaggerClient::ContentApi* | [**content_list_get**](docs/ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
-*SwaggerClient::ContentApi* | [**content_read_cont_get**](docs/ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
-*SwaggerClient::ContentApi* | [**content_staging_zones_get**](docs/ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
+*SwaggerClient::ContentApi* | [**content_staging_zones_get**](docs/ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+*SwaggerClient::ContentApi* | [**content_staging_zones_staging_zone_contents_get**](docs/ContentApi.md#content_staging_zones_staging_zone_contents_get) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+*SwaggerClient::ContentApi* | [**content_staging_zones_staging_zone_get**](docs/ContentApi.md#content_staging_zones_staging_zone_get) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 *SwaggerClient::ContentApi* | [**content_stats_get**](docs/ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 *SwaggerClient::ContentApi* | [**content_status_id_get**](docs/ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
 *SwaggerClient::DealsApi* | [**deal_estimate_post**](docs/DealsApi.md#deal_estimate_post) | **POST** /deal/estimate | Estimate the cost of a deal
@@ -1816,26 +1739,19 @@ Class | Method | HTTP request | Description
 *SwaggerClient::DealsApi* | [**deals_status_deal_get**](docs/DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 *SwaggerClient::DealsApi* | [**public_deals_failures_get**](docs/DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 *SwaggerClient::DealsApi* | [**public_miners_storage_query_miner_get**](docs/DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*SwaggerClient::DefaultApi* | [**viewer_get**](docs/DefaultApi.md#viewer_get) | **GET** /viewer | Fetch viewer details
 *SwaggerClient::MetricsApi* | [**public_metrics_deals_on_chain_get**](docs/MetricsApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
+*SwaggerClient::MinerApi* | [**miner_claim_miner_get**](docs/MinerApi.md#miner_claim_miner_get) | **GET** /miner/claim/{miner} | Get Claim Miner Message
+*SwaggerClient::MinerApi* | [**miner_claim_post**](docs/MinerApi.md#miner_claim_post) | **POST** /miner/claim | Claim Miner
+*SwaggerClient::MinerApi* | [**miner_set_info_miner_put**](docs/MinerApi.md#miner_set_info_miner_put) | **PUT** /miner/set-info/{miner} | Set Miner Info
+*SwaggerClient::MinerApi* | [**miner_suspend_miner_post**](docs/MinerApi.md#miner_suspend_miner_post) | **POST** /miner/suspend/{miner} | Suspend Miner
+*SwaggerClient::MinerApi* | [**miner_unsuspend_miner_put**](docs/MinerApi.md#miner_unsuspend_miner_put) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *SwaggerClient::MinerApi* | [**public_miners_deals_miner_get**](docs/MinerApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SwaggerClient::MinerApi* | [**public_miners_stats_miner_get**](docs/MinerApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
-*SwaggerClient::NetApi* | [**net_addrs_get**](docs/NetApi.md#net_addrs_get) | **GET** /net/addrs | Net Addrs
+*SwaggerClient::NetApi* | [**admin_miners_get**](docs/NetApi.md#admin_miners_get) | **GET** /admin/miners/ | Get all miners
 *SwaggerClient::NetApi* | [**public_miners_failures_miner_get**](docs/NetApi.md#public_miners_failures_miner_get) | **GET** /public/miners/failures/{miner} | Get all miners
-*SwaggerClient::NetApi* | [**public_miners_get**](docs/NetApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 *SwaggerClient::NetApi* | [**public_net_addrs_get**](docs/NetApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *SwaggerClient::NetApi* | [**public_net_peers_get**](docs/NetApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
-*SwaggerClient::PeeringApi* | [**admin_peering_peers_delete**](docs/PeeringApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*SwaggerClient::PeeringApi* | [**admin_peering_peers_get**](docs/PeeringApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
-*SwaggerClient::PeeringApi* | [**admin_peering_peers_post**](docs/PeeringApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
-*SwaggerClient::PeeringApi* | [**admin_peering_start_post**](docs/PeeringApi.md#admin_peering_start_post) | **POST** /admin/peering/start | Start Peering
-*SwaggerClient::PeeringApi* | [**admin_peering_status_get**](docs/PeeringApi.md#admin_peering_status_get) | **GET** /admin/peering/status | Check Peering Status
-*SwaggerClient::PeeringApi* | [**admin_peering_stop_post**](docs/PeeringApi.md#admin_peering_stop_post) | **POST** /admin/peering/stop | Stop Peering
-*SwaggerClient::PeersApi* | [**admin_peering_peers_delete**](docs/PeersApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*SwaggerClient::PeersApi* | [**admin_peering_peers_get**](docs/PeersApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
-*SwaggerClient::PeersApi* | [**admin_peering_peers_post**](docs/PeersApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
-*SwaggerClient::PeersApi* | [**admin_peering_start_post**](docs/PeersApi.md#admin_peering_start_post) | **POST** /admin/peering/start | Start Peering
-*SwaggerClient::PeersApi* | [**admin_peering_status_get**](docs/PeersApi.md#admin_peering_status_get) | **GET** /admin/peering/status | Check Peering Status
-*SwaggerClient::PeersApi* | [**admin_peering_stop_post**](docs/PeersApi.md#admin_peering_stop_post) | **POST** /admin/peering/stop | Stop Peering
 *SwaggerClient::PinningApi* | [**pinning_pins_get**](docs/PinningApi.md#pinning_pins_get) | **GET** /pinning/pins | List all pin status objects
 *SwaggerClient::PinningApi* | [**pinning_pins_pinid_delete**](docs/PinningApi.md#pinning_pins_pinid_delete) | **DELETE** /pinning/pins/{pinid} | Delete a pinned object
 *SwaggerClient::PinningApi* | [**pinning_pins_pinid_get**](docs/PinningApi.md#pinning_pins_pinid_get) | **GET** /pinning/pins/{pinid} | Get a pin status object
@@ -1847,7 +1763,6 @@ Class | Method | HTTP request | Description
 *SwaggerClient::PublicApi* | [**public_metrics_deals_on_chain_get**](docs/PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *SwaggerClient::PublicApi* | [**public_miners_deals_miner_get**](docs/PublicApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SwaggerClient::PublicApi* | [**public_miners_failures_miner_get**](docs/PublicApi.md#public_miners_failures_miner_get) | **GET** /public/miners/failures/{miner} | Get all miners
-*SwaggerClient::PublicApi* | [**public_miners_get**](docs/PublicApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 *SwaggerClient::PublicApi* | [**public_miners_stats_miner_get**](docs/PublicApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
 *SwaggerClient::PublicApi* | [**public_net_addrs_get**](docs/PublicApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *SwaggerClient::PublicApi* | [**public_net_peers_get**](docs/PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
@@ -1860,22 +1775,39 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [SwaggerClient::AddressAddress](docs/AddressAddress.md)
+ - [SwaggerClient::ApiChannelIDParam](docs/ApiChannelIDParam.md)
+ - [SwaggerClient::ApiClaimMsgResponse](docs/ApiClaimMsgResponse.md)
+ - [SwaggerClient::ApiClaimResponse](docs/ApiClaimResponse.md)
+ - [SwaggerClient::ApiCreateCollectionBody](docs/ApiCreateCollectionBody.md)
+ - [SwaggerClient::ApiDeleteContentFromCollectionBody](docs/ApiDeleteContentFromCollectionBody.md)
+ - [SwaggerClient::ApiEmptyResp](docs/ApiEmptyResp.md)
+ - [SwaggerClient::ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
+ - [SwaggerClient::ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [SwaggerClient::ApiMinerResp](docs/ApiMinerResp.md)
+ - [SwaggerClient::ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [SwaggerClient::AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
+ - [SwaggerClient::CidCid](docs/CidCid.md)
+ - [SwaggerClient::CollectionsCidType](docs/CollectionsCidType.md)
  - [SwaggerClient::CollectionsCollection](docs/CollectionsCollection.md)
+ - [SwaggerClient::CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [SwaggerClient::ContentAddBody](docs/ContentAddBody.md)
- - [SwaggerClient::MainChannelIDParam](docs/MainChannelIDParam.md)
- - [SwaggerClient::MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
- - [SwaggerClient::MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
- - [SwaggerClient::MainEstimateDealBody](docs/MainEstimateDealBody.md)
- - [SwaggerClient::MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
- - [SwaggerClient::MainImportDealBody](docs/MainImportDealBody.md)
+ - [SwaggerClient::MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [SwaggerClient::MinerMinerChainInfo](docs/MinerMinerChainInfo.md)
+ - [SwaggerClient::MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
+ - [SwaggerClient::MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
+ - [SwaggerClient::PeeringPeeringPeer](docs/PeeringPeeringPeer.md)
  - [SwaggerClient::TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [SwaggerClient::TypesIpfsPin](docs/TypesIpfsPin.md)
  - [SwaggerClient::TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
- - [SwaggerClient::UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
+ - [SwaggerClient::TypesPinningStatus](docs/TypesPinningStatus.md)
  - [SwaggerClient::UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [SwaggerClient::UtilContentCreateBody](docs/UtilContentCreateBody.md)
+ - [SwaggerClient::UtilContentType](docs/UtilContentType.md)
+ - [SwaggerClient::UtilDbCID](docs/UtilDbCID.md)
  - [SwaggerClient::UtilHttpError](docs/UtilHttpError.md)
+ - [SwaggerClient::UtilUserSettings](docs/UtilUserSettings.md)
+ - [SwaggerClient::UtilViewerResponse](docs/UtilViewerResponse.md)
 
 ## Documentation for Authorization
 

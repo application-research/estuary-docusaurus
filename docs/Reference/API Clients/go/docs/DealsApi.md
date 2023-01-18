@@ -29,7 +29,7 @@ This endpoint estimates the cost of a deal
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**MainEstimateDealBody**](MainEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
+  **body** | [**ApiEstimateDealBody**](ApiEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
 
 ### Return type
 
@@ -222,7 +222,7 @@ This endpoint returns the status of a transfer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**MainChannelIdParam**](MainChannelIdParam.md)| Channel ID | 
+  **body** | [**ApiChannelIdParam**](ApiChannelIdParam.md)| Channel ID | 
 
 ### Return type
 

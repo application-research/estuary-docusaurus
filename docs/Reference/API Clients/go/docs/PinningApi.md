@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **PinningPinsPinidPost** {#PinningPinsPinidPost}
-> TypesIpfsPinStatusResponse PinningPinsPinidPost(ctx, pinid, optional)
+> TypesIpfsPinStatusResponse PinningPinsPinidPost(ctx, body, pinid)
 Replace a pinned object
 
 This endpoint replaces a pinned object.
@@ -101,15 +101,8 @@ This endpoint replaces a pinned object.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **pinid** | **string**| Pin ID | 
- **optional** | ***PinningApiPinningPinsPinidPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a PinningApiPinningPinsPinidPostOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | [**optional.Interface of string**](string.md)| Meta information of new pin | 
+  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+  **pinid** | **string**| Pin ID to be replaced | 
 
 ### Return type
 
@@ -127,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **PinningPinsPost** {#PinningPinsPost}
-> TypesIpfsPinStatusResponse PinningPinsPost(ctx, body)
+> TypesIpfsPinStatusResponse PinningPinsPost(ctx, body, optional)
 Add and pin object
 
 This endpoint adds a pin to the IPFS daemon.
@@ -138,6 +131,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **optional** | ***PinningApiPinningPinsPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PinningApiPinningPinsPostOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **ignoreDupes** | **optional.**| Ignore Dupes | 
+ **overwrite** | **optional.**| Overwrite conflicting files in collections | 
 
 ### Return type
 

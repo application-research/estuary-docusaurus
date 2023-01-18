@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 ## **userApiKeysGet** {#userApiKeysGet}
-> List&lt;List&lt;MainGetApiKeysResp&gt;&gt; userApiKeysGet()
+> List&lt;ApiGetApiKeysResp&gt; userApiKeysGet()
 
 Get API keys for a user
 
@@ -37,7 +37,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 UserApi apiInstance = new UserApi();
 try {
-    List<List<MainGetApiKeysResp>> result = apiInstance.userApiKeysGet();
+    List<ApiGetApiKeysResp> result = apiInstance.userApiKeysGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userApiKeysGet");
@@ -50,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;List&lt;MainGetApiKeysResp&gt;&gt;**](List.md)
+[**List&lt;ApiGetApiKeysResp&gt;**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 
 ## **userApiKeysPost** {#userApiKeysPost}
-> MainGetApiKeysResp userApiKeysPost(expiry, perms)
+> ApiGetApiKeysResp userApiKeysPost(expiry, perms)
 
 Create API keys for a user
 
@@ -145,7 +145,7 @@ UserApi apiInstance = new UserApi();
 String expiry = "expiry_example"; // String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 String perms = "perms_example"; // String | Permissions -- currently unused
 try {
-    MainGetApiKeysResp result = apiInstance.userApiKeysPost(expiry, perms);
+    ApiGetApiKeysResp result = apiInstance.userApiKeysPost(expiry, perms);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userApiKeysPost");
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainGetApiKeysResp**](MainGetApiKeysResp.md)
+[**ApiGetApiKeysResp**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -230,7 +230,7 @@ This endpoint does not need any parameter.
 
 Get stats for the current user
 
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
 
 ### Example
 ```java

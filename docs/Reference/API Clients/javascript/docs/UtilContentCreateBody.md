@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **dir** | **String** |  | [optional] 
 **location** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
+**overwrite** | **Boolean** |  | [optional] 
 **root** | **String** |  | [optional] 
-**type** | **Number** |  | [optional] 
+**type** | [**UtilContentType**](UtilContentType.md) |  | [optional] 

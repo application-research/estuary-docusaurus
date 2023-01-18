@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**user_stats_get**](UserApi.md#user_stats_get) | **GET** /user/stats | Get stats for the current user
 
 ## **user_api_keys_get** {#user_api_keys_get}
-> list[list[MainGetApiKeysResp]] user_api_keys_get()
+> list[ApiGetApiKeysResp] user_api_keys_get()
 
 Get API keys for a user
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**list[list[MainGetApiKeysResp]]**
+[**list[ApiGetApiKeysResp]**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **user_api_keys_post** {#user_api_keys_post}
-> MainGetApiKeysResp user_api_keys_post(expiry=expiry, perms=perms)
+> ApiGetApiKeysResp user_api_keys_post(expiry=expiry, perms=perms)
 
 Create API keys for a user
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainGetApiKeysResp**](MainGetApiKeysResp.md)
+[**ApiGetApiKeysResp**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -225,7 +225,7 @@ This endpoint does not need any parameter.
 
 Get stats for the current user
 
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
 
 ### Example
 ```python

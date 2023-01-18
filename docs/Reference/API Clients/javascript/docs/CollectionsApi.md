@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsColuuidContentsDelete** {#collectionsColuuidContentsDelete}
-> &#x27;String&#x27; collectionsColuuidContentsDelete(body, coluuid, contentid)
+> &#x27;String&#x27; collectionsColuuidContentsDelete(body, coluuid)
 
 Deletes a content from a collection
 
@@ -83,11 +83,10 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.CollectionsApi();
-let body = new EstuaryClient.MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+let body = new EstuaryClient.ApiDeleteContentFromCollectionBody(); // ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 let coluuid = "coluuid_example"; // String | Collection ID
-let contentid = "contentid_example"; // String | Content ID
 
-apiInstance.collectionsColuuidContentsDelete(body, coluuid, contentid, (error, data, response) => {
+apiInstance.collectionsColuuidContentsDelete(body, coluuid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -100,9 +99,8 @@ apiInstance.collectionsColuuidContentsDelete(body, coluuid, contentid, (error, d
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
- **contentid** | **String**| Content ID | 
 
 ### Return type
 
@@ -169,7 +167,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsColuuidGet** {#collectionsColuuidGet}
-> &#x27;String&#x27; collectionsColuuidGet(coluuid, opts)
+> [CollectionsCollectionListResponse] collectionsColuuidGet(coluuid, opts)
 
 Get contents in a collection
 
@@ -209,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**&#x27;String&#x27;**
+[**[CollectionsCollectionListResponse]**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -222,7 +220,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsColuuidPost** {#collectionsColuuidPost}
-> &#x27;String&#x27; collectionsColuuidPost(body, coluuid)
+> &#x27;String&#x27; collectionsColuuidPost(body, coluuid, opts)
 
 Add contents to a collection
 
@@ -242,8 +240,11 @@ bearerAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new EstuaryClient.CollectionsApi();
 let body = [3.4]; // [Number] | Content IDs to add to collection
 let coluuid = "coluuid_example"; // String | Collection UUID
-
-apiInstance.collectionsColuuidPost(body, coluuid, (error, data, response) => {
+let opts = { 
+  'dir': "dir_example", // String | Directory
+  'overwrite': "overwrite_example" // String | Overwrite conflicting files
+};
+apiInstance.collectionsColuuidPost(body, coluuid, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -258,6 +259,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**[Number]**](Number.md)| Content IDs to add to collection | 
  **coluuid** | **String**| Collection UUID | 
+ **dir** | **String**| Directory | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files | [optional] 
 
 ### Return type
 
@@ -274,7 +277,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsFsAddPost** {#collectionsFsAddPost}
-> &#x27;String&#x27; collectionsFsAddPost(coluuid, content, path)
+> &#x27;String&#x27; collectionsFsAddPost(coluuid, content, opts)
 
 Add a file to a collection
 
@@ -294,9 +297,11 @@ bearerAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new EstuaryClient.CollectionsApi();
 let coluuid = "coluuid_example"; // String | Collection ID
 let content = "content_example"; // String | Content
-let path = "path_example"; // String | Path to file
-
-apiInstance.collectionsFsAddPost(coluuid, content, path, (error, data, response) => {
+let opts = { 
+  'dir': "dir_example", // String | Directory inside collection
+  'overwrite': "overwrite_example" // String | Overwrite file if already exists in path
+};
+apiInstance.collectionsFsAddPost(coluuid, content, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -311,7 +316,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| Collection ID | 
  **content** | **String**| Content | 
- **path** | **String**| Path to file | 
+ **dir** | **String**| Directory inside collection | [optional] 
+ **overwrite** | **String**| Overwrite file if already exists in path | [optional] 
 
 ### Return type
 
@@ -328,7 +334,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsGet** {#collectionsGet}
-> [[CollectionsCollection]] collectionsGet()
+> [CollectionsCollection] collectionsGet()
 
 List all collections
 
@@ -360,7 +366,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[[CollectionsCollection]]**
+[**[CollectionsCollection]**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -391,7 +397,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.CollectionsApi();
-let body = new EstuaryClient.MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
+let body = new EstuaryClient.ApiCreateCollectionBody(); // ApiCreateCollectionBody | Collection name and description
 
 apiInstance.collectionsPost(body, (error, data, response) => {
   if (error) {
@@ -406,7 +412,7 @@ apiInstance.collectionsPost(body, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

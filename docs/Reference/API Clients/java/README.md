@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-11-21T16:22:16.042Z[GMT]
+  - Build date: 2023-01-13T19:43:15.077Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -92,7 +92,36 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
-        List<Boolean> body = Arrays.asList(true); // List<Boolean> | Peer ids
+        try {
+            ApiMinerResp result = apiInstance.adminMinersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminMinersGet");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        List<String> body = Arrays.asList("body_example"); // List<String> | Peer ids
         try {
             String result = apiInstance.adminPeeringPeersDelete(body);
             System.out.println(result);
@@ -151,8 +180,9 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
+        List<PeeringPeeringPeer> body = Arrays.asList(new PeeringPeeringPeer()); // List<PeeringPeeringPeer> | Peering Peer array
         try {
-            String result = apiInstance.adminPeeringPeersPost();
+            String result = apiInstance.adminPeeringPeersPost(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
@@ -313,6 +343,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**adminMinersGet**](docs/AdminApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 *AdminApi* | [**adminPeeringPeersDelete**](docs/AdminApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**adminPeeringPeersGet**](docs/AdminApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**adminPeeringPeersPost**](docs/AdminApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -332,23 +363,24 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](docs/CollectionsApi.md#collectionsFsAddPost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](docs/CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesCodePost**](docs/ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**adminInvitesPost**](docs/ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
 *ContentApi* | [**contentAggregatedContentGet**](docs/ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](docs/ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](docs/ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*ContentApi* | [**contentContentsGet**](docs/ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 *ContentApi* | [**contentCreatePost**](docs/ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 *ContentApi* | [**contentDealsGet**](docs/ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](docs/ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**contentFailuresContentGet**](docs/ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
 *ContentApi* | [**contentIdGet**](docs/ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-*ContentApi* | [**contentImportdealPost**](docs/ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**contentListGet**](docs/ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-*ContentApi* | [**contentReadContGet**](docs/ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-*ContentApi* | [**contentStagingZonesGet**](docs/ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+*ContentApi* | [**contentStagingZonesGet**](docs/ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+*ContentApi* | [**contentStagingZonesStagingZoneContentsGet**](docs/ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+*ContentApi* | [**contentStagingZonesStagingZoneGet**](docs/ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 *ContentApi* | [**contentStatsGet**](docs/ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 *ContentApi* | [**contentStatusIdGet**](docs/ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 *DealsApi* | [**dealEstimatePost**](docs/DealsApi.md#dealEstimatePost) | **POST** /deal/estimate | Estimate the cost of a deal
@@ -364,26 +396,19 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealsStatusDealGet**](docs/DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**viewerGet**](docs/DefaultApi.md#viewerGet) | **GET** /viewer | Fetch viewer details
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
+*MinerApi* | [**minerClaimMinerGet**](docs/MinerApi.md#minerClaimMinerGet) | **GET** /miner/claim/{miner} | Get Claim Miner Message
+*MinerApi* | [**minerClaimPost**](docs/MinerApi.md#minerClaimPost) | **POST** /miner/claim | Claim Miner
+*MinerApi* | [**minerSetInfoMinerPut**](docs/MinerApi.md#minerSetInfoMinerPut) | **PUT** /miner/set-info/{miner} | Set Miner Info
+*MinerApi* | [**minerSuspendMinerPost**](docs/MinerApi.md#minerSuspendMinerPost) | **POST** /miner/suspend/{miner} | Suspend Miner
+*MinerApi* | [**minerUnsuspendMinerPut**](docs/MinerApi.md#minerUnsuspendMinerPut) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
-*NetApi* | [**netAddrsGet**](docs/NetApi.md#netAddrsGet) | **GET** /net/addrs | Net Addrs
+*NetApi* | [**adminMinersGet**](docs/NetApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 *NetApi* | [**publicMinersFailuresMinerGet**](docs/NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**publicMinersGet**](docs/NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs/NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**publicNetPeersGet**](docs/NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
-*PeeringApi* | [**adminPeeringPeersDelete**](docs/PeeringApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*PeeringApi* | [**adminPeeringPeersGet**](docs/PeeringApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
-*PeeringApi* | [**adminPeeringPeersPost**](docs/PeeringApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
-*PeeringApi* | [**adminPeeringStartPost**](docs/PeeringApi.md#adminPeeringStartPost) | **POST** /admin/peering/start | Start Peering
-*PeeringApi* | [**adminPeeringStatusGet**](docs/PeeringApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
-*PeeringApi* | [**adminPeeringStopPost**](docs/PeeringApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
-*PeersApi* | [**adminPeeringPeersDelete**](docs/PeersApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*PeersApi* | [**adminPeeringPeersGet**](docs/PeersApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
-*PeersApi* | [**adminPeeringPeersPost**](docs/PeersApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
-*PeersApi* | [**adminPeeringStartPost**](docs/PeersApi.md#adminPeeringStartPost) | **POST** /admin/peering/start | Start Peering
-*PeersApi* | [**adminPeeringStatusGet**](docs/PeersApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
-*PeersApi* | [**adminPeeringStopPost**](docs/PeersApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
 *PinningApi* | [**pinningPinsGet**](docs/PinningApi.md#pinningPinsGet) | **GET** /pinning/pins | List all pin status objects
 *PinningApi* | [**pinningPinsPinidDelete**](docs/PinningApi.md#pinningPinsPinidDelete) | **DELETE** /pinning/pins/{pinid} | Delete a pinned object
 *PinningApi* | [**pinningPinsPinidGet**](docs/PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object
@@ -395,7 +420,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicMetricsDealsOnChainGet**](docs/PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**publicMinersDealsMinerGet**](docs/PublicApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**publicMinersFailuresMinerGet**](docs/PublicApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**publicMinersGet**](docs/PublicApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *PublicApi* | [**publicMinersStatsMinerGet**](docs/PublicApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**publicNetAddrsGet**](docs/PublicApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
@@ -408,22 +432,39 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AddressAddress](docs/AddressAddress.md)
+ - [ApiChannelIDParam](docs/ApiChannelIDParam.md)
+ - [ApiClaimMsgResponse](docs/ApiClaimMsgResponse.md)
+ - [ApiClaimResponse](docs/ApiClaimResponse.md)
+ - [ApiCreateCollectionBody](docs/ApiCreateCollectionBody.md)
+ - [ApiDeleteContentFromCollectionBody](docs/ApiDeleteContentFromCollectionBody.md)
+ - [ApiEmptyResp](docs/ApiEmptyResp.md)
+ - [ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
+ - [ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [ApiMinerResp](docs/ApiMinerResp.md)
+ - [ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
+ - [CidCid](docs/CidCid.md)
+ - [CollectionsCidType](docs/CollectionsCidType.md)
  - [CollectionsCollection](docs/CollectionsCollection.md)
+ - [CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs/ContentAddBody.md)
- - [MainChannelIDParam](docs/MainChannelIDParam.md)
- - [MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
- - [MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
- - [MainEstimateDealBody](docs/MainEstimateDealBody.md)
- - [MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
- - [MainImportDealBody](docs/MainImportDealBody.md)
+ - [MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [MinerMinerChainInfo](docs/MinerMinerChainInfo.md)
+ - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
+ - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
+ - [PeeringPeeringPeer](docs/PeeringPeeringPeer.md)
  - [TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [TypesIpfsPin](docs/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
- - [UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
+ - [TypesPinningStatus](docs/TypesPinningStatus.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)
+ - [UtilContentType](docs/UtilContentType.md)
+ - [UtilDbCID](docs/UtilDbCID.md)
  - [UtilHttpError](docs/UtilHttpError.md)
+ - [UtilUserSettings](docs/UtilUserSettings.md)
+ - [UtilViewerResponse](docs/UtilViewerResponse.md)
 
 ## Documentation for Authorization
 

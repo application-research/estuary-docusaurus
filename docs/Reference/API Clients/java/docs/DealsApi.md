@@ -44,7 +44,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 DealsApi apiInstance = new DealsApi();
-MainEstimateDealBody body = new MainEstimateDealBody(); // MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+ApiEstimateDealBody body = new ApiEstimateDealBody(); // ApiEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 try {
     String result = apiInstance.dealEstimatePost(body);
     System.out.println(result);
@@ -58,7 +58,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainEstimateDealBody**](MainEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks |
+ **body** | [**ApiEstimateDealBody**](ApiEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks |
 
 ### Return type
 
@@ -427,7 +427,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 DealsApi apiInstance = new DealsApi();
-MainChannelIDParam body = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
+ApiChannelIDParam body = new ApiChannelIDParam(); // ApiChannelIDParam | Channel ID
 try {
     String result = apiInstance.dealTransferStatusPost(body);
     System.out.println(result);
@@ -441,7 +441,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID |
+ **body** | [**ApiChannelIDParam**](ApiChannelIDParam.md)| Channel ID |
 
 ### Return type
 

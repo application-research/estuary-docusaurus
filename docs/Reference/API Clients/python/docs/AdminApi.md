@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**admin_miners_get**](AdminApi.md#admin_miners_get) | **GET** /admin/miners/ | Get all miners
 [**admin_peering_peers_delete**](AdminApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 [**admin_peering_peers_get**](AdminApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
 [**admin_peering_peers_post**](AdminApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -12,6 +13,56 @@ Method | HTTP request | Description
 [**admin_peering_stop_post**](AdminApi.md#admin_peering_stop_post) | **POST** /admin/peering/stop | Stop Peering
 [**admin_system_config_get**](AdminApi.md#admin_system_config_get) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**admin_users_get**](AdminApi.md#admin_users_get) | **GET** /admin/users | Get all users
+
+## **admin_miners_get** {#admin_miners_get}
+> ApiMinerResp admin_miners_get()
+
+Get all miners
+
+This endpoint returns all miners. Note: value may be cached
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.AdminApi(estuary_client.ApiClient(configuration))
+
+try:
+    # Get all miners
+    api_response = api_instance.admin_miners_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AdminApi->admin_miners_get: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiMinerResp**](ApiMinerResp.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **admin_peering_peers_delete** {#admin_peering_peers_delete}
 > str admin_peering_peers_delete(body)
@@ -36,7 +87,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.AdminApi(estuary_client.ApiClient(configuration))
-body = [True] # list[bool] | Peer ids
+body = ['body_example'] # list[str] | Peer ids
 
 try:
     # Remove peers on Peering Service
@@ -50,7 +101,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**list[bool]**](bool.md)| Peer ids | 
+ **body** | [**list[str]**](str.md)| Peer ids | 
 
 ### Return type
 
@@ -118,7 +169,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **admin_peering_peers_post** {#admin_peering_peers_post}
-> str admin_peering_peers_post()
+> str admin_peering_peers_post(body)
 
 Add peers on Peering Service
 
@@ -140,17 +191,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.AdminApi(estuary_client.ApiClient(configuration))
+body = [estuary_client.PeeringPeeringPeer()] # list[PeeringPeeringPeer] | Peering Peer array
 
 try:
     # Add peers on Peering Service
-    api_response = api_instance.admin_peering_peers_post()
+    api_response = api_instance.admin_peering_peers_post(body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_peering_peers_post: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**list[PeeringPeeringPeer]**](PeeringPeeringPeer.md)| Peering Peer array | 
 
 ### Return type
 
@@ -162,7 +217,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

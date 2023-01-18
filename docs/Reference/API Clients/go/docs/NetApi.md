@@ -4,24 +4,23 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NetAddrsGet**](NetApi.md#NetAddrsGet) | **Get** /net/addrs | Net Addrs
+[**AdminMinersGet**](NetApi.md#AdminMinersGet) | **Get** /admin/miners/ | Get all miners
 [**PublicMinersFailuresMinerGet**](NetApi.md#PublicMinersFailuresMinerGet) | **Get** /public/miners/failures/{miner} | Get all miners
-[**PublicMinersGet**](NetApi.md#PublicMinersGet) | **Get** /public/miners | Get all miners
 [**PublicNetAddrsGet**](NetApi.md#PublicNetAddrsGet) | **Get** /public/net/addrs | Net Addrs
 [**PublicNetPeersGet**](NetApi.md#PublicNetPeersGet) | **Get** /public/net/peers | Net Peers
 
-## **NetAddrsGet** {#NetAddrsGet}
-> string NetAddrsGet(ctx, )
-Net Addrs
+## **AdminMinersGet** {#AdminMinersGet}
+> ApiMinerResp AdminMinersGet(ctx, )
+Get all miners
 
-This endpoint is used to get net addrs
+This endpoint returns all miners. Note: value may be cached
 
 ### Required Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**ApiMinerResp**](api.minerResp.md)
 
 ### Authorization
 
@@ -46,30 +45,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **miner** | **string**| Filter by miner | 
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-## **PublicMinersGet** {#PublicMinersGet}
-> string PublicMinersGet(ctx, )
-Get all miners
-
-This endpoint returns all miners
-
-### Required Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

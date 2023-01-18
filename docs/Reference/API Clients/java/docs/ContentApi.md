@@ -4,25 +4,81 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**contentContentsGet**](ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 [**contentCreatePost**](ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
 [**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-[**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-[**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
+
+
+## **adminInvitesCodePost** {#adminInvitesCodePost}
+> String adminInvitesCodePost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+String code = "code_example"; // String | Invite code to be created
+try {
+    String result = apiInstance.adminInvitesCodePost(code);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#adminInvitesCodePost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 
 ## **adminInvitesGet** {#adminInvitesGet}
@@ -61,61 +117,6 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-## **adminInvitesPost** {#adminInvitesPost}
-> String adminInvitesPost(code)
-
-Create an Estuary invite
-
-This endpoint is used to create an estuary invite.
-
-### Example
-```java
-// Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContentApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: bearerAuth
-ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.setApiKeyPrefix("Token");
-
-ContentApi apiInstance = new ContentApi();
-String code = "code_example"; // String | Invite code to be created
-try {
-    String result = apiInstance.adminInvitesPost(code);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContentApi#adminInvitesPost");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **String**| Invite code to be created |
 
 ### Return type
 
@@ -191,7 +192,7 @@ Name | Type | Description  | Notes
 
 
 ## **contentAddIpfsPost** {#contentAddIpfsPost}
-> String contentAddIpfsPost(body, ignoreDupes)
+> String contentAddIpfsPost(body, ignoreDupes, overwrite)
 
 Add IPFS object
 
@@ -215,10 +216,11 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-UtilContentAddIpfsBody body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
+String overwrite = "overwrite_example"; // String | Overwrite conflicting files in collections
 try {
-    String result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
+    String result = apiInstance.contentAddIpfsPost(body, ignoreDupes, overwrite);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddIpfsPost");
@@ -230,8 +232,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body |
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 
@@ -248,7 +251,7 @@ Name | Type | Description  | Notes
 
 
 ## **contentAddPost** {#contentAddPost}
-> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir)
 
 Add new content
 
@@ -277,10 +280,11 @@ String filename = "filename_example"; // String |
 String coluuid = "coluuid_example"; // String | Collection UUID
 Integer replication = 56; // Integer | Replication value
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes true/false
+String overwrite = "overwrite_example"; // String | Overwrite files with the same path on same collection
 String lazyProvide = "lazyProvide_example"; // String | Lazy Provide true/false
 String dir = "dir_example"; // String | Directory
 try {
-    UtilContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+    UtilContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddPost");
@@ -297,6 +301,7 @@ Name | Type | Description  | Notes
  **coluuid** | **String**| Collection UUID | [optional]
  **replication** | **Integer**| Replication value | [optional]
  **ignoreDupes** | **String**| Ignore Dupes true/false | [optional]
+ **overwrite** | **String**| Overwrite files with the same path on same collection | [optional]
  **lazyProvide** | **String**| Lazy Provide true/false | [optional]
  **dir** | **String**| Directory | [optional]
 
@@ -468,6 +473,63 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **String**| Content ID |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+## **contentContentsGet** {#contentContentsGet}
+> String contentContentsGet(limit, offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+String limit = "limit_example"; // String | limit
+String offset = "offset_example"; // String | offset
+try {
+    String result = apiInstance.contentContentsGet(limit, offset);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#contentContentsGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **String**| limit |
+ **offset** | **String**| offset |
 
 ### Return type
 
@@ -762,61 +824,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 
-## **contentImportdealPost** {#contentImportdealPost}
-> String contentImportdealPost(body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```java
-// Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContentApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: bearerAuth
-ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.setApiKeyPrefix("Token");
-
-ContentApi apiInstance = new ContentApi();
-MainImportDealBody body = new MainImportDealBody(); // MainImportDealBody | Import a deal
-try {
-    String result = apiInstance.contentImportdealPost(body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContentApi#contentImportdealPost");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-
 ## **contentListGet** {#contentListGet}
 > String contentListGet()
 
@@ -868,67 +875,12 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 
-## **contentReadContGet** {#contentReadContGet}
-> String contentReadContGet(cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```java
-// Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContentApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: bearerAuth
-ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.setApiKeyPrefix("Token");
-
-ContentApi apiInstance = new ContentApi();
-String cont = "cont_example"; // String | CID
-try {
-    String result = apiInstance.contentReadContGet(cont);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContentApi#contentReadContGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **String**| CID |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
 ## **contentStagingZonesGet** {#contentStagingZonesGet}
 > String contentStagingZonesGet()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```java
@@ -974,12 +926,126 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 
+## **contentStagingZonesStagingZoneContentsGet** {#contentStagingZonesStagingZoneContentsGet}
+> String contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+Integer stagingZone = 56; // Integer | Staging Zone Content ID
+String limit = "limit_example"; // String | limit
+String offset = "offset_example"; // String | offset
+try {
+    String result = apiInstance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#contentStagingZonesStagingZoneContentsGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **Integer**| Staging Zone Content ID |
+ **limit** | **String**| limit |
+ **offset** | **String**| offset |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+## **contentStagingZonesStagingZoneGet** {#contentStagingZonesStagingZoneGet}
+> String contentStagingZonesStagingZoneGet(stagingZone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+Integer stagingZone = 56; // Integer | Staging Zone Content ID
+try {
+    String result = apiInstance.contentStagingZonesStagingZoneGet(stagingZone);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#contentStagingZonesStagingZoneGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **Integer**| Staging Zone Content ID |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
 ## **contentStatsGet** {#contentStatsGet}
 > String contentStatsGet(limit, offset)
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```java

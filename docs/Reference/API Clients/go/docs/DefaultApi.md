@@ -1,22 +1,23 @@
-# \DefaultApi
+# DefaultApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DealTransferStatusPost**](DefaultApi.md#DealTransferStatusPost) | **Post** /deal/transfer/status | 
+[**ViewerGet**](DefaultApi.md#ViewerGet) | **Get** /viewer | Fetch viewer details
 
+## **ViewerGet** {#ViewerGet}
+> UtilViewerResponse ViewerGet(ctx, )
+Fetch viewer details
 
-# **DealTransferStatusPost**
-> DealTransferStatusPost(ctx, )
-
+This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
 
 ### Required Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**UtilViewerResponse**](util.ViewerResponse.md)
 
 ### Authorization
 
@@ -25,7 +26,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

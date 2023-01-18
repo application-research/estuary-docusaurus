@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**publicMetricsDealsOnChainGet**](PublicApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 [**publicMinersDealsMinerGet**](PublicApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 [**publicMinersFailuresMinerGet**](PublicApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-[**publicMinersGet**](PublicApi.md#publicminersget) | **GET** /public/miners | Get all miners
 [**publicMinersStatsMinerGet**](PublicApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 [**publicNetAddrsGet**](PublicApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
@@ -124,7 +123,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **publicInfoGet** {#publicInfoGet}
-> string publicInfoGet()
+> \Swagger\Client\Model\ApiPublicNodeInfo publicInfoGet()
 
 Get public node info
 
@@ -160,7 +159,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\ApiPublicNodeInfo**](../Model/ApiPublicNodeInfo.md)
 
 ### Authorization
 
@@ -317,56 +316,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **string**| Filter by miner |
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-## **publicMinersGet** {#publicMinersGet}
-> string publicMinersGet()
-
-Get all miners
-
-This endpoint returns all miners
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: bearerAuth
-$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$apiInstance = new Swagger\Client\Api\PublicApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
-try {
-    $result = $apiInstance->publicMinersGet();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PublicApi->publicMinersGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

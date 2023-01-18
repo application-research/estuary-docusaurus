@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 
 ## **collections_coluuid_contents_delete** {#collections_coluuid_contents_delete}
-> String collections_coluuid_contents_delete(bodycoluuidcontentid)
+> String collections_coluuid_contents_delete(bodycoluuid)
 
 Deletes a content from a collection
 
@@ -86,14 +86,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-body = SwaggerClient::MainDeleteContentFromCollectionBody.new # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+body = SwaggerClient::ApiDeleteContentFromCollectionBody.new # ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 coluuid = 'coluuid_example' # String | Collection ID
-contentid = 'contentid_example' # String | Content ID
 
 
 begin
   #Deletes a content from a collection
-  result = api_instance.collections_coluuid_contents_delete(bodycoluuidcontentid)
+  result = api_instance.collections_coluuid_contents_delete(bodycoluuid)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_contents_delete: #{e}"
@@ -104,9 +103,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
- **contentid** | **String**| Content ID | 
 
 ### Return type
 
@@ -177,7 +175,7 @@ Name | Type | Description  | Notes
 
 
 ## **collections_coluuid_get** {#collections_coluuid_get}
-> String collections_coluuid_get(coluuid, opts)
+> Array&lt;CollectionsCollectionListResponse&gt; collections_coluuid_get(coluuid, opts)
 
 Get contents in a collection
 
@@ -219,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**Array&lt;CollectionsCollectionListResponse&gt;**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -233,7 +231,7 @@ Name | Type | Description  | Notes
 
 
 ## **collections_coluuid_post** {#collections_coluuid_post}
-> String collections_coluuid_post(bodycoluuid)
+> String collections_coluuid_post(bodycoluuid, opts)
 
 Add contents to a collection
 
@@ -254,11 +252,14 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 body = [56] # Array<Integer> | Content IDs to add to collection
 coluuid = 'coluuid_example' # String | Collection UUID
-
+opts = { 
+  dir: 'dir_example' # String | Directory
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files
+}
 
 begin
   #Add contents to a collection
-  result = api_instance.collections_coluuid_post(bodycoluuid)
+  result = api_instance.collections_coluuid_post(bodycoluuid, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_post: #{e}"
@@ -271,6 +272,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Array&lt;Integer&gt;**](Integer.md)| Content IDs to add to collection | 
  **coluuid** | **String**| Collection UUID | 
+ **dir** | **String**| Directory | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files | [optional] 
 
 ### Return type
 
@@ -288,7 +291,7 @@ Name | Type | Description  | Notes
 
 
 ## **collections_fs_add_post** {#collections_fs_add_post}
-> String collections_fs_add_post(coluuid, content, path)
+> String collections_fs_add_post(coluuid, content, opts)
 
 Add a file to a collection
 
@@ -309,12 +312,14 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 coluuid = 'coluuid_example' # String | Collection ID
 content = 'content_example' # String | Content
-path = 'path_example' # String | Path to file
-
+opts = { 
+  dir: 'dir_example', # String | Directory inside collection
+  overwrite: 'overwrite_example' # String | Overwrite file if already exists in path
+}
 
 begin
   #Add a file to a collection
-  result = api_instance.collections_fs_add_post(coluuid, content, path)
+  result = api_instance.collections_fs_add_post(coluuid, content, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_fs_add_post: #{e}"
@@ -327,7 +332,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| Collection ID | 
  **content** | **String**| Content | 
- **path** | **String**| Path to file | 
+ **dir** | **String**| Directory inside collection | [optional] 
+ **overwrite** | **String**| Overwrite file if already exists in path | [optional] 
 
 ### Return type
 
@@ -345,7 +351,7 @@ Name | Type | Description  | Notes
 
 
 ## **collections_get** {#collections_get}
-> Array&lt;Array&lt;CollectionsCollection&gt;&gt; collections_get
+> Array&lt;CollectionsCollection&gt; collections_get
 
 List all collections
 
@@ -379,7 +385,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array&lt;Array&lt;CollectionsCollection&gt;&gt;**
+[**Array&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -412,7 +418,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-body = SwaggerClient::MainCreateCollectionBody.new # MainCreateCollectionBody | Collection name and description
+body = SwaggerClient::ApiCreateCollectionBody.new # ApiCreateCollectionBody | Collection name and description
 
 
 begin
@@ -428,7 +434,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

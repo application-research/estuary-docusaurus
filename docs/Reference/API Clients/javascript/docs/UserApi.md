@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 ## **userApiKeysGet** {#userApiKeysGet}
-> [[MainGetApiKeysResp]] userApiKeysGet()
+> [ApiGetApiKeysResp] userApiKeysGet()
 
 Get API keys for a user
 
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[[MainGetApiKeysResp]]**
+[**[ApiGetApiKeysResp]**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 
 ## **userApiKeysPost** {#userApiKeysPost}
-> MainGetApiKeysResp userApiKeysPost(opts)
+> ApiGetApiKeysResp userApiKeysPost(opts)
 
 Create API keys for a user
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainGetApiKeysResp**](MainGetApiKeysResp.md)
+[**ApiGetApiKeysResp**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -209,7 +209,7 @@ This endpoint does not need any parameter.
 
 Get stats for the current user
 
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
 
 ### Example
 ```javascript

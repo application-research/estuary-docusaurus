@@ -38,7 +38,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-body = SwaggerClient::MainEstimateDealBody.new # MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+body = SwaggerClient::ApiEstimateDealBody.new # ApiEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 
 begin
@@ -54,7 +54,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainEstimateDealBody**](MainEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
+ **body** | [**ApiEstimateDealBody**](ApiEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
 
 ### Return type
 
@@ -406,7 +406,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-body = SwaggerClient::MainChannelIDParam.new # MainChannelIDParam | Channel ID
+body = SwaggerClient::ApiChannelIDParam.new # ApiChannelIDParam | Channel ID
 
 
 begin
@@ -422,7 +422,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**ApiChannelIDParam**](ApiChannelIDParam.md)| Channel ID | 
 
 ### Return type
 

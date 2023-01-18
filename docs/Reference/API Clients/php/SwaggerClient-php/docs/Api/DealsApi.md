@@ -40,7 +40,7 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\MainEstimateDealBody(); // \Swagger\Client\Model\MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+$body = new \Swagger\Client\Model\ApiEstimateDealBody(); // \Swagger\Client\Model\ApiEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 try {
     $result = $apiInstance->dealEstimatePost($body);
@@ -55,7 +55,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MainEstimateDealBody**](../Model/MainEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks |
+ **body** | [**\Swagger\Client\Model\ApiEstimateDealBody**](../Model/ApiEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks |
 
 ### Return type
 
@@ -416,7 +416,7 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\MainChannelIDParam(); // \Swagger\Client\Model\MainChannelIDParam | Channel ID
+$body = new \Swagger\Client\Model\ApiChannelIDParam(); // \Swagger\Client\Model\ApiChannelIDParam | Channel ID
 
 try {
     $result = $apiInstance->dealTransferStatusPost($body);
@@ -431,7 +431,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MainChannelIDParam**](../Model/MainChannelIDParam.md)| Channel ID |
+ **body** | [**\Swagger\Client\Model\ApiChannelIDParam**](../Model/ApiChannelIDParam.md)| Channel ID |
 
 ### Return type
 

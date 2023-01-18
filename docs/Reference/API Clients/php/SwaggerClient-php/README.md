@@ -68,7 +68,26 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(True); // bool[] | Peer ids
+
+try {
+    $result = $apiInstance->adminMinersGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdminApi->adminMinersGet: ', $e->getMessage(), PHP_EOL;
+}
+
+// Configure API key authorization: bearerAuth
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\AdminApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$body = array("body_example"); // string[] | Peer ids
 
 try {
     $result = $apiInstance->adminPeeringPeersDelete($body);
@@ -107,9 +126,10 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = array(new \Swagger\Client\Model\PeeringPeeringPeer()); // \Swagger\Client\Model\PeeringPeeringPeer[] | Peering Peer array
 
 try {
-    $result = $apiInstance->adminPeeringPeersPost();
+    $result = $apiInstance->adminPeeringPeersPost($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersPost: ', $e->getMessage(), PHP_EOL;
@@ -218,6 +238,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**adminMinersGet**](docs/Api/AdminApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 *AdminApi* | [**adminPeeringPeersDelete**](docs/Api/AdminApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**adminPeeringPeersGet**](docs/Api/AdminApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**adminPeeringPeersPost**](docs/Api/AdminApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -237,23 +258,24 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](docs/Api/CollectionsApi.md#collectionsfsaddpost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](docs/Api/CollectionsApi.md#collectionsget) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](docs/Api/CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesCodePost**](docs/Api/ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**adminInvitesGet**](docs/Api/ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**adminInvitesPost**](docs/Api/ContentApi.md#admininvitespost) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**contentAddCarPost**](docs/Api/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs/Api/ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**contentAddPost**](docs/Api/ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
 *ContentApi* | [**contentAggregatedContentGet**](docs/Api/ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](docs/Api/ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](docs/Api/ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*ContentApi* | [**contentContentsGet**](docs/Api/ContentApi.md#contentcontentsget) | **GET** /content/contents | Get user contents
 *ContentApi* | [**contentCreatePost**](docs/Api/ContentApi.md#contentcreatepost) | **POST** /content/create | Add a new content
 *ContentApi* | [**contentDealsGet**](docs/Api/ContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](docs/Api/ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**contentFailuresContentGet**](docs/Api/ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
 *ContentApi* | [**contentIdGet**](docs/Api/ContentApi.md#contentidget) | **GET** /content/{id} | Content
-*ContentApi* | [**contentImportdealPost**](docs/Api/ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**contentListGet**](docs/Api/ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
-*ContentApi* | [**contentReadContGet**](docs/Api/ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
-*ContentApi* | [**contentStagingZonesGet**](docs/Api/ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user
+*ContentApi* | [**contentStagingZonesGet**](docs/Api/ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+*ContentApi* | [**contentStagingZonesStagingZoneContentsGet**](docs/Api/ContentApi.md#contentstagingzonesstagingzonecontentsget) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+*ContentApi* | [**contentStagingZonesStagingZoneGet**](docs/Api/ContentApi.md#contentstagingzonesstagingzoneget) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 *ContentApi* | [**contentStatsGet**](docs/Api/ContentApi.md#contentstatsget) | **GET** /content/stats | Get content statistics
 *ContentApi* | [**contentStatusIdGet**](docs/Api/ContentApi.md#contentstatusidget) | **GET** /content/status/{id} | Content Status
 *DealsApi* | [**dealEstimatePost**](docs/Api/DealsApi.md#dealestimatepost) | **POST** /deal/estimate | Estimate the cost of a deal
@@ -269,26 +291,19 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealsStatusDealGet**](docs/Api/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/Api/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/Api/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**viewerGet**](docs/Api/DefaultApi.md#viewerget) | **GET** /viewer | Fetch viewer details
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/Api/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
+*MinerApi* | [**minerClaimMinerGet**](docs/Api/MinerApi.md#minerclaimminerget) | **GET** /miner/claim/{miner} | Get Claim Miner Message
+*MinerApi* | [**minerClaimPost**](docs/Api/MinerApi.md#minerclaimpost) | **POST** /miner/claim | Claim Miner
+*MinerApi* | [**minerSetInfoMinerPut**](docs/Api/MinerApi.md#minersetinfominerput) | **PUT** /miner/set-info/{miner} | Set Miner Info
+*MinerApi* | [**minerSuspendMinerPost**](docs/Api/MinerApi.md#minersuspendminerpost) | **POST** /miner/suspend/{miner} | Suspend Miner
+*MinerApi* | [**minerUnsuspendMinerPut**](docs/Api/MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/Api/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/Api/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
-*NetApi* | [**netAddrsGet**](docs/Api/NetApi.md#netaddrsget) | **GET** /net/addrs | Net Addrs
+*NetApi* | [**adminMinersGet**](docs/Api/NetApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 *NetApi* | [**publicMinersFailuresMinerGet**](docs/Api/NetApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**publicMinersGet**](docs/Api/NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs/Api/NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**publicNetPeersGet**](docs/Api/NetApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
-*PeeringApi* | [**adminPeeringPeersDelete**](docs/Api/PeeringApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*PeeringApi* | [**adminPeeringPeersGet**](docs/Api/PeeringApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
-*PeeringApi* | [**adminPeeringPeersPost**](docs/Api/PeeringApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
-*PeeringApi* | [**adminPeeringStartPost**](docs/Api/PeeringApi.md#adminpeeringstartpost) | **POST** /admin/peering/start | Start Peering
-*PeeringApi* | [**adminPeeringStatusGet**](docs/Api/PeeringApi.md#adminpeeringstatusget) | **GET** /admin/peering/status | Check Peering Status
-*PeeringApi* | [**adminPeeringStopPost**](docs/Api/PeeringApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
-*PeersApi* | [**adminPeeringPeersDelete**](docs/Api/PeersApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*PeersApi* | [**adminPeeringPeersGet**](docs/Api/PeersApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
-*PeersApi* | [**adminPeeringPeersPost**](docs/Api/PeersApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
-*PeersApi* | [**adminPeeringStartPost**](docs/Api/PeersApi.md#adminpeeringstartpost) | **POST** /admin/peering/start | Start Peering
-*PeersApi* | [**adminPeeringStatusGet**](docs/Api/PeersApi.md#adminpeeringstatusget) | **GET** /admin/peering/status | Check Peering Status
-*PeersApi* | [**adminPeeringStopPost**](docs/Api/PeersApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
 *PinningApi* | [**pinningPinsGet**](docs/Api/PinningApi.md#pinningpinsget) | **GET** /pinning/pins | List all pin status objects
 *PinningApi* | [**pinningPinsPinidDelete**](docs/Api/PinningApi.md#pinningpinspiniddelete) | **DELETE** /pinning/pins/{pinid} | Delete a pinned object
 *PinningApi* | [**pinningPinsPinidGet**](docs/Api/PinningApi.md#pinningpinspinidget) | **GET** /pinning/pins/{pinid} | Get a pin status object
@@ -300,7 +315,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicMetricsDealsOnChainGet**](docs/Api/PublicApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**publicMinersDealsMinerGet**](docs/Api/PublicApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**publicMinersFailuresMinerGet**](docs/Api/PublicApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**publicMinersGet**](docs/Api/PublicApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *PublicApi* | [**publicMinersStatsMinerGet**](docs/Api/PublicApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**publicNetAddrsGet**](docs/Api/PublicApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**publicNetPeersGet**](docs/Api/PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
@@ -313,22 +327,39 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AddressAddress](docs/Model/AddressAddress.md)
+ - [ApiChannelIDParam](docs/Model/ApiChannelIDParam.md)
+ - [ApiClaimMsgResponse](docs/Model/ApiClaimMsgResponse.md)
+ - [ApiClaimResponse](docs/Model/ApiClaimResponse.md)
+ - [ApiCreateCollectionBody](docs/Model/ApiCreateCollectionBody.md)
+ - [ApiDeleteContentFromCollectionBody](docs/Model/ApiDeleteContentFromCollectionBody.md)
+ - [ApiEmptyResp](docs/Model/ApiEmptyResp.md)
+ - [ApiEstimateDealBody](docs/Model/ApiEstimateDealBody.md)
+ - [ApiGetApiKeysResp](docs/Model/ApiGetApiKeysResp.md)
+ - [ApiMinerResp](docs/Model/ApiMinerResp.md)
+ - [ApiPublicNodeInfo](docs/Model/ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs/Model/AutoretrieveInitBody.md)
+ - [CidCid](docs/Model/CidCid.md)
+ - [CollectionsCidType](docs/Model/CollectionsCidType.md)
  - [CollectionsCollection](docs/Model/CollectionsCollection.md)
+ - [CollectionsCollectionListResponse](docs/Model/CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs/Model/ContentAddBody.md)
- - [MainChannelIDParam](docs/Model/MainChannelIDParam.md)
- - [MainCreateCollectionBody](docs/Model/MainCreateCollectionBody.md)
- - [MainDeleteContentFromCollectionBody](docs/Model/MainDeleteContentFromCollectionBody.md)
- - [MainEstimateDealBody](docs/Model/MainEstimateDealBody.md)
- - [MainGetApiKeysResp](docs/Model/MainGetApiKeysResp.md)
- - [MainImportDealBody](docs/Model/MainImportDealBody.md)
+ - [MinerClaimMinerBody](docs/Model/MinerClaimMinerBody.md)
+ - [MinerMinerChainInfo](docs/Model/MinerMinerChainInfo.md)
+ - [MinerMinerSetInfoParams](docs/Model/MinerMinerSetInfoParams.md)
+ - [MinerSuspendMinerBody](docs/Model/MinerSuspendMinerBody.md)
+ - [PeeringPeeringPeer](docs/Model/PeeringPeeringPeer.md)
  - [TypesIpfsListPinStatusResponse](docs/Model/TypesIpfsListPinStatusResponse.md)
  - [TypesIpfsPin](docs/Model/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/Model/TypesIpfsPinStatusResponse.md)
- - [UtilContentAddIpfsBody](docs/Model/UtilContentAddIpfsBody.md)
+ - [TypesPinningStatus](docs/Model/TypesPinningStatus.md)
  - [UtilContentAddResponse](docs/Model/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/Model/UtilContentCreateBody.md)
+ - [UtilContentType](docs/Model/UtilContentType.md)
+ - [UtilDbCID](docs/Model/UtilDbCID.md)
  - [UtilHttpError](docs/Model/UtilHttpError.md)
+ - [UtilUserSettings](docs/Model/UtilUserSettings.md)
+ - [UtilViewerResponse](docs/Model/UtilViewerResponse.md)
 
 ## Documentation For Authorization
 

@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**public_metrics_deals_on_chain_get**](PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 [**public_miners_deals_miner_get**](PublicApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 [**public_miners_failures_miner_get**](PublicApi.md#public_miners_failures_miner_get) | **GET** /public/miners/failures/{miner} | Get all miners
-[**public_miners_get**](PublicApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 [**public_miners_stats_miner_get**](PublicApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
 [**public_net_addrs_get**](PublicApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 [**public_net_peers_get**](PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
@@ -122,7 +121,7 @@ Name | Type | Description  | Notes
 
 
 ## **public_info_get** {#public_info_get}
-> String public_info_get
+> ApiPublicNodeInfo public_info_get
 
 Get public node info
 
@@ -156,7 +155,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**String**
+[**ApiPublicNodeInfo**](ApiPublicNodeInfo.md)
 
 ### Authorization
 
@@ -310,54 +309,6 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner | 
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-## **public_miners_get** {#public_miners_get}
-> String public_miners_get
-
-Get all miners
-
-This endpoint returns all miners
-
-### Example
-```ruby
-# load the gem
-require 'swagger_client'
-# setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PublicApi.new
-
-begin
-  #Get all miners
-  result = api_instance.public_miners_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PublicApi->public_miners_get: #{e}"
-end
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 
