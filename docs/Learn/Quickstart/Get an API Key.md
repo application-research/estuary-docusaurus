@@ -1,4 +1,5 @@
 ---
+slug: /
 sidebar_position: 1
 sidebar_label: Get an API key
 hide_title: true
