@@ -8,7 +8,7 @@ Estuary is an open source software that allows easy sending of public data to th
 
 ### Why does Estuary exist?
 
-The Outercore Engineering team that helped make [Filecoin](https://filecoin.io) and the [ARG](https://arg.protocol.ai) wanted to provide an end-to-end example of how to use IPFS, Filecoin, and other technologies together.
+The Outercore Engineering team that helped make [Filecoin](https://filecoin.io) wanted to provide an end-to-end example of how to use IPFS, Filecoin, and other technologies together.
 
 Read our [FAQ](../Learn/faq) for more frequently asked questions and criticism.
 
