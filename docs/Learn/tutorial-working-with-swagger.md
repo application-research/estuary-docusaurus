@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # Working with Estuary API Swagger Docs
 
-The ARG team created the Swagger Documentation to enable developers to test out the API functionalities and generate their own client based on their specification.
+The Outercore Engineering team created the Swagger Documentation to enable developers to test out the API functionalities and generate their own client based on their specification.
 
 Click [here](https://docs.estuary.tech/swagger-ui-page) to get started on Estuary API Swagger
 
