@@ -20,7 +20,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "cp -v makeRequest.js ./node_modules/docusaurus-theme-openapi/lib/theme/ApiDemoPanel/Execute/makeRequest.js; docusaurus build",
+    "build": "cp -v makeRequest.js ./node_modules/docusaurus-theme-openapi/lib-next/theme/ApiDemoPanel/Execute/makeRequest.js ; docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

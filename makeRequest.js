@@ -150,6 +150,7 @@ async function makeRequest(request, proxy, _body) {
       case "formdata":
         {
           myBody = new FormData();
+		console.log("new")
 
           //converting request.body to json above strips out file info
           //so below access through request.body.formdata.members
