@@ -1,8 +1,11 @@
 # Listing your files
 
-After you have [uploaded a file](/Tutorial/tutorial-uploading-your-first-file). You will probably want to list all of your files. To do so you can use the code explorer to the right, just follow these steps:
+After you have [uploaded a file](/Learn/Quickstart/Upload%20Your%20First%20File). You will probably want to list all of your files. To do so you can use the code explorer to the right, just follow these steps:
 
-1. Click Authorize to the right and enter in your HTTP Authentication header. Remember to add the Bearer prefix so the field looks something like this: `Bearer ESTxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxARY`
+1. Click Authorize to the right and enter in your HTTP Authentication header. Remember to add the Bearer prefix so the field looks something like this:
+
+   > `Bearer ESTxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxARY`
+
 2. Click the Execute button and your browser will send the API Request!
 
 Once you do so, here is an example of the output:

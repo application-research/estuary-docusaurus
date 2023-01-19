@@ -46,4 +46,4 @@ Use your new API key on the screen to the right by clicking the Authorize button
 
 ### What is next?
 
-Now you are ready for the next part, [uploading your first file.](/Tutorial/tutorial-uploading-your-first-file).
+Now you are ready for the next part, [uploading your first file.](/Learn/Quickstart/Upload%20Your%20First%20File)
