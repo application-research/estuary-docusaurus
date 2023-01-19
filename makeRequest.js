@@ -1,16 +1,11 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
 /* ============================================================================
  * Copyright (c) Cloud Annotations
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  * ========================================================================== */
+
+
 async function loadImage(content) {
   return new Promise((accept, reject) => {
     const reader = new FileReader();
@@ -36,13 +31,14 @@ async function loadImage(content) {
 }
 
 async function makeRequest(request, proxy, _body) {
-  var _request$body;
 
+console.log(request)
   const headers = request.toJSON().header;
   let myHeaders = new Headers();
 
   if (headers) {
-    headers.forEach(header => {
+  headers.shift()
+    headers.forEach((header) => {
       if (header.key && header.value) {
         myHeaders.append(header.key, header.value);
       }
@@ -118,67 +114,55 @@ async function makeRequest(request, proxy, _body) {
   //   });
   // }
 
-
-  const body = (_request$body = request.body) === null || _request$body === void 0 ? void 0 : _request$body.toJSON();
+  const body = request.body?.toJSON();
   let myBody = undefined;
 
   if (body !== undefined && Object.keys(body).length > 0) {
     switch (body.mode) {
-      case "urlencoded":
-        {
-          myBody = new URLSearchParams();
+      case "urlencoded": {
+        myBody = new URLSearchParams();
 
-          if (Array.isArray(body.urlencoded)) {
-            for (const data of body.urlencoded) {
+        if (Array.isArray(body.urlencoded)) {
+          for (const data of body.urlencoded) {
+            if (data.key && data.value) {
+              myBody.append(data.key, data.value);
+            }
+          }
+        }
+
+        break;
+      }
+
+      case "raw": {
+        myBody = (body.raw ?? "").toString();
+        break;
+      }
+
+      case "formdata": {
+        myBody = new FormData();
+
+        if (Array.isArray(request.body.formdata.members)) {
+          for (const data of request.body.formdata.members) {
+            if (data.type == "file"){
+		myBody.append(data.key, data.value.content, "file");
+	    }else{
               if (data.key && data.value) {
                 myBody.append(data.key, data.value);
               }
-            }
+	    }
           }
-
-          break;
         }
 
-      case "raw":
-        {
-          var _body$raw;
+        break;
+      }
 
-          myBody = ((_body$raw = body.raw) !== null && _body$raw !== void 0 ? _body$raw : "").toString();
-          break;
+      case "file": {
+        if (_body.type === "raw" && _body.content?.type === "file") {
+          myBody = await loadImage(_body.content.value.content);
         }
 
-      case "formdata":
-        {
-          myBody = new FormData();
-		console.log("new")
-
-          //converting request.body to json above strips out file info
-          //so below access through request.body.formdata.members
-          if (Array.isArray(request.body.formdata.members)) {
-            for (const data of request.body.formdata.members) {
-              if (data.type == "file") {
-                myBody.append(data.key, data.value.content, "file");
-              } else {
-                if (data.key && data.value) {
-                  myBody.append(data.key, data.value);
-                }
-  	      }
-      	    }
-	  }
-
-          break;
-        }
-
-      case "file":
-        {
-          var _body$content;
-
-          if (_body.type === "raw" && ((_body$content = _body.content) === null || _body$content === void 0 ? void 0 : _body$content.type) === "file") {
-            myBody = await loadImage(_body.content.value.content);
-          }
-
-          break;
-        }
+        break;
+      }
 
       default:
         break;
@@ -188,7 +172,7 @@ async function makeRequest(request, proxy, _body) {
   const requestOptions = {
     method: request.method,
     headers: myHeaders,
-    body: myBody
+    body: myBody,
   };
   let finalUrl = request.url.toString();
 
@@ -198,10 +182,10 @@ async function makeRequest(request, proxy, _body) {
     finalUrl = normalizedProxy + request.url.toString();
   }
 
-  return await fetch(finalUrl, requestOptions).then(response => {
+	console.log("Fetch", finalUrl, requestOptions)
+  return await fetch(finalUrl, requestOptions).then((response) => {
     return response.text();
   });
 }
 
-var _default = makeRequest;
-exports.default = _default;
+export default makeRequest;
