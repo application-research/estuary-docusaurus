@@ -4,19 +4,18 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**netAddrsGet**](NetApi.md#netAddrsGet) | **GET** /net/addrs | Net Addrs
+[**adminMinersGet**](NetApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 [**publicMinersFailuresMinerGet**](NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-[**publicMinersGet**](NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 [**publicNetAddrsGet**](NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 
 
-## **netAddrsGet** {#netAddrsGet}
-> &#x27;String&#x27; netAddrsGet()
+## **adminMinersGet** {#adminMinersGet}
+> ApiMinerResp adminMinersGet()
 
-Net Addrs
+Get all miners
 
-This endpoint is used to get net addrs
+This endpoint returns all miners. Note: value may be cached
 
 ### Example
 ```javascript
@@ -30,7 +29,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.NetApi();
-apiInstance.netAddrsGet((error, data, response) => {
+apiInstance.adminMinersGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -44,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**&#x27;String&#x27;**
+[**ApiMinerResp**](ApiMinerResp.md)
 
 ### Authorization
 
@@ -91,51 +90,6 @@ apiInstance.publicMinersFailuresMinerGet(miner, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner | 
-
-### Return type
-
-**&#x27;String&#x27;**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-## **publicMinersGet** {#publicMinersGet}
-> &#x27;String&#x27; publicMinersGet()
-
-Get all miners
-
-This endpoint returns all miners
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.NetApi();
-apiInstance.publicMinersGet((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

@@ -160,7 +160,9 @@
                         }
                     }
                 }
-            },
+            }
+        },
+        "/admin/invites/{code}": {
             "post": {
                 "description": "This endpoint is used to create an estuary invite.",
                 "tags": [
@@ -212,13 +214,53 @@
                 }
             }
         },
+        "/admin/miners/": {
+            "get": {
+                "description": "This endpoint returns all miners. Note: value may be cached",
+                "tags": [
+                    "admin",
+                    "net"
+                ],
+                "summary": "Get all miners",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/api.minerResp"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/admin/peering/peers": {
             "get": {
                 "description": "This endpoint can be used to list all peers on Peering Service",
                 "tags": [
-                    "admin",
-                    "peering",
-                    "peers"
+                    "admin"
                 ],
                 "summary": "List all Peering peers",
                 "responses": {
@@ -257,11 +299,23 @@
             "post": {
                 "description": "This endpoint can be used to add a Peer from the Peering Service",
                 "tags": [
-                    "admin",
-                    "peering",
-                    "peers"
+                    "admin"
                 ],
                 "summary": "Add peers on Peering Service",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/peering.PeeringPeer"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Peering Peer array",
+                    "required": true
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -298,9 +352,7 @@
             "delete": {
                 "description": "This endpoint can be used to remove a Peer from the Peering Service",
                 "tags": [
-                    "admin",
-                    "peering",
-                    "peers"
+                    "admin"
                 ],
                 "summary": "Remove peers on Peering Service",
                 "requestBody": {
@@ -309,7 +361,7 @@
                             "schema": {
                                 "type": "array",
                                 "items": {
-                                    "type": "boolean"
+                                    "type": "string"
                                 }
                             }
                         }
@@ -355,9 +407,7 @@
             "post": {
                 "description": "This endpoint can be used to start the Peering Service",
                 "tags": [
-                    "admin",
-                    "peering",
-                    "peers"
+                    "admin"
                 ],
                 "summary": "Start Peering",
                 "responses": {
@@ -398,9 +448,7 @@
             "get": {
                 "description": "This endpoint can be used to check the Peering status",
                 "tags": [
-                    "admin",
-                    "peering",
-                    "peers"
+                    "admin"
                 ],
                 "summary": "Check Peering Status",
                 "responses": {
@@ -441,9 +489,7 @@
             "post": {
                 "description": "This endpoint can be used to stop the Peering Service",
                 "tags": [
-                    "admin",
-                    "peering",
-                    "peers"
+                    "admin"
                 ],
                 "summary": "Stop Peering",
                 "responses": {
@@ -629,10 +675,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "type": "array",
-                                        "items": {
-                                            "$ref": "#/components/schemas/collections.Collection"
-                                        }
+                                        "$ref": "#/components/schemas/collections.Collection"
                                     }
                                 }
                             }
@@ -680,7 +723,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/main.createCollectionBody"
+                                "$ref": "#/components/schemas/api.createCollectionBody"
                             }
                         }
                     },
@@ -758,10 +801,17 @@
                         }
                     },
                     {
-                        "description": "Path to file",
-                        "name": "path",
+                        "description": "Directory inside collection",
+                        "name": "dir",
                         "in": "query",
-                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Overwrite file if already exists in path",
+                        "name": "overwrite",
+                        "in": "query",
                         "schema": {
                             "type": "string"
                         }
@@ -833,7 +883,10 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "string"
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/collections.CollectionListResponse"
+                                    }
                                 }
                             }
                         }
@@ -872,6 +925,22 @@
                         "name": "coluuid",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Directory",
+                        "name": "dir",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Overwrite conflicting files",
+                        "name": "overwrite",
+                        "in": "query",
                         "schema": {
                             "type": "string"
                         }
@@ -1043,22 +1112,13 @@
                         "schema": {
                             "type": "string"
                         }
-                    },
-                    {
-                        "description": "Content ID",
-                        "name": "contentid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
                     }
                 ],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/main.deleteContentFromCollectionBody"
+                                "$ref": "#/components/schemas/api.deleteContentFromCollectionBody"
                             }
                         }
                     },
@@ -1132,6 +1192,14 @@
                         }
                     },
                     {
+                        "description": "Overwrite files with the same path on same collection",
+                        "name": "overwrite",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
                         "description": "Lazy Provide true/false",
                         "name": "lazy-provide",
                         "in": "query",
@@ -1160,7 +1228,7 @@
                                         "format": "binary"
                                     },
                                     "filename": {
-                                        "description": "Filenam to use for upload",
+                                        "description": "Filename to use for upload",
                                         "type": "string"
                                     }
                                 },
@@ -1291,13 +1359,21 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "description": "Overwrite conflicting files in collections",
+                        "name": "overwrite",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/util.ContentAddIpfsBody"
+                                "$ref": "#/components/schemas/types.IpfsPin"
                             }
                         }
                     },
@@ -1472,6 +1548,67 @@
                         "description": "Content ID",
                         "name": "content",
                         "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/contents": {
+            "get": {
+                "description": "This endpoint is used to get user contents",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get user contents",
+                "parameters": [
+                    {
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1737,58 +1874,6 @@
                 }
             }
         },
-        "/content/importdeal": {
-            "post": {
-                "description": "This endpoint imports a deal into the shuttle.",
-                "tags": [
-                    "content"
-                ],
-                "summary": "Import a deal",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/main.importDealBody"
-                            }
-                        }
-                    },
-                    "description": "Import a deal",
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/content/list": {
             "get": {
                 "description": "This endpoint lists all content",
@@ -1830,18 +1915,129 @@
                 }
             }
         },
-        "/content/read/{cont}": {
+        "/content/staging-zones": {
             "get": {
-                "description": "This endpoint reads content from the blockstore",
+                "description": "This endpoint is used to get staging zone for user, excluding its contents.",
                 "tags": [
                     "content"
                 ],
-                "summary": "Read content",
+                "summary": "Get staging zone for user, excluding its contents",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/staging-zones/{staging_zone}": {
+            "get": {
+                "description": "This endpoint is used to get a staging zone, excluding its contents.",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get staging zone without its contents field populated",
                 "parameters": [
                     {
-                        "description": "CID",
-                        "name": "cont",
+                        "description": "Staging Zone Content ID",
+                        "name": "staging_zone",
                         "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/staging-zones/{staging_zone}/contents": {
+            "get": {
+                "description": "This endpoint is used to get the contents for a staging zone",
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get contents for a staging zone",
+                "parameters": [
+                    {
+                        "description": "Staging Zone Content ID",
+                        "name": "staging_zone",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1882,50 +2078,9 @@
                 }
             }
         },
-        "/content/staging-zones": {
-            "get": {
-                "description": "This endpoint is used to get staging zone for user.",
-                "tags": [
-                    "content"
-                ],
-                "summary": "Get staging zone for user",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/content/stats": {
             "get": {
-                "description": "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten",
+                "description": "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content",
                 "tags": [
                     "content"
                 ],
@@ -2099,7 +2254,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/main.estimateDealBody"
+                                "$ref": "#/components/schemas/api.estimateDealBody"
                             }
                         }
                     },
@@ -2461,7 +2616,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/main.ChannelIDParam"
+                                "$ref": "#/components/schemas/api.ChannelIDParam"
                             }
                         }
                     },
@@ -2710,20 +2865,261 @@
                 }
             }
         },
-        "/net/addrs": {
-            "get": {
-                "description": "This endpoint is used to get net addrs",
+        "/miner/claim": {
+            "post": {
+                "description": "This endpoint lets a user claim a miner",
                 "tags": [
-                    "net"
+                    "miner"
                 ],
-                "summary": "Net Addrs",
+                "summary": "Claim Miner",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/miner.ClaimMinerBody"
+                            }
+                        }
+                    },
+                    "description": "Claim Miner Body",
+                    "required": true
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "string"
+                                    "$ref": "#/components/schemas/api.claimResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/miner/claim/{miner}": {
+            "get": {
+                "description": "This endpoint lets a user get the message in order to claim a miner",
+                "tags": [
+                    "miner"
+                ],
+                "summary": "Get Claim Miner Message",
+                "parameters": [
+                    {
+                        "description": "Miner claim message",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/api.claimMsgResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/miner/set-info/{miner}": {
+            "put": {
+                "description": "This endpoint lets a user set miner info.",
+                "tags": [
+                    "miner"
+                ],
+                "summary": "Set Miner Info",
+                "parameters": [
+                    {
+                        "description": "Miner to set info for",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/miner.MinerSetInfoParams"
+                            }
+                        }
+                    },
+                    "description": "Miner set info params",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/api.emptyResp"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/miner/suspend/{miner}": {
+            "post": {
+                "description": "This endpoint lets a user suspend a miner.",
+                "tags": [
+                    "miner"
+                ],
+                "summary": "Suspend Miner",
+                "parameters": [
+                    {
+                        "description": "Miner to suspend",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/miner.SuspendMinerBody"
+                            }
+                        }
+                    },
+                    "description": "Suspend Miner Body",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/api.emptyResp"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/miner/unsuspend/{miner}": {
+            "put": {
+                "description": "This endpoint lets a user unsuspend a miner.",
+                "tags": [
+                    "miner"
+                ],
+                "summary": "Unuspend Miner",
+                "parameters": [
+                    {
+                        "description": "Miner to unsuspend",
+                        "name": "miner",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/api.emptyResp"
                                 }
                             }
                         }
@@ -2797,6 +3193,24 @@
                     "pinning"
                 ],
                 "summary": "Add and pin object",
+                "parameters": [
+                    {
+                        "description": "Ignore Dupes",
+                        "name": "ignore-dupes",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Overwrite conflicting files in collections",
+                        "name": "overwrite",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2891,7 +3305,7 @@
                 "summary": "Replace a pinned object",
                 "parameters": [
                     {
-                        "description": "Pin ID",
+                        "description": "Pin ID to be replaced",
                         "name": "pinid",
                         "in": "path",
                         "required": true,
@@ -2904,13 +3318,12 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "string"
+                                "$ref": "#/components/schemas/types.IpfsPin"
                             }
                         }
                     },
-                    "description": "CID of new pin",
-                    "required": true,
-                    "x-s2o-overloaded": true
+                    "description": "New pin",
+                    "required": true
                 },
                 "responses": {
                     "202": {
@@ -2943,8 +3356,7 @@
                             }
                         }
                     }
-                },
-                "x-s2o-warning": "Operation post:/pinning/pins/{pinid} has multiple requestBodies"
+                }
             },
             "delete": {
                 "description": "This endpoint deletes a pinned object.",
@@ -2965,7 +3377,7 @@
                 ],
                 "responses": {
                     "202": {
-                        "description": ""
+                        "description": "Accepted"
                     },
                     "500": {
                         "description": "Internal Server Error",
@@ -3086,7 +3498,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "string"
+                                    "$ref": "#/components/schemas/api.publicNodeInfo"
                                 }
                             }
                         }
@@ -3122,48 +3534,6 @@
                     "metrics"
                 ],
                 "summary": "Get deal metrics",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/util.HttpError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/public/miners": {
-            "get": {
-                "description": "This endpoint returns all miners",
-                "tags": [
-                    "public",
-                    "net"
-                ],
-                "summary": "Get all miners",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3272,10 +3642,10 @@
                         "description": "Filter by miner",
                         "name": "miner",
                         "in": "path",
+                        "required": true,
                         "schema": {
                             "type": "string"
-                        },
-                        "required": true
+                        }
                     }
                 ],
                 "responses": {
@@ -3325,10 +3695,10 @@
                         "description": "Filter by miner",
                         "name": "miner",
                         "in": "path",
+                        "required": true,
                         "schema": {
                             "type": "string"
-                        },
-                        "required": true
+                        }
                     }
                 ],
                 "responses": {
@@ -3543,10 +3913,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "type": "array",
-                                        "items": {
-                                            "$ref": "#/components/schemas/main.getApiKeysResp"
-                                        }
+                                        "$ref": "#/components/schemas/api.getApiKeysResp"
                                     }
                                 }
                             }
@@ -3614,7 +3981,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/main.getApiKeysResp"
+                                    "$ref": "#/components/schemas/api.getApiKeysResp"
                                 }
                             }
                         }
@@ -3747,7 +4114,7 @@
         },
         "/user/stats": {
             "get": {
-                "description": "This endpoint is used to geet stats for the current user.",
+                "description": "This endpoint is used to get stats for the current user.",
                 "tags": [
                     "User"
                 ],
@@ -3765,6 +4132,44 @@
                     },
                     "400": {
                         "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.HttpError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/viewer": {
+            "get": {
+                "description": "This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.",
+                "summary": "Fetch viewer details",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/util.ViewerResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -3806,6 +4211,143 @@
             }
         },
         "schemas": {
+            "address.Address": {
+                "type": "object"
+            },
+            "api.ChannelIDParam": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "initiator": {
+                        "type": "string"
+                    },
+                    "responder": {
+                        "type": "string"
+                    }
+                }
+            },
+            "api.claimMsgResponse": {
+                "type": "object",
+                "properties": {
+                    "hexmsg": {
+                        "type": "string"
+                    }
+                }
+            },
+            "api.claimResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "api.createCollectionBody": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "api.deleteContentFromCollectionBody": {
+                "type": "object",
+                "properties": {
+                    "by": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "api.emptyResp": {
+                "type": "object"
+            },
+            "api.estimateDealBody": {
+                "type": "object",
+                "properties": {
+                    "durationBlks": {
+                        "type": "integer"
+                    },
+                    "replication": {
+                        "type": "integer"
+                    },
+                    "size": {
+                        "type": "integer"
+                    },
+                    "verified": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "api.getApiKeysResp": {
+                "type": "object",
+                "properties": {
+                    "expiry": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    },
+                    "tokenHash": {
+                        "type": "string"
+                    }
+                }
+            },
+            "api.minerResp": {
+                "type": "object",
+                "properties": {
+                    "addr": {
+                        "$ref": "#/components/schemas/address.Address"
+                    },
+                    "chain_info": {
+                        "$ref": "#/components/schemas/miner.MinerChainInfo"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "suspended": {
+                        "type": "boolean"
+                    },
+                    "suspendedReason": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                }
+            },
+            "api.publicNodeInfo": {
+                "type": "object",
+                "properties": {
+                    "primaryAddress": {
+                        "$ref": "#/components/schemas/address.Address"
+                    }
+                }
+            },
+            "cid.Cid": {
+                "type": "object"
+            },
+            "collections.CidType": {
+                "type": "string",
+                "enum": [
+                    "directory",
+                    "file"
+                ],
+                "x-enum-varnames": [
+                    "CidTypeDir",
+                    "CidTypeFile"
+                ]
+            },
             "collections.Collection": {
                 "type": "object",
                 "properties": {
@@ -3829,92 +4371,98 @@
                     }
                 }
             },
-            "main.ChannelIDParam": {
+            "collections.CollectionListResponse": {
                 "type": "object",
                 "properties": {
-                    "id": {
-                        "type": "integer"
+                    "cid": {
+                        "$ref": "#/components/schemas/util.DbCID"
                     },
-                    "initiator": {
-                        "type": "string"
-                    },
-                    "responder": {
-                        "type": "string"
-                    }
-                }
-            },
-            "main.createCollectionBody": {
-                "type": "object",
-                "properties": {
-                    "description": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    }
-                }
-            },
-            "main.deleteContentFromCollectionBody": {
-                "type": "object",
-                "properties": {
-                    "by": {
-                        "type": "string"
-                    },
-                    "value": {
-                        "type": "string"
-                    }
-                }
-            },
-            "main.estimateDealBody": {
-                "type": "object",
-                "properties": {
-                    "durationBlks": {
-                        "type": "integer"
-                    },
-                    "replication": {
-                        "type": "integer"
-                    },
-                    "size": {
-                        "type": "integer"
-                    },
-                    "verified": {
-                        "type": "boolean"
-                    }
-                }
-            },
-            "main.getApiKeysResp": {
-                "type": "object",
-                "properties": {
-                    "expiry": {
-                        "type": "string"
-                    },
-                    "label": {
-                        "type": "string"
-                    },
-                    "token": {
-                        "type": "string"
-                    },
-                    "tokenHash": {
-                        "type": "string"
-                    }
-                }
-            },
-            "main.importDealBody": {
-                "type": "object",
-                "properties": {
                     "coluuid": {
                         "type": "string"
                     },
-                    "dealIDs": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
+                    "contId": {
+                        "type": "integer"
                     },
                     "dir": {
                         "type": "string"
                     },
                     "name": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "integer"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/collections.CidType"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "miner.ClaimMinerBody": {
+                "type": "object",
+                "properties": {
+                    "claim": {
+                        "type": "string"
+                    },
+                    "miner": {
+                        "$ref": "#/components/schemas/address.Address"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "miner.MinerChainInfo": {
+                "type": "object",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "owner": {
+                        "type": "string"
+                    },
+                    "peerId": {
+                        "type": "string"
+                    },
+                    "worker": {
+                        "type": "string"
+                    }
+                }
+            },
+            "miner.MinerSetInfoParams": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "miner.SuspendMinerBody": {
+                "type": "object",
+                "properties": {
+                    "reason": {
+                        "type": "string"
+                    }
+                }
+            },
+            "peering.PeeringPeer": {
+                "type": "object",
+                "properties": {
+                    "Addrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "Connected": {
+                        "type": "boolean"
+                    },
+                    "ID": {
                         "type": "string"
                     }
                 }
@@ -3977,32 +4525,26 @@
                         "type": "string"
                     },
                     "status": {
-                        "type": "string"
+                        "$ref": "#/components/schemas/types.PinningStatus"
                     }
                 }
             },
-            "util.ContentAddIpfsBody": {
-                "type": "object",
-                "properties": {
-                    "coluuid": {
-                        "type": "string"
-                    },
-                    "dir": {
-                        "type": "string"
-                    },
-                    "filename": {
-                        "type": "string"
-                    },
-                    "peers": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "root": {
-                        "type": "string"
-                    }
-                }
+            "types.PinningStatus": {
+                "type": "string",
+                "enum": [
+                    "pinning",
+                    "pinned",
+                    "failed",
+                    "queued",
+                    "offloaded"
+                ],
+                "x-enum-varnames": [
+                    "PinningStatusPinning",
+                    "PinningStatusPinned",
+                    "PinningStatusFailed",
+                    "PinningStatusQueued",
+                    "PinningStatusOffloaded"
+                ]
             },
             "util.ContentAddResponse": {
                 "type": "object",
@@ -4042,11 +4584,35 @@
                     "name": {
                         "type": "string"
                     },
+                    "overwrite": {
+                        "type": "boolean"
+                    },
                     "root": {
                         "type": "string"
                     },
                     "type": {
-                        "type": "integer"
+                        "$ref": "#/components/schemas/util.ContentType"
+                    }
+                }
+            },
+            "util.ContentType": {
+                "type": "integer",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "x-enum-varnames": [
+                    "Unknown",
+                    "File",
+                    "Directory"
+                ]
+            },
+            "util.DbCID": {
+                "type": "object",
+                "properties": {
+                    "cid": {
+                        "$ref": "#/components/schemas/cid.Cid"
                     }
                 }
             },
@@ -4060,6 +4626,67 @@
                         "type": "string"
                     },
                     "reason": {
+                        "type": "string"
+                    }
+                }
+            },
+            "util.UserSettings": {
+                "type": "object",
+                "properties": {
+                    "contentAddingDisabled": {
+                        "type": "boolean"
+                    },
+                    "dealDuration": {
+                        "type": "integer"
+                    },
+                    "dealMakingDisabled": {
+                        "type": "boolean"
+                    },
+                    "fileStagingThreshold": {
+                        "type": "integer"
+                    },
+                    "flags": {
+                        "type": "integer"
+                    },
+                    "replication": {
+                        "type": "integer"
+                    },
+                    "uploadEndpoints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "verified": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "util.ViewerResponse": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "type": "string"
+                    },
+                    "auth_expiry": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "miners": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "perms": {
+                        "type": "integer"
+                    },
+                    "settings": {
+                        "$ref": "#/components/schemas/util.UserSettings"
+                    },
+                    "username": {
                         "type": "string"
                     }
                 }

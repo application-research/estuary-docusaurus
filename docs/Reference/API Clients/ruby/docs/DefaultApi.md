@@ -1,16 +1,17 @@
 # SwaggerClient::DefaultApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deal_transfer_status_post**](DefaultApi.md#deal_transfer_status_post) | **POST** /deal/transfer/status | 
+[**viewer_get**](DefaultApi.md#viewer_get) | **GET** /viewer | Fetch viewer details
 
+## **viewer_get** {#viewer_get}
+> UtilViewerResponse viewer_get
 
-# **deal_transfer_status_post**
-> deal_transfer_status_post
+Fetch viewer details
 
-
+This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
 
 ### Example
 ```ruby
@@ -27,9 +28,11 @@ end
 api_instance = SwaggerClient::DefaultApi.new
 
 begin
-  api_instance.deal_transfer_status_post
+  #Fetch viewer details
+  result = api_instance.viewer_get
+  p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling DefaultApi->deal_transfer_status_post: #{e}"
+  puts "Exception when calling DefaultApi->viewer_get: #{e}"
 end
 ```
 
@@ -38,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**UtilViewerResponse**](UtilViewerResponse.md)
 
 ### Authorization
 
@@ -47,7 +50,7 @@ nil (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 

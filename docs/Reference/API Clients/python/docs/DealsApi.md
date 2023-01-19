@@ -41,7 +41,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
-body = estuary_client.MainEstimateDealBody() # MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+body = estuary_client.ApiEstimateDealBody() # ApiEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 try:
     # Estimate the cost of a deal
@@ -55,7 +55,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainEstimateDealBody**](MainEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
+ **body** | [**ApiEstimateDealBody**](ApiEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
 
 ### Return type
 
@@ -417,7 +417,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
-body = estuary_client.MainChannelIDParam() # MainChannelIDParam | Channel ID
+body = estuary_client.ApiChannelIDParam() # ApiChannelIDParam | Channel ID
 
 try:
     # Transfer Status
@@ -431,7 +431,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**ApiChannelIDParam**](ApiChannelIDParam.md)| Channel ID | 
 
 ### Return type
 

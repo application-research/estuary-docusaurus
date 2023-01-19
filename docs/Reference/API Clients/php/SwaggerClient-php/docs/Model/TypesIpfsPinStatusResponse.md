@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **info** | **object** |  | [optional] 
 **pin** | [**\Swagger\Client\Model\TypesIpfsPin**](TypesIpfsPin.md) |  | [optional] 
 **requestid** | **string** |  | [optional] 
-**status** | **string** |  | [optional] 
+**status** | [**\Swagger\Client\Model\TypesPinningStatus**](TypesPinningStatus.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminMinersGet**](AdminApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 [**adminPeeringPeersDelete**](AdminApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 [**adminPeeringPeersGet**](AdminApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
 [**adminPeeringPeersPost**](AdminApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -12,6 +13,51 @@ Method | HTTP request | Description
 [**adminPeeringStopPost**](AdminApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
 [**adminSystemConfigGet**](AdminApi.md#adminSystemConfigGet) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**adminUsersGet**](AdminApi.md#adminUsersGet) | **GET** /admin/users | Get all users
+
+
+## **adminMinersGet** {#adminMinersGet}
+> ApiMinerResp adminMinersGet()
+
+Get all miners
+
+This endpoint returns all miners. Note: value may be cached
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.AdminApi();
+apiInstance.adminMinersGet((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiMinerResp**](ApiMinerResp.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 
 ## **adminPeeringPeersDelete** {#adminPeeringPeersDelete}
@@ -33,7 +79,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.AdminApi();
-let body = [true]; // [Boolean] | Peer ids
+let body = ["body_example"]; // [String] | Peer ids
 
 apiInstance.adminPeeringPeersDelete(body, (error, data, response) => {
   if (error) {
@@ -48,7 +94,7 @@ apiInstance.adminPeeringPeersDelete(body, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**[Boolean]**](Boolean.md)| Peer ids | 
+ **body** | [**[String]**](String.md)| Peer ids | 
 
 ### Return type
 
@@ -110,7 +156,7 @@ This endpoint does not need any parameter.
 
 
 ## **adminPeeringPeersPost** {#adminPeeringPeersPost}
-> &#x27;String&#x27; adminPeeringPeersPost()
+> &#x27;String&#x27; adminPeeringPeersPost(body)
 
 Add peers on Peering Service
 
@@ -128,7 +174,9 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.AdminApi();
-apiInstance.adminPeeringPeersPost((error, data, response) => {
+let body = [new EstuaryClient.PeeringPeeringPeer()]; // [PeeringPeeringPeer] | Peering Peer array
+
+apiInstance.adminPeeringPeersPost(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -138,7 +186,10 @@ apiInstance.adminPeeringPeersPost((error, data, response) => {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**[PeeringPeeringPeer]**](PeeringPeeringPeer.md)| Peering Peer array | 
 
 ### Return type
 
@@ -150,7 +201,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 

@@ -4,25 +4,76 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**contentContentsGet**](ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 [**contentCreatePost**](ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
 [**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-[**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-[**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
+
+
+## **adminInvitesCodePost** {#adminInvitesCodePost}
+> &#x27;String&#x27; adminInvitesCodePost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let code = "code_example"; // String | Invite code to be created
+
+apiInstance.adminInvitesCodePost(code, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created | 
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 
 ## **adminInvitesGet** {#adminInvitesGet}
@@ -55,56 +106,6 @@ apiInstance.adminInvitesGet((error, data, response) => {
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**&#x27;String&#x27;**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-## **adminInvitesPost** {#adminInvitesPost}
-> &#x27;String&#x27; adminInvitesPost(code)
-
-Create an Estuary invite
-
-This endpoint is used to create an estuary invite.
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.ContentApi();
-let code = "code_example"; // String | Invite code to be created
-
-apiInstance.adminInvitesPost(code, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **String**| Invite code to be created | 
 
 ### Return type
 
@@ -194,9 +195,10 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.ContentApi();
-let body = new EstuaryClient.UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | IPFS Body
 let opts = { 
-  'ignoreDupes': "ignoreDupes_example" // String | Ignore Dupes
+  'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes
+  'overwrite': "overwrite_example" // String | Overwrite conflicting files in collections
 };
 apiInstance.contentAddIpfsPost(body, opts, (error, data, response) => {
   if (error) {
@@ -211,8 +213,9 @@ apiInstance.contentAddIpfsPost(body, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
@@ -253,6 +256,7 @@ let opts = {
   'coluuid': "coluuid_example", // String | Collection UUID
   'replication': 56, // Number | Replication value
   'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes true/false
+  'overwrite': "overwrite_example", // String | Overwrite files with the same path on same collection
   'lazyProvide': "lazyProvide_example", // String | Lazy Provide true/false
   'dir': "dir_example" // String | Directory
 };
@@ -274,6 +278,7 @@ Name | Type | Description  | Notes
  **coluuid** | **String**| Collection UUID | [optional] 
  **replication** | **Number**| Replication value | [optional] 
  **ignoreDupes** | **String**| Ignore Dupes true/false | [optional] 
+ **overwrite** | **String**| Overwrite files with the same path on same collection | [optional] 
  **lazyProvide** | **String**| Lazy Provide true/false | [optional] 
  **dir** | **String**| Directory | [optional] 
 
@@ -430,6 +435,58 @@ apiInstance.contentBwUsageContentGet(content, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **String**| Content ID | 
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+## **contentContentsGet** {#contentContentsGet}
+> &#x27;String&#x27; contentContentsGet(limit, offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let limit = "limit_example"; // String | limit
+let offset = "offset_example"; // String | offset
+
+apiInstance.contentContentsGet(limit, offset, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
 
 ### Return type
 
@@ -701,56 +758,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 
-## **contentImportdealPost** {#contentImportdealPost}
-> &#x27;String&#x27; contentImportdealPost(body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.ContentApi();
-let body = new EstuaryClient.MainImportDealBody(); // MainImportDealBody | Import a deal
-
-apiInstance.contentImportdealPost(body, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal | 
-
-### Return type
-
-**&#x27;String&#x27;**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-
 ## **contentListGet** {#contentListGet}
 > &#x27;String&#x27; contentListGet()
 
@@ -796,62 +803,12 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 
-## **contentReadContGet** {#contentReadContGet}
-> &#x27;String&#x27; contentReadContGet(cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.ContentApi();
-let cont = "cont_example"; // String | CID
-
-apiInstance.contentReadContGet(cont, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **String**| CID | 
-
-### Return type
-
-**&#x27;String&#x27;**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
 ## **contentStagingZonesGet** {#contentStagingZonesGet}
 > &#x27;String&#x27; contentStagingZonesGet()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```javascript
@@ -891,12 +848,116 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 
+## **contentStagingZonesStagingZoneContentsGet** {#contentStagingZonesStagingZoneContentsGet}
+> &#x27;String&#x27; contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let stagingZone = 56; // Number | Staging Zone Content ID
+let limit = "limit_example"; // String | limit
+let offset = "offset_example"; // String | offset
+
+apiInstance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **Number**| Staging Zone Content ID | 
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+## **contentStagingZonesStagingZoneGet** {#contentStagingZonesStagingZoneGet}
+> &#x27;String&#x27; contentStagingZonesStagingZoneGet(stagingZone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let stagingZone = 56; // Number | Staging Zone Content ID
+
+apiInstance.contentStagingZonesStagingZoneGet(stagingZone, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **Number**| Staging Zone Content ID | 
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
 ## **contentStatsGet** {#contentStatsGet}
 > &#x27;String&#x27; contentStatsGet(limit, offset)
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```javascript

@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **collections_coluuid_contents_delete** {#collections_coluuid_contents_delete}
-> str collections_coluuid_contents_delete(body, coluuid, contentid)
+> str collections_coluuid_contents_delete(body, coluuid)
 
 Deletes a content from a collection
 
@@ -90,13 +90,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-body = estuary_client.MainDeleteContentFromCollectionBody() # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+body = estuary_client.ApiDeleteContentFromCollectionBody() # ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 coluuid = 'coluuid_example' # str | Collection ID
-contentid = 'contentid_example' # str | Content ID
 
 try:
     # Deletes a content from a collection
-    api_response = api_instance.collections_coluuid_contents_delete(body, coluuid, contentid)
+    api_response = api_instance.collections_coluuid_contents_delete(body, coluuid)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_contents_delete: %s\n" % e)
@@ -106,9 +105,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **str**| Collection ID | 
- **contentid** | **str**| Content ID | 
 
 ### Return type
 
@@ -180,7 +178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **collections_coluuid_get** {#collections_coluuid_get}
-> str collections_coluuid_get(coluuid, dir=dir)
+> list[CollectionsCollectionListResponse] collections_coluuid_get(coluuid, dir=dir)
 
 Get contents in a collection
 
@@ -222,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**list[CollectionsCollectionListResponse]**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -236,7 +234,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **collections_coluuid_post** {#collections_coluuid_post}
-> str collections_coluuid_post(body, coluuid)
+> str collections_coluuid_post(body, coluuid, dir=dir, overwrite=overwrite)
 
 Add contents to a collection
 
@@ -260,10 +258,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
 body = [56] # list[int] | Content IDs to add to collection
 coluuid = 'coluuid_example' # str | Collection UUID
+dir = 'dir_example' # str | Directory (optional)
+overwrite = 'overwrite_example' # str | Overwrite conflicting files (optional)
 
 try:
     # Add contents to a collection
-    api_response = api_instance.collections_coluuid_post(body, coluuid)
+    api_response = api_instance.collections_coluuid_post(body, coluuid, dir=dir, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_post: %s\n" % e)
@@ -275,6 +275,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**list[int]**](int.md)| Content IDs to add to collection | 
  **coluuid** | **str**| Collection UUID | 
+ **dir** | **str**| Directory | [optional] 
+ **overwrite** | **str**| Overwrite conflicting files | [optional] 
 
 ### Return type
 
@@ -292,7 +294,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **collections_fs_add_post** {#collections_fs_add_post}
-> str collections_fs_add_post(coluuid, content, path)
+> str collections_fs_add_post(coluuid, content, dir=dir, overwrite=overwrite)
 
 Add a file to a collection
 
@@ -316,11 +318,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
 coluuid = 'coluuid_example' # str | Collection ID
 content = 'content_example' # str | Content
-path = 'path_example' # str | Path to file
+dir = 'dir_example' # str | Directory inside collection (optional)
+overwrite = 'overwrite_example' # str | Overwrite file if already exists in path (optional)
 
 try:
     # Add a file to a collection
-    api_response = api_instance.collections_fs_add_post(coluuid, content, path)
+    api_response = api_instance.collections_fs_add_post(coluuid, content, dir=dir, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_fs_add_post: %s\n" % e)
@@ -332,7 +335,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **str**| Collection ID | 
  **content** | **str**| Content | 
- **path** | **str**| Path to file | 
+ **dir** | **str**| Directory inside collection | [optional] 
+ **overwrite** | **str**| Overwrite file if already exists in path | [optional] 
 
 ### Return type
 
@@ -350,7 +354,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **collections_get** {#collections_get}
-> list[list[CollectionsCollection]] collections_get()
+> list[CollectionsCollection] collections_get()
 
 List all collections
 
@@ -386,7 +390,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**list[list[CollectionsCollection]]**
+[**list[CollectionsCollection]**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -422,7 +426,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-body = estuary_client.MainCreateCollectionBody() # MainCreateCollectionBody | Collection name and description
+body = estuary_client.ApiCreateCollectionBody() # ApiCreateCollectionBody | Collection name and description
 
 try:
     # Create a new collection
@@ -436,7 +440,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

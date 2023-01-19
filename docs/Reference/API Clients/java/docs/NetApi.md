@@ -4,19 +4,18 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**netAddrsGet**](NetApi.md#netAddrsGet) | **GET** /net/addrs | Net Addrs
+[**adminMinersGet**](NetApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 [**publicMinersFailuresMinerGet**](NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-[**publicMinersGet**](NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 [**publicNetAddrsGet**](NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 
 
-## **netAddrsGet** {#netAddrsGet}
-> String netAddrsGet()
+## **adminMinersGet** {#adminMinersGet}
+> ApiMinerResp adminMinersGet()
 
-Net Addrs
+Get all miners
 
-This endpoint is used to get net addrs
+This endpoint returns all miners. Note: value may be cached
 
 ### Example
 ```java
@@ -37,10 +36,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 NetApi apiInstance = new NetApi();
 try {
-    String result = apiInstance.netAddrsGet();
+    ApiMinerResp result = apiInstance.adminMinersGet();
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling NetApi#netAddrsGet");
+    System.err.println("Exception when calling NetApi#adminMinersGet");
     e.printStackTrace();
 }
 ```
@@ -50,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**String**
+[**ApiMinerResp**](ApiMinerResp.md)
 
 ### Authorization
 
@@ -102,57 +101,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-## **publicMinersGet** {#publicMinersGet}
-> String publicMinersGet()
-
-Get all miners
-
-This endpoint returns all miners
-
-### Example
-```java
-// Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NetApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: bearerAuth
-ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.setApiKeyPrefix("Token");
-
-NetApi apiInstance = new NetApi();
-try {
-    String result = apiInstance.publicMinersGet();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NetApi#publicMinersGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

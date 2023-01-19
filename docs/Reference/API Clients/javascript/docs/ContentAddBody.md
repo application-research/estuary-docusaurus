@@ -4,4 +4,4 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | **Blob** | File to upload | 
-**filename** | **String** | Filenam to use for upload | [optional] 
+**filename** | **String** | Filename to use for upload | [optional] 

@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminMinersGet**](AdminApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 [**adminPeeringPeersDelete**](AdminApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 [**adminPeeringPeersGet**](AdminApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
 [**adminPeeringPeersPost**](AdminApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -12,6 +13,56 @@ Method | HTTP request | Description
 [**adminPeeringStopPost**](AdminApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
 [**adminSystemConfigGet**](AdminApi.md#adminsystemconfigget) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**adminUsersGet**](AdminApi.md#adminusersget) | **GET** /admin/users | Get all users
+
+## **adminMinersGet** {#adminMinersGet}
+> \Swagger\Client\Model\ApiMinerResp adminMinersGet()
+
+Get all miners
+
+This endpoint returns all miners. Note: value may be cached
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: bearerAuth
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\AdminApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->adminMinersGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdminApi->adminMinersGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Swagger\Client\Model\ApiMinerResp**](../Model/ApiMinerResp.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **adminPeeringPeersDelete** {#adminPeeringPeersDelete}
 > string adminPeeringPeersDelete($body)
@@ -35,7 +86,7 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(True); // bool[] | Peer ids
+$body = array("body_example"); // string[] | Peer ids
 
 try {
     $result = $apiInstance->adminPeeringPeersDelete($body);
@@ -50,7 +101,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**bool[]**](../Model/bool.md)| Peer ids |
+ **body** | [**string[]**](../Model/string.md)| Peer ids |
 
 ### Return type
 
@@ -118,7 +169,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **adminPeeringPeersPost** {#adminPeeringPeersPost}
-> string adminPeeringPeersPost()
+> string adminPeeringPeersPost($body)
 
 Add peers on Peering Service
 
@@ -139,9 +190,10 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = array(new \Swagger\Client\Model\PeeringPeeringPeer()); // \Swagger\Client\Model\PeeringPeeringPeer[] | Peering Peer array
 
 try {
-    $result = $apiInstance->adminPeeringPeersPost();
+    $result = $apiInstance->adminPeeringPeersPost($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersPost: ', $e->getMessage(), PHP_EOL;
@@ -150,7 +202,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\Swagger\Client\Model\PeeringPeeringPeer[]**](../Model/PeeringPeeringPeer.md)| Peering Peer array |
 
 ### Return type
 
@@ -162,7 +217,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

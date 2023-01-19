@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsColuuidContentsDelete** {#collectionsColuuidContentsDelete}
-> String collectionsColuuidContentsDelete(body, coluuid, contentid)
+> String collectionsColuuidContentsDelete(body, coluuid)
 
 Deletes a content from a collection
 
@@ -94,11 +94,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 CollectionsApi apiInstance = new CollectionsApi();
-MainDeleteContentFromCollectionBody body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+ApiDeleteContentFromCollectionBody body = new ApiDeleteContentFromCollectionBody(); // ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 String coluuid = "coluuid_example"; // String | Collection ID
-String contentid = "contentid_example"; // String | Content ID
 try {
-    String result = apiInstance.collectionsColuuidContentsDelete(body, coluuid, contentid);
+    String result = apiInstance.collectionsColuuidContentsDelete(body, coluuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidContentsDelete");
@@ -110,9 +109,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **String**| Collection ID |
- **contentid** | **String**| Content ID |
 
 ### Return type
 
@@ -184,7 +182,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsColuuidGet** {#collectionsColuuidGet}
-> String collectionsColuuidGet(coluuid, dir)
+> List&lt;CollectionsCollectionListResponse&gt; collectionsColuuidGet(coluuid, dir)
 
 Get contents in a collection
 
@@ -211,7 +209,7 @@ CollectionsApi apiInstance = new CollectionsApi();
 String coluuid = "coluuid_example"; // String | coluuid
 String dir = "dir_example"; // String | Directory
 try {
-    String result = apiInstance.collectionsColuuidGet(coluuid, dir);
+    List<CollectionsCollectionListResponse> result = apiInstance.collectionsColuuidGet(coluuid, dir);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidGet");
@@ -228,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**List&lt;CollectionsCollectionListResponse&gt;**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -241,7 +239,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsColuuidPost** {#collectionsColuuidPost}
-> String collectionsColuuidPost(body, coluuid)
+> String collectionsColuuidPost(body, coluuid, dir, overwrite)
 
 Add contents to a collection
 
@@ -267,8 +265,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 CollectionsApi apiInstance = new CollectionsApi();
 List<Integer> body = Arrays.asList(56); // List<Integer> | Content IDs to add to collection
 String coluuid = "coluuid_example"; // String | Collection UUID
+String dir = "dir_example"; // String | Directory
+String overwrite = "overwrite_example"; // String | Overwrite conflicting files
 try {
-    String result = apiInstance.collectionsColuuidPost(body, coluuid);
+    String result = apiInstance.collectionsColuuidPost(body, coluuid, dir, overwrite);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -282,6 +282,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**List&lt;Integer&gt;**](Integer.md)| Content IDs to add to collection |
  **coluuid** | **String**| Collection UUID |
+ **dir** | **String**| Directory | [optional]
+ **overwrite** | **String**| Overwrite conflicting files | [optional]
 
 ### Return type
 
@@ -298,7 +300,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsFsAddPost** {#collectionsFsAddPost}
-> String collectionsFsAddPost(coluuid, content, path)
+> String collectionsFsAddPost(coluuid, content, dir, overwrite)
 
 Add a file to a collection
 
@@ -324,9 +326,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 CollectionsApi apiInstance = new CollectionsApi();
 String coluuid = "coluuid_example"; // String | Collection ID
 String content = "content_example"; // String | Content
-String path = "path_example"; // String | Path to file
+String dir = "dir_example"; // String | Directory inside collection
+String overwrite = "overwrite_example"; // String | Overwrite file if already exists in path
 try {
-    String result = apiInstance.collectionsFsAddPost(coluuid, content, path);
+    String result = apiInstance.collectionsFsAddPost(coluuid, content, dir, overwrite);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsFsAddPost");
@@ -340,7 +343,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| Collection ID |
  **content** | **String**| Content |
- **path** | **String**| Path to file |
+ **dir** | **String**| Directory inside collection | [optional]
+ **overwrite** | **String**| Overwrite file if already exists in path | [optional]
 
 ### Return type
 
@@ -357,7 +361,7 @@ Name | Type | Description  | Notes
 
 
 ## **collectionsGet** {#collectionsGet}
-> List&lt;List&lt;CollectionsCollection&gt;&gt; collectionsGet()
+> List&lt;CollectionsCollection&gt; collectionsGet()
 
 List all collections
 
@@ -382,7 +386,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 CollectionsApi apiInstance = new CollectionsApi();
 try {
-    List<List<CollectionsCollection>> result = apiInstance.collectionsGet();
+    List<CollectionsCollection> result = apiInstance.collectionsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsGet");
@@ -395,7 +399,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;List&lt;CollectionsCollection&gt;&gt;**](List.md)
+[**List&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -432,7 +436,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 CollectionsApi apiInstance = new CollectionsApi();
-MainCreateCollectionBody body = new MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
+ApiCreateCollectionBody body = new ApiCreateCollectionBody(); // ApiCreateCollectionBody | Collection name and description
 try {
     CollectionsCollection result = apiInstance.collectionsPost(body);
     System.out.println(result);
@@ -446,7 +450,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description |
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description |
 
 ### Return type
 

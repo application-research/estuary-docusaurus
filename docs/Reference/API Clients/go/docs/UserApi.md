@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**UserStatsGet**](UserApi.md#UserStatsGet) | **Get** /user/stats | Get stats for the current user
 
 ## **UserApiKeysGet** {#UserApiKeysGet}
-> [][]MainGetApiKeysResp UserApiKeysGet(ctx, )
+> []ApiGetApiKeysResp UserApiKeysGet(ctx, )
 Get API keys for a user
 
 This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
@@ -21,7 +21,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[][]MainGetApiKeysResp**](array.md)
+[**[]ApiGetApiKeysResp**](api.getApiKeysResp.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 ## **UserApiKeysPost** {#UserApiKeysPost}
-> MainGetApiKeysResp UserApiKeysPost(ctx, optional)
+> ApiGetApiKeysResp UserApiKeysPost(ctx, optional)
 Create API keys for a user
 
 This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainGetApiKeysResp**](main.getApiKeysResp.md)
+[**ApiGetApiKeysResp**](api.getApiKeysResp.md)
 
 ### Authorization
 
@@ -125,7 +125,7 @@ This endpoint does not need any parameter.
 > string UserStatsGet(ctx, )
 Get stats for the current user
 
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
 
 ### Required Parameters
 This endpoint does not need any parameter.

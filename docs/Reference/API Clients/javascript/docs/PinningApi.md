@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 
 ## **pinningPinsPinidPost** {#pinningPinsPinidPost}
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, opts)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
 
 Replace a pinned object
 
@@ -175,11 +175,10 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.PinningApi();
-let pinid = "pinid_example"; // String | Pin ID
-let opts = { 
-  'body': "body_example" // String | Meta information of new pin
-};
-apiInstance.pinningPinsPinidPost(pinid, opts, (error, data, response) => {
+let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | New pin
+let pinid = "pinid_example"; // String | Pin ID to be replaced
+
+apiInstance.pinningPinsPinidPost(body, pinid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -192,8 +191,8 @@ apiInstance.pinningPinsPinidPost(pinid, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinid** | **String**| Pin ID | 
- **body** | [**String**](String.md)| Meta information of new pin | [optional] 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **pinid** | **String**| Pin ID to be replaced | 
 
 ### Return type
 
@@ -210,7 +209,7 @@ Name | Type | Description  | Notes
 
 
 ## **pinningPinsPost** {#pinningPinsPost}
-> TypesIpfsPinStatusResponse pinningPinsPost(body)
+> TypesIpfsPinStatusResponse pinningPinsPost(body, opts)
 
 Add and pin object
 
@@ -229,8 +228,11 @@ bearerAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new EstuaryClient.PinningApi();
 let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
-
-apiInstance.pinningPinsPost(body, (error, data, response) => {
+let opts = { 
+  'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes
+  'overwrite': "overwrite_example" // String | Overwrite conflicting files in collections
+};
+apiInstance.pinningPinsPost(body, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -244,6 +246,8 @@ apiInstance.pinningPinsPost(body, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **ignoreDupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 

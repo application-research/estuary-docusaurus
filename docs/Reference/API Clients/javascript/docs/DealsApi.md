@@ -38,7 +38,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.DealsApi();
-let body = new EstuaryClient.MainEstimateDealBody(); // MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+let body = new EstuaryClient.ApiEstimateDealBody(); // ApiEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 apiInstance.dealEstimatePost(body, (error, data, response) => {
   if (error) {
@@ -53,7 +53,7 @@ apiInstance.dealEstimatePost(body, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainEstimateDealBody**](MainEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
+ **body** | [**ApiEstimateDealBody**](ApiEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
 
 ### Return type
 
@@ -385,7 +385,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.DealsApi();
-let body = new EstuaryClient.MainChannelIDParam(); // MainChannelIDParam | Channel ID
+let body = new EstuaryClient.ApiChannelIDParam(); // ApiChannelIDParam | Channel ID
 
 apiInstance.dealTransferStatusPost(body, (error, data, response) => {
   if (error) {
@@ -400,7 +400,7 @@ apiInstance.dealTransferStatusPost(body, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**ApiChannelIDParam**](ApiChannelIDParam.md)| Channel ID | 
 
 ### Return type
 

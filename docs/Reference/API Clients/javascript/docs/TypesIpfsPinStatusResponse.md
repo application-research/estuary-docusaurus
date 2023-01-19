@@ -8,4 +8,4 @@ Name | Type | Description | Notes
 **info** | **Object** |  | [optional] 
 **pin** | [**TypesIpfsPin**](TypesIpfsPin.md) |  | [optional] 
 **requestid** | **String** |  | [optional] 
-**status** | **String** |  | [optional] 
+**status** | [**TypesPinningStatus**](TypesPinningStatus.md) |  | [optional] 

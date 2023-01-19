@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 [**publicMinersDealsMinerGet**](PublicApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 [**publicMinersFailuresMinerGet**](PublicApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-[**publicMinersGet**](PublicApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 [**publicMinersStatsMinerGet**](PublicApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 [**publicNetAddrsGet**](PublicApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
@@ -118,7 +117,7 @@ Name | Type | Description  | Notes
 
 
 ## **publicInfoGet** {#publicInfoGet}
-> &#x27;String&#x27; publicInfoGet()
+> ApiPublicNodeInfo publicInfoGet()
 
 Get public node info
 
@@ -150,7 +149,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**&#x27;String&#x27;**
+[**ApiPublicNodeInfo**](ApiPublicNodeInfo.md)
 
 ### Authorization
 
@@ -295,51 +294,6 @@ apiInstance.publicMinersFailuresMinerGet(miner, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner | 
-
-### Return type
-
-**&#x27;String&#x27;**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-## **publicMinersGet** {#publicMinersGet}
-> &#x27;String&#x27; publicMinersGet()
-
-Get all miners
-
-This endpoint returns all miners
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.PublicApi();
-apiInstance.publicMinersGet((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

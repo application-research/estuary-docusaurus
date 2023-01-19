@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**user_stats_get**](UserApi.md#user_stats_get) | **GET** /user/stats | Get stats for the current user
 
 ## **user_api_keys_get** {#user_api_keys_get}
-> Array&lt;Array&lt;MainGetApiKeysResp&gt;&gt; user_api_keys_get
+> Array&lt;ApiGetApiKeysResp&gt; user_api_keys_get
 
 Get API keys for a user
 
@@ -45,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array&lt;Array&lt;MainGetApiKeysResp&gt;&gt;**
+[**Array&lt;ApiGetApiKeysResp&gt;**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 
 ## **user_api_keys_post** {#user_api_keys_post}
-> MainGetApiKeysResp user_api_keys_post(opts)
+> ApiGetApiKeysResp user_api_keys_post(opts)
 
 Create API keys for a user
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainGetApiKeysResp**](MainGetApiKeysResp.md)
+[**ApiGetApiKeysResp**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ This endpoint does not need any parameter.
 
 Get stats for the current user
 
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
 
 ### Example
 ```ruby

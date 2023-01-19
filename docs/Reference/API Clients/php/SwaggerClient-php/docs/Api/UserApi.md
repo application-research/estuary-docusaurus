@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**userStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Get stats for the current user
 
 ## **userApiKeysGet** {#userApiKeysGet}
-> \Swagger\Client\Model\MainGetApiKeysResp[][] userApiKeysGet()
+> \Swagger\Client\Model\ApiGetApiKeysResp[] userApiKeysGet()
 
 Get API keys for a user
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\MainGetApiKeysResp[][]**](../Model/array.md)
+[**\Swagger\Client\Model\ApiGetApiKeysResp[]**](../Model/ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **userApiKeysPost** {#userApiKeysPost}
-> \Swagger\Client\Model\MainGetApiKeysResp userApiKeysPost($expiry, $perms)
+> \Swagger\Client\Model\ApiGetApiKeysResp userApiKeysPost($expiry, $perms)
 
 Create API keys for a user
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\MainGetApiKeysResp**](../Model/MainGetApiKeysResp.md)
+[**\Swagger\Client\Model\ApiGetApiKeysResp**](../Model/ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -225,7 +225,7 @@ This endpoint does not need any parameter.
 
 Get stats for the current user
 
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
 
 ### Example
 ```php

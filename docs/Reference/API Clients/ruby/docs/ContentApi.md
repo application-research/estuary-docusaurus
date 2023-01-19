@@ -4,25 +4,79 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**admin_invites_code_post**](ContentApi.md#admin_invites_code_post) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**admin_invites_get**](ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
-[**admin_invites_post**](ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
 [**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 [**content_add_ipfs_post**](ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
 [**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Add new content
 [**content_aggregated_content_get**](ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**content_all_deals_get**](ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 [**content_bw_usage_content_get**](ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**content_contents_get**](ContentApi.md#content_contents_get) | **GET** /content/contents | Get user contents
 [**content_create_post**](ContentApi.md#content_create_post) | **POST** /content/create | Add a new content
 [**content_deals_get**](ContentApi.md#content_deals_get) | **GET** /content/deals | Content with deals
 [**content_ensure_replication_datacid_get**](ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**content_failures_content_get**](ContentApi.md#content_failures_content_get) | **GET** /content/failures/{content} | List all failures for a content
 [**content_id_get**](ContentApi.md#content_id_get) | **GET** /content/{id} | Content
-[**content_importdeal_post**](ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 [**content_list_get**](ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
-[**content_read_cont_get**](ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
-[**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
+[**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**content_staging_zones_staging_zone_contents_get**](ContentApi.md#content_staging_zones_staging_zone_contents_get) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**content_staging_zones_staging_zone_get**](ContentApi.md#content_staging_zones_staging_zone_get) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
+
+## **admin_invites_code_post** {#admin_invites_code_post}
+> String admin_invites_code_post(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+code = 'code_example' # String | Invite code to be created
+
+
+begin
+  #Create an Estuary invite
+  result = api_instance.admin_invites_code_post(code)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->admin_invites_code_post: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
 
 ## **admin_invites_get** {#admin_invites_get}
 > String admin_invites_get
@@ -56,59 +110,6 @@ end
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-## **admin_invites_post** {#admin_invites_post}
-> String admin_invites_post(code)
-
-Create an Estuary invite
-
-This endpoint is used to create an estuary invite.
-
-### Example
-```ruby
-# load the gem
-require 'swagger_client'
-# setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
-code = 'code_example' # String | Invite code to be created
-
-
-begin
-  #Create an Estuary invite
-  result = api_instance.admin_invites_post(code)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->admin_invites_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **String**| Invite code to be created | 
 
 ### Return type
 
@@ -203,9 +204,10 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::UtilContentAddIpfsBody.new # UtilContentAddIpfsBody | IPFS Body
+body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | IPFS Body
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
 }
 
 begin
@@ -221,8 +223,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
@@ -265,6 +268,7 @@ opts = {
   coluuid: 'coluuid_example' # String | Collection UUID
   replication: 56 # Integer | Replication value
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes true/false
+  overwrite: 'overwrite_example' # String | Overwrite files with the same path on same collection
   lazy_provide: 'lazy_provide_example' # String | Lazy Provide true/false
   dir: 'dir_example' # String | Directory
 }
@@ -287,6 +291,7 @@ Name | Type | Description  | Notes
  **coluuid** | **String**| Collection UUID | [optional] 
  **replication** | **Integer**| Replication value | [optional] 
  **ignore_dupes** | **String**| Ignore Dupes true/false | [optional] 
+ **overwrite** | **String**| Overwrite files with the same path on same collection | [optional] 
  **lazy_provide** | **String**| Lazy Provide true/false | [optional] 
  **dir** | **String**| Directory | [optional] 
 
@@ -452,6 +457,61 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **String**| Content ID | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+## **content_contents_get** {#content_contents_get}
+> String content_contents_get(limit, offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+limit = 'limit_example' # String | limit
+offset = 'offset_example' # String | offset
+
+
+begin
+  #Get user contents
+  result = api_instance.content_contents_get(limit, offset)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_contents_get: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
 
 ### Return type
 
@@ -739,59 +799,6 @@ Name | Type | Description  | Notes
 
 
 
-## **content_importdeal_post** {#content_importdeal_post}
-> String content_importdeal_post(body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```ruby
-# load the gem
-require 'swagger_client'
-# setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::MainImportDealBody.new # MainImportDealBody | Import a deal
-
-
-begin
-  #Import a deal
-  result = api_instance.content_importdeal_post(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_importdeal_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal | 
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-
-
 ## **content_list_get** {#content_list_get}
 > String content_list_get
 
@@ -840,65 +847,12 @@ This endpoint does not need any parameter.
 
 
 
-## **content_read_cont_get** {#content_read_cont_get}
-> String content_read_cont_get(cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```ruby
-# load the gem
-require 'swagger_client'
-# setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
-cont = 'cont_example' # String | CID
-
-
-begin
-  #Read content
-  result = api_instance.content_read_cont_get(cont)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_read_cont_get: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **String**| CID | 
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
 ## **content_staging_zones_get** {#content_staging_zones_get}
 > String content_staging_zones_get
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```ruby
@@ -915,7 +869,7 @@ end
 api_instance = SwaggerClient::ContentApi.new
 
 begin
-  #Get staging zone for user
+  #Get staging zone for user, excluding its contents
   result = api_instance.content_staging_zones_get
   p result
 rescue SwaggerClient::ApiError => e
@@ -941,12 +895,122 @@ This endpoint does not need any parameter.
 
 
 
+## **content_staging_zones_staging_zone_contents_get** {#content_staging_zones_staging_zone_contents_get}
+> String content_staging_zones_staging_zone_contents_get(staging_zone, limit, offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+staging_zone = 56 # Integer | Staging Zone Content ID
+limit = 'limit_example' # String | limit
+offset = 'offset_example' # String | offset
+
+
+begin
+  #Get contents for a staging zone
+  result = api_instance.content_staging_zones_staging_zone_contents_get(staging_zone, limit, offset)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_staging_zones_staging_zone_contents_get: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staging_zone** | **Integer**| Staging Zone Content ID | 
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+## **content_staging_zones_staging_zone_get** {#content_staging_zones_staging_zone_get}
+> String content_staging_zones_staging_zone_get(staging_zone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+staging_zone = 56 # Integer | Staging Zone Content ID
+
+
+begin
+  #Get staging zone without its contents field populated
+  result = api_instance.content_staging_zones_staging_zone_get(staging_zone)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_staging_zones_staging_zone_get: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staging_zone** | **Integer**| Staging Zone Content ID | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 ## **content_stats_get** {#content_stats_get}
 > String content_stats_get(limit, offset)
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```ruby

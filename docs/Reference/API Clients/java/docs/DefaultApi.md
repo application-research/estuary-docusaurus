@@ -1,17 +1,18 @@
 # DefaultApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**dealTransferStatusPost**](DefaultApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | 
+[**viewerGet**](DefaultApi.md#viewerGet) | **GET** /viewer | Fetch viewer details
 
 
-<a name="dealTransferStatusPost"></a>
-# **dealTransferStatusPost**
-> dealTransferStatusPost()
+## **viewerGet** {#viewerGet}
+> UtilViewerResponse viewerGet()
 
+Fetch viewer details
 
+This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
 
 ### Example
 ```java
@@ -32,9 +33,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 DefaultApi apiInstance = new DefaultApi();
 try {
-    apiInstance.dealTransferStatusPost();
+    UtilViewerResponse result = apiInstance.viewerGet();
+    System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#dealTransferStatusPost");
+    System.err.println("Exception when calling DefaultApi#viewerGet");
     e.printStackTrace();
 }
 ```
@@ -44,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**UtilViewerResponse**](UtilViewerResponse.md)
 
 ### Authorization
 
@@ -53,5 +55,5 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 

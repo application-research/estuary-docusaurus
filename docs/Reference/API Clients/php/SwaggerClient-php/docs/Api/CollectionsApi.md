@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **collectionsColuuidContentsDelete** {#collectionsColuuidContentsDelete}
-> string collectionsColuuidContentsDelete($body, $coluuid, $contentid)
+> string collectionsColuuidContentsDelete($body, $coluuid)
 
 Deletes a content from a collection
 
@@ -89,12 +89,11 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\MainDeleteContentFromCollectionBody(); // \Swagger\Client\Model\MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+$body = new \Swagger\Client\Model\ApiDeleteContentFromCollectionBody(); // \Swagger\Client\Model\ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 $coluuid = "coluuid_example"; // string | Collection ID
-$contentid = "contentid_example"; // string | Content ID
 
 try {
-    $result = $apiInstance->collectionsColuuidContentsDelete($body, $coluuid, $contentid);
+    $result = $apiInstance->collectionsColuuidContentsDelete($body, $coluuid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsColuuidContentsDelete: ', $e->getMessage(), PHP_EOL;
@@ -106,9 +105,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MainDeleteContentFromCollectionBody**](../Model/MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
+ **body** | [**\Swagger\Client\Model\ApiDeleteContentFromCollectionBody**](../Model/ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **string**| Collection ID |
- **contentid** | **string**| Content ID |
 
 ### Return type
 
@@ -180,7 +178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **collectionsColuuidGet** {#collectionsColuuidGet}
-> string collectionsColuuidGet($coluuid, $dir)
+> \Swagger\Client\Model\CollectionsCollectionListResponse[] collectionsColuuidGet($coluuid, $dir)
 
 Get contents in a collection
 
@@ -222,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\CollectionsCollectionListResponse[]**](../Model/CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -236,7 +234,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **collectionsColuuidPost** {#collectionsColuuidPost}
-> string collectionsColuuidPost($body, $coluuid)
+> string collectionsColuuidPost($body, $coluuid, $dir, $overwrite)
 
 Add contents to a collection
 
@@ -259,9 +257,11 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
 );
 $body = array(56); // int[] | Content IDs to add to collection
 $coluuid = "coluuid_example"; // string | Collection UUID
+$dir = "dir_example"; // string | Directory
+$overwrite = "overwrite_example"; // string | Overwrite conflicting files
 
 try {
-    $result = $apiInstance->collectionsColuuidPost($body, $coluuid);
+    $result = $apiInstance->collectionsColuuidPost($body, $coluuid, $dir, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsColuuidPost: ', $e->getMessage(), PHP_EOL;
@@ -275,6 +275,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**int[]**](../Model/int.md)| Content IDs to add to collection |
  **coluuid** | **string**| Collection UUID |
+ **dir** | **string**| Directory | [optional]
+ **overwrite** | **string**| Overwrite conflicting files | [optional]
 
 ### Return type
 
@@ -292,7 +294,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **collectionsFsAddPost** {#collectionsFsAddPost}
-> string collectionsFsAddPost($coluuid, $content, $path)
+> string collectionsFsAddPost($coluuid, $content, $dir, $overwrite)
 
 Add a file to a collection
 
@@ -315,10 +317,11 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
 );
 $coluuid = "coluuid_example"; // string | Collection ID
 $content = "content_example"; // string | Content
-$path = "path_example"; // string | Path to file
+$dir = "dir_example"; // string | Directory inside collection
+$overwrite = "overwrite_example"; // string | Overwrite file if already exists in path
 
 try {
-    $result = $apiInstance->collectionsFsAddPost($coluuid, $content, $path);
+    $result = $apiInstance->collectionsFsAddPost($coluuid, $content, $dir, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsFsAddPost: ', $e->getMessage(), PHP_EOL;
@@ -332,7 +335,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **string**| Collection ID |
  **content** | **string**| Content |
- **path** | **string**| Path to file |
+ **dir** | **string**| Directory inside collection | [optional]
+ **overwrite** | **string**| Overwrite file if already exists in path | [optional]
 
 ### Return type
 
@@ -350,7 +354,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **collectionsGet** {#collectionsGet}
-> \Swagger\Client\Model\CollectionsCollection[][] collectionsGet()
+> \Swagger\Client\Model\CollectionsCollection[] collectionsGet()
 
 List all collections
 
@@ -386,7 +390,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\CollectionsCollection[][]**](../Model/array.md)
+[**\Swagger\Client\Model\CollectionsCollection[]**](../Model/CollectionsCollection.md)
 
 ### Authorization
 
@@ -421,7 +425,7 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\MainCreateCollectionBody(); // \Swagger\Client\Model\MainCreateCollectionBody | Collection name and description
+$body = new \Swagger\Client\Model\ApiCreateCollectionBody(); // \Swagger\Client\Model\ApiCreateCollectionBody | Collection name and description
 
 try {
     $result = $apiInstance->collectionsPost($body);
@@ -436,7 +440,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MainCreateCollectionBody**](../Model/MainCreateCollectionBody.md)| Collection name and description |
+ **body** | [**\Swagger\Client\Model\ApiCreateCollectionBody**](../Model/ApiCreateCollectionBody.md)| Collection name and description |
 
 ### Return type
 
