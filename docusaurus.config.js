@@ -56,21 +56,10 @@ const config = {
           },
         },
         {
-          tabName: "JS",
-          highlight: "javascript",
-          language: "javascript",
-          variant: "fetch",
-          options: {
-            longFormat: false,
-            followRedirect: true,
-            trimRequestBody: true,
-          },
-        },
-        {
           tabName: "Node",
           highlight: "javascript",
           language: "NodeJs",
-          variant: "Request",
+          variant: "Axios",
           options: {
             ES6_enabled: true,
             followRedirect: true,
