@@ -70,7 +70,7 @@ const config = {
           tabName: "Node",
           highlight: "javascript",
           language: "NodeJs",
-          variant: "Native",
+          variant: "Request",
           options: {
             ES6_enabled: true,
             followRedirect: true,
