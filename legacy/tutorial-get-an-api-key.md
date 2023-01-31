@@ -1,8 +1,8 @@
 # Quickstart Guide
 
-We're excited to have you try out Estuary! Estuary is a reliable way to upload public data onto [Filecoin](https://filecoin.io) and pin it to [IPFS](https://ipfs.io/).
+We're excited to have you try out Pin.Storage! Pin.Storage is a reliable way to upload public data onto [Filecoin](https://filecoin.io) and pin it to [IPFS](https://ipfs.io/).
 
-For more information on what Estuary is, visit our [home page](https://estuary.tech). If you are a developer looking to use Estuary, continue through this quickstart guide.
+For more information on what Pin.Storage is, visit our [home page](https://pin-storage-web.vercel.app/). If you are a developer looking to use Pin.Storage, continue through this quickstart guide.
 
 Questions? Visit the [FAQ](/docs/FAQ) or reach out to us on [Slack](https://filecoin.io/slack)!
 
@@ -10,7 +10,7 @@ Questions? Visit the [FAQ](/docs/FAQ) or reach out to us on [Slack](https://file
 
 As a developer you have probably used API keys before. Estuary provides a unique identifier used to authenticate a user, developer, or calling program to an application programming interface we have created.
 
-If you don't know what an API key is, this tutorial will be challenging for you, but you can reach out to us if you're stuck. API keys are the standard way to authenticate a project with an API rather than a human user. **It is also important you understand how to protect your API key/secrets from bad actors and abuse**. If this concept is foreign to you, you might be better off just using [https://estuary.tech](https://estuary.tech) and storing data through our website.
+If you don't know what an API key is, this tutorial will be challenging for you, but you can reach out to us if you're stuck. API keys are the standard way to authenticate a project with an API rather than a human user. **It is also important you understand how to protect your API key/secrets from bad actors and abuse**. If this concept is foreign to you, you might be better off just using [https://pin-storage-web.vercel.app/](https://pin-storage-web.vercel.app/) and storing data through our website.
 
 ### Getting started
 

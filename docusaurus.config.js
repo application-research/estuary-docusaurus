@@ -14,8 +14,8 @@ const config = {
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "application-research", // Usually your GitHub org/user name.
-  projectName: "estuary-documentation", // Usually your repo name.
+  organizationName: "pin-storage", // Usually your GitHub org/user name.
+  projectName: "pin-storage-documentation", // Usually your repo name.
 
   presets: [
     [
@@ -26,12 +26,12 @@ const config = {
           routeBasePath: "/",
           breadcrumbs: false,
           editUrl:
-            "https://github.com/application-research/estuary-documentation/tree/main/",
+            "https://github.com/pin-storage/estuary-docusaurus",
         },
         blog: {
           showReadingTime: true,
           editUrl:
-            "https://github.com/application-research/estuary-documentation/tree/main/",
+            "https://github.com/pin-storage/estuary-docusaurus",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -97,8 +97,8 @@ const config = {
       navbar: {
         items: [
           {
-            label: "Estuary",
-            to: "https://estuary.tech",
+            label: "pin.storage",
+            to: "https://pin-storage-web.vercel.app/",
             position: "left",
             className: "logo",
           },
@@ -153,11 +153,11 @@ const config = {
               // },
               {
                 label: "GitHub",
-                href: "https://github.com/application-research/estuary",
+                href: "https://github.com/pin-storage/",
               },
               {
                 label: "Documentation Source Code",
-                href: "https://github.com/application-research/estuary-documentation",
+                href: "https://github.com/pin-storage/estuary-docusaurus",
               },
             ],
           },
