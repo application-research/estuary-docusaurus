@@ -6,7 +6,8 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, helvetica neue,
+    helvetica, sans-serif;
   --ifm-color-primary: #0002ff;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
@@ -18,14 +19,10 @@
   --ifm-navbar-height: 48px;
   --ifm-navbar-item-padding-vertical: 0px;
   --ifm-navbar-padding-horizontal: 0px;
-
 }
-[data-theme='dark'] {
-  --ifm-color-primary: hsl(240, 100%, 69%)
-
-
+[data-theme="dark"] {
+  --ifm-color-primary: hsl(240, 100%, 69%);
 }
-
 
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
@@ -52,17 +49,39 @@ body {
   --main-text-details: #8d8d8d;
 }
 
-.navbar__link{
-  font-size:14px;
-  font-weight:600;
-}
-
-
-.navbar__items .logo{
-  padding-left:0 !important;
-  font-weight:700;
+.navbar__link {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 pre {
-  background-color:transparent;
+  background-color: transparent;
+}
+
+/* CUSTOM */
+
+.navbar--fixed-top {
+  padding: 32px 64px;
+  height: fit-content !important;
+  background: linear-gradient(30deg, #fff, #7d9bee);
+}
+
+.clean-btn {
+  border: 1px solid #3268fd8f;
+  padding: 4px;
+  border-radius: 4px !important;
+}
+
+#search_input_react {
+  border-radius: 4px !important;
+  border: 1px solid #3268fd8f;
+  width: 250px;
+}
+
+[data-theme="dark"] .navbar--fixed-top {
+  background: linear-gradient(30deg, rgb(0, 0, 0), rgb(39, 39, 39));
+}
+
+[data-theme="dark"] #search_input_react {
+  background: linear-gradient(30deg, rgb(0, 0, 0), rgb(39, 39, 39));
 }

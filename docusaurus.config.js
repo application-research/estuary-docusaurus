@@ -25,13 +25,11 @@ const config = {
         docs: {
           routeBasePath: "/",
           breadcrumbs: false,
-          editUrl:
-            "https://github.com/pin-storage/estuary-docusaurus",
+          editUrl: "https://github.com/pin-storage/estuary-docusaurus",
         },
         blog: {
           showReadingTime: true,
-          editUrl:
-            "https://github.com/pin-storage/estuary-docusaurus",
+          editUrl: "https://github.com/pin-storage/estuary-docusaurus",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -90,11 +88,14 @@ const config = {
 
       docs: {
         sidebar: {
-          hideable: true,
           autoCollapseCategories: false,
         },
       },
       navbar: {
+        logo: {
+          alt: "LOGO",
+          src: "/img/icons/horizontal_gradient.png",
+        },
         items: [
           {
             label: "pin.storage",
@@ -112,6 +113,10 @@ const config = {
         ],
       },
       footer: {
+        logo: {
+          src: "/img/icons/horizontal_gradient.png",
+        },
+        copyright: "© 2023 - Pin.Storage",
         style: "dark",
         links: [
           {
