@@ -3967,7 +3967,7 @@
                         }
                     },
                     {
-                        "description": "Permissions -- currently unused",
+                        "description": "Permissions",
                         "name": "perms",
                         "in": "query",
                         "schema": {
