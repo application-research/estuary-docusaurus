@@ -26,7 +26,7 @@ If you're ready, let's begin!
 
 ### Sign in to Estuary
 
-When you sign in to Estuary, you should should land on this page.
+When you sign in to Estuary, you should land on this page.
 
 ![https://next-s3-public.s3-us-west-2.amazonaws.com/estuary-marketing-hero.png](https://next-s3-public.s3-us-west-2.amazonaws.com/estuary-tutorial/tutorial-2.png)
 
