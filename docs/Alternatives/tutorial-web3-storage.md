@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Web3.Storage
+# Web3.storage
 ## Overview
 At the core of web3.storage is a storage service to safely secure and make your data available - giving developers the power of decentralized storage and content addressing via simple client libraries or an HTTP API.
 
